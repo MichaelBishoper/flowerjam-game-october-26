@@ -1,0 +1,47 @@
+[gd_scene format=4 uid="uid://ptmtyxo2tpn4"]
+
+[ext_resource type="PackedScene" uid="uid://cfgtbcu28vj04" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://brpycd08mf3p1" path="res://scenes/apple.tscn" id="1_sugp2"]
+[ext_resource type="Texture2D" uid="uid://l7cdkh26a82f" path="res://assets/Tileset1080p-640p-per-tile.png" id="3_sugp2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
+texture = ExtResource("3_sugp2")
+texture_region_size = Vector2i(640, 640)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-321.62415, -320, 313.84283, -320, 320, -128, -319.0304, -129.68713)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(326.81165, -320, 326.8116, 320, 191.93701, 320, 191.93701, -320)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(326.81165, -320, 324.2179, 204.9057, 194.53073, 204.9057, 191.93701, -320)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-321.62415, -320, 326.81165, -320, 319.0304, -233.43689, 326.8116, 320, 191.93701, 320, 189.34326, 10.3749695, -49.243896, -226.75995, -324.2179, -225.65564)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-321.62415, -320, 313.84283, -320, 320, -128, -319.0304, -129.68713)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(324.21783, -320, 321.62415, 160.81207, 282.718, 140.06213, 264.5618, 64.84357, 248.99933, 5.1874695, 197.12448, -36.31241, 124.49967, -70.03107, 54.468613, -67.43732, 7.7812347, -90.781006, -38.906143, -129.68715, -90.781006, -178.96828, -176.37453, -186.7495, -238.62436, -160.81207, -287.90546, -140.06213, -321.62415, -134.87466, -316.43665, -320)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-321.62415, -320, 313.84283, -320, 321.62415, -228.24939, -324.2179, -225.65564)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(326.81165, -320, 319.0304, -57.062347, 191.93698, -57.062347, 191.93701, -320)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-140.0621, -320, -145.2496, -197.12448, -321.62415, -134.87466, -316.43665, -320)
+
+[sub_resource type="TileSet" id="TileSet_wgif1"]
+tile_size = Vector2i(640, 640)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_jyhfs")
+
+[node name="Node2D" type="Node2D" unique_id=223524730]
+
+[node name="Apple" parent="." unique_id=257149692 instance=ExtResource("1_sugp2")]
+position = Vector2(978, 487)
+
+[node name="Player" parent="." unique_id=1577183643 instance=ExtResource("1_o5qli")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1416674187]
+zoom = Vector2(0.3, 0.3)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1297492837]
+tile_map_data = PackedByteArray("AAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAEAAAADAP//AAACAAAAAAABAP//AAAAAAEAAAAEAP//AAACAAAAABAFAP//AAAAAAAAAAAGAP//AAAAAAEAABACAP//AAAAAAAAABD+////AAABAAEAAAD9////AAACAAEAAAD8////AAACAAEAAAD7////AAACAAEAAAD+/wEAAAABAAEAABD+/wAAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_wgif1")

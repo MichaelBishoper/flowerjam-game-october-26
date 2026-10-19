@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dc1puru13x0aq"]
+
+[ext_resource type="PackedScene" uid="uid://c64vg5atxulqv" path="res://scenes/hauntable.tscn" id="1_gdwxr"]
+[ext_resource type="Texture2D" uid="uid://fa7bqsccpvcw" path="res://assets/Ball.png" id="2_l0jqp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gcwwn"]
+radius = 461.01736
+
+[node name="Node2D" unique_id=257149692 instance=ExtResource("1_gdwxr")]
+
+[node name="Sprite2D" parent="RigidBody2D" parent_id_path=PackedInt32Array(726434176) index="0" unique_id=725471885]
+texture = ExtResource("2_l0jqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" parent_id_path=PackedInt32Array(726434176) index="1" unique_id=223901643]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_gcwwn")

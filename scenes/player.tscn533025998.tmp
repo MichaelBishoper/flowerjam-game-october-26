@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cfgtbcu28vj04"]
+
+[ext_resource type="Texture2D" uid="uid://f5kui480qpkw" path="res://assets/sprites/icon.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://b116r317rvve2" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cpge50vk0ftif" path="res://scripts/state_machine.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://w2op0g5f2b3d" path="res://scripts/idle_state.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bco1egyooxysj" path="res://scripts/moving_state.gd" id="5_qlg0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgif1"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D" unique_id=1577183643]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1161831718]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537371190]
+shape = SubResource("RectangleShape2D_wgif1")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1354941162]
+script = ExtResource("3_qhqgy")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=698504713]
+script = ExtResource("4_dqkch")
+
+[node name="Moving" type="Node" parent="StateMachine" unique_id=645583584]
+script = ExtResource("5_qlg0r")
+
+[node name="Selecting" type="Node" parent="StateMachine" unique_id=79143708]
+
+[node name="Haunting" type="Node" parent="StateMachine" unique_id=420506253]
