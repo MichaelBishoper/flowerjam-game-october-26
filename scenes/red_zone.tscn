@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dccakilrseg6f"]
+
+[ext_resource type="Texture2D" uid="uid://ccgmnfkpouy8h" path="res://assets/walls/red_box.png" id="1_m1iy0"]
+
+[node name="Node2D" type="Node2D" unique_id=1543650250]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1384775045]
+position = Vector2(85.5, -266)
+scale = Vector2(1.71, 5.32)
+texture = ExtResource("1_m1iy0")

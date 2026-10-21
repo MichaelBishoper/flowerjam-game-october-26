@@ -10,6 +10,11 @@
 [ext_resource type="Script" uid="uid://b4abfu4ubvqu0" path="res://scripts/haunt_detection.gd" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://bj58gy1dcu5e1" path="res://scripts/selecting_state.gd" id="7_smehm"]
 [ext_resource type="Script" uid="uid://dx1ae3vr7n7a0" path="res://scripts/haunting_state.gd" id="9_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://bi8wk108nlxep" path="res://assets/sfx/sfx_press_right.wav" id="11_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://c0fxksxhsyh54" path="res://assets/sfx/sfx_press_left.wav" id="12_f1ej7"]
+[ext_resource type="AudioStream" uid="uid://cmkp0jrx2l2nj" path="res://assets/sfx/sfx_press_down.wav" id="13_oprun"]
+[ext_resource type="AudioStream" uid="uid://kerya35l13gq" path="res://assets/sfx/sfx_press_up.wav" id="14_a8ls1"]
+[ext_resource type="AudioStream" uid="uid://cpqhve3r4iscl" path="res://assets/sfx/sfx_ghost_haunt.wav" id="15_oprun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
 atlas = ExtResource("3_ur7pv")
@@ -130,8 +135,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
-radius = 66.0
-height = 208.0
+radius = 119.0
+height = 366.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
 radius = 1019.7083
@@ -143,12 +148,12 @@ arrow_scene = ExtResource("2_ur7pv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91838598]
 position = Vector2(3, -19)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wgif1")
 animation = &"haunt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537371190]
-position = Vector2(0, -24)
+position = Vector2(-3, -18)
 shape = SubResource("CapsuleShape2D_sugp2")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1354941162]
@@ -168,12 +173,33 @@ script = ExtResource("7_smehm")
 script = ExtResource("9_y4r1p")
 
 [node name="HauntDetection" type="Area2D" parent="." unique_id=920223942]
+visible = false
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("7_fjrip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HauntDetection" unique_id=2091547254]
 shape = SubResource("CircleShape2D_fjrip")
+
+[node name="PressRight" type="AudioStreamPlayer2D" parent="." unique_id=1975942559]
+stream = ExtResource("11_d2wvv")
+bus = &"SFX Bus"
+
+[node name="PressLeft" type="AudioStreamPlayer2D" parent="." unique_id=217301841]
+stream = ExtResource("12_f1ej7")
+bus = &"SFX Bus"
+
+[node name="PressDown" type="AudioStreamPlayer2D" parent="." unique_id=2899787]
+stream = ExtResource("13_oprun")
+bus = &"SFX Bus"
+
+[node name="PressUp" type="AudioStreamPlayer2D" parent="." unique_id=1778199253]
+stream = ExtResource("14_a8ls1")
+bus = &"SFX Bus"
+
+[node name="Haunt" type="AudioStreamPlayer2D" parent="." unique_id=589451407]
+stream = ExtResource("15_oprun")
+bus = &"SFX Bus"
 
 [connection signal="body_entered" from="HauntDetection" to="." method="_on_haunt_detection_body_entered"]
 [connection signal="body_exited" from="HauntDetection" to="." method="_on_haunt_detection_body_exited"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://w1l35gvwqhsd"]
+
+[ext_resource type="Texture2D" uid="uid://4s0negkeg3hf" path="res://assets/trapdoor_temp.png" id="1_54wn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54wn0"]
+size = Vector2(640, 94)
+
+[node name="Node2D" type="Node2D" unique_id=1823871400]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=614001755]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=67686118]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=699006023]
+texture = ExtResource("1_54wn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D" unique_id=1701365972]
+position = Vector2(0, 273)
+shape = SubResource("RectangleShape2D_54wn0")

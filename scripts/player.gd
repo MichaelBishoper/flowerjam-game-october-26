@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var haunt_detection: Area2D = $HauntDetection
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var camera_2d: Camera2D = $Camera2D
+@onready var camera_2d: Camera2D = $"../Camera2D"
 
 @export var max_speed_x := 750.0
 @export var max_speed_y := 800.0
@@ -30,7 +30,7 @@ var available_hauntables: Array[RigidBody2D] = []
 signal hauntable_array_changed
 
 func _ready() -> void:
-	pass
+	add_to_group("player")
 
 func _process(delta: float) -> void:
 	

@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://cfgtbcu28vj04"]
+
+[ext_resource type="Script" uid="uid://b116r317rvve2" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://ct1sle1rngi2o" path="res://scenes/debug_line.tscn" id="2_ur7pv"]
+[ext_resource type="Script" uid="uid://cpge50vk0ftif" path="res://scripts/state_machine.gd" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cfxl0wn8nx81a" path="res://assets/Ghost1080.png" id="3_smehm"]
+[ext_resource type="Texture2D" uid="uid://3xdcqivymh2i" path="res://assets/GhostDisappear.png" id="3_ur7pv"]
+[ext_resource type="Script" uid="uid://w2op0g5f2b3d" path="res://scripts/idle_state.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bco1egyooxysj" path="res://scripts/moving_state.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://b4abfu4ubvqu0" path="res://scripts/haunt_detection.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://bj58gy1dcu5e1" path="res://scripts/selecting_state.gd" id="7_smehm"]
+[ext_resource type="Script" uid="uid://dx1ae3vr7n7a0" path="res://scripts/haunting_state.gd" id="9_y4r1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(1080, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(2160, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(3240, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(0, 1080, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(1080, 1080, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(2160, 1080, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(3240, 1080, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(0, 2160, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(1080, 2160, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(2160, 2160, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(3240, 2160, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(0, 3240, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("3_ur7pv")
+region = Rect2(1080, 3240, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("3_smehm")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgif1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}],
+"loop": 0,
+"name": &"haunt",
+"speed": 17.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": 1,
+"name": &"temporary_secretary",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
+radius = 119.0
+height = 366.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
+radius = 1019.7083
+
+[node name="Player" type="CharacterBody2D" unique_id=1577183643]
+collision_layer = 2
+script = ExtResource("1_g2els")
+arrow_scene = ExtResource("2_ur7pv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91838598]
+position = Vector2(3, -19)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wgif1")
+animation = &"haunt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537371190]
+position = Vector2(-3, -18)
+shape = SubResource("CapsuleShape2D_sugp2")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1354941162]
+script = ExtResource("3_qhqgy")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=698504713]
+script = ExtResource("4_dqkch")
+bob_amplitude = 9.0
+
+[node name="Moving" type="Node" parent="StateMachine" unique_id=645583584]
+script = ExtResource("5_qlg0r")
+bob_frequency = null
+bob_amplitude = null
+bob_offset = null
+
+[node name="Selecting" type="Node" parent="StateMachine" unique_id=79143708]
+script = ExtResource("7_smehm")
+
+[node name="Haunting" type="Node" parent="StateMachine" unique_id=420506253]
+script = ExtResource("9_y4r1p")
+
+[node name="HauntDetection" type="Area2D" parent="." unique_id=920223942]
+visible = false
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("7_fjrip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HauntDetection" unique_id=2091547254]
+shape = SubResource("CircleShape2D_fjrip")
+
+[connection signal="body_entered" from="HauntDetection" to="." method="_on_haunt_detection_body_entered"]
+[connection signal="body_exited" from="HauntDetection" to="." method="_on_haunt_detection_body_exited"]

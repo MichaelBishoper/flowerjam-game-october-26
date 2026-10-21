@@ -1,13 +1,25 @@
 class_name MovingState extends PlayerState	
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var camera_2d: Camera = $"../../../Camera2D"
 
+# SFX Players
+@onready var press_right: AudioStreamPlayer2D = $"../../PressRight"
+@onready var press_left: AudioStreamPlayer2D = $"../../PressLeft"
+@onready var press_down: AudioStreamPlayer2D = $"../../PressDown"
+@onready var press_up: AudioStreamPlayer2D = $"../../PressUp"
 
-var _time_elapsed: float = 0.0
+var sfx_array: Array[AudioStreamPlayer2D]
 
 func enter(previous_state_path: String, data := {}) -> void:
+	# Set camera to follow player
+	camera_2d.set_target(player)
+	
 	print("Previous State: ", previous_state_path)
 	print("Current State: Moving")
+	
+	# Store the audio sfx to an array
+	sfx_array = [press_down, press_left, press_right, press_up]
 	
 	animated_sprite_2d.show()
 	animated_sprite_2d.play("temporary_secretary")
@@ -26,7 +38,14 @@ func physics_update(_delta: float) -> void:
 	# For Animations Later!!!
 	_infer_direction(input_dir)
 	
-	player.move_and_slide()
+	var motion = player.velocity * _delta
+	
+	var collision = player.move_and_collide(motion)
+	
+	if collision:
+		var normal = collision.get_normal()
+		var bounce_factor = 0.8
+		player.velocity = player.velocity.bounce(normal) * bounce_factor
 	
 	# State Changes
 	if player.velocity == Vector2.ZERO:
@@ -35,6 +54,21 @@ func physics_update(_delta: float) -> void:
 func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("select"):
 		finished.emit(SELECTING)
+	
+	# If any audio is playing wait for it to end
+	for s in sfx_array:
+		if s.playing:
+			return
+	
+	# Playing Audio
+	if (Input.is_action_just_pressed("move_right")):
+		press_right.play()
+	if (Input.is_action_just_pressed("move_left")):
+		press_left.play()
+	if (Input.is_action_just_pressed("move_down")):
+		press_down.play()
+	if (Input.is_action_just_pressed("move_up")):
+		press_up.play()
 
 func _infer_direction(_direction: Vector2) -> String:
 	if _direction == Vector2.UP:

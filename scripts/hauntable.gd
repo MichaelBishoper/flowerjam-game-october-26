@@ -2,15 +2,20 @@ class_name Hauntable extends Node2D
 
 @export var speed := 400.0
 
-@onready var player: Player = $"../Player"
-@onready var state_machine: StateMachine = $"../Player/StateMachine"
 @onready var haunt_button: Button = $HauntButton
 @onready var rigid_body_2d: RigidBody2D = $RigidBody2D
+
+@onready var haunt: AudioStreamPlayer2D = $Haunt
+
+# Player and StateMachine references are defined in _ready()
+var player: Player
+var state_machine: StateMachine
 
 var player_state: String
 var hauntables_array: Array[RigidBody2D]
 var available_hauntables_array: Array[RigidBody2D]
 var is_in_range: bool = false
+
 
 # For the Public Methods
 @export var hauntable_acceleration := 1200.0
@@ -37,6 +42,21 @@ func move(axis: float, delta: float) -> void:
 # -- PRIVATE METHODS -- #
 
 func _ready() -> void:
+	# WHY DOES THIS FIX IT????
+	await get_tree().process_frame
+	
+	# Define Player Reference
+	player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		push_warning("You are utterly fucked")
+		return
+	
+	# Define StateMachine Reference
+	state_machine = player.state_machine
+	if state_machine == null:
+		push_warning("You are utterly fucked")
+		return
+	
 	# Connect the state machine's player_changed signal to local private function
 	state_machine.state_changed.connect(_on_player_state_changed)
 	# Connect the player's hauntable_array_changed to local private function
@@ -61,6 +81,7 @@ func _process(delta: float) -> void:
 		haunt_button.hide()
 		rigid_body_2d.freeze = false
 
+
 # Updates the player_state variable
 func _on_player_state_changed(new_state: String, old_state: String) -> void:
 	player_state = new_state
@@ -72,7 +93,9 @@ func _on_hauntable_array_changed(hauntables: Array[RigidBody2D], available_haunt
 
 # Emits the Node2D where the button was clicked
 func _on_haunt_button_pressed() -> void:
+	haunt.play()
 	button_pressed.emit(self)
+	
 
 func _on_rigid_body_2d_mouse_entered() -> void:
 	if player_state == "Selecting":

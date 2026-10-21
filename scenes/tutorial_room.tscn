@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://c8sh3hh3in0tu"]
+
+[ext_resource type="PackedScene" uid="uid://df1vw8nxrtidc" path="res://scenes/room.tscn" id="1_lxmo3"]
+[ext_resource type="PackedScene" uid="uid://w1l35gvwqhsd" path="res://scenes/trapdoor.tscn" id="2_q0tgn"]
+[ext_resource type="PackedScene" uid="uid://dc1puru13x0aq" path="res://scenes/beach_ball.tscn" id="2_qej7e"]
+[ext_resource type="PackedScene" uid="uid://brpycd08mf3p1" path="res://scenes/apple.tscn" id="2_w25fd"]
+[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://assets/BackgroungTileset.png" id="3_2a6ac"]
+[ext_resource type="PackedScene" uid="uid://bcestgq3kxenv" path="res://scenes/floor_button.tscn" id="5_6k0sm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2a6ac"]
+size = Vector2(5382, 6017)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0tgn"]
+texture = ExtResource("3_2a6ac")
+texture_region_size = Vector2i(640, 640)
+0:0/0 = 0
+0:0/0/z_index = -1
+1:0/0 = 0
+1:0/0/z_index = -1
+2:0/0 = 0
+2:0/0/z_index = -1
+0:1/0 = 0
+0:1/0/z_index = -1
+0:2/0 = 0
+0:2/0/z_index = 1
+
+[sub_resource type="TileSet" id="TileSet_w25fd"]
+tile_size = Vector2i(640, 640)
+sources/0 = SubResource("TileSetAtlasSource_q0tgn")
+
+[node name="Node2D" unique_id=841318414 instance=ExtResource("1_lxmo3")]
+
+[node name="Node2D" parent="." index="0" unique_id=257149692 instance=ExtResource("2_qej7e")]
+position = Vector2(226, -1706)
+
+[node name="Trapdoor" parent="." index="1" unique_id=1823871400 instance=ExtResource("2_q0tgn")]
+position = Vector2(1600, -1505)
+
+[node name="Apple" parent="." index="2" unique_id=2121825028 instance=ExtResource("2_w25fd")]
+position = Vector2(-1074, -244)
+
+[node name="CollisionShape2D" parent="TileMapLayer/Area2D" parent_id_path=PackedInt32Array(1942567451) index="0" unique_id=1718028998]
+z_index = 100
+position = Vector2(-12, -2878.5)
+shape = SubResource("RectangleShape2D_2a6ac")
+
+[node name="Decorations" parent="." index="4" unique_id=1459771147]
+tile_map_data = PackedByteArray("AAD8//f/AAACAAEAAAADAPf/AAACAAEAAED+//f/AAABAAEAAAD+//j/AAABAAEAAAD+//n/AAABAAEAAAD+//r/AAABAAEAAAD+//v/AAABAAEAAAD+//z/AAABAAEAAAD+//3/AAABAAIAAAD8//3/AAABAAAAAGD9//3/AAABAAEAAGD8//7/AAACAAEAAAADAP//AAAAAAAAAEA=")
+
+[node name="Backgrounds" parent="." index="5" unique_id=1196533618]
+tile_map_data = PackedByteArray("AAD///z/AAACAAAAAAD9//z/AAACAAAAAAAAAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAEAAAADAPr/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD///r/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAADAP3/AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAIAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_w25fd")
+
+[node name="Button" parent="." index="6" unique_id=1911150578 instance=ExtResource("5_6k0sm")]
+position = Vector2(922, -412)

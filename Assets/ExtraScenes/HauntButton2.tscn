@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://binc5y666kb0r"]
 
-[ext_resource type="FontFile" uid="uid://cc77y1qv6nfep" path="res://Pelicula.otf" id="1_o501a"]
+[ext_resource type="FontFile" uid="uid://tgtvfg0b2jhp" path="res://Pelicula.otf" id="1_o501a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 content_margin_top = 15.0
@@ -58,10 +58,10 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
 [node name="Button" type="Button" unique_id=1470619825]
-offset_right = 174.0
-offset_bottom = 61.0
+offset_right = 345.0
+offset_bottom = 99.0
 theme_override_fonts/font = ExtResource("1_o501a")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 57
 theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n4tde")
 theme_override_styles/hover = SubResource("StyleBoxFlat_vxja4")
