@@ -16,28 +16,27 @@ class_name Player extends CharacterBody2D
 @export var arrow_scene: PackedScene
 
 # DEBUG MODE
-var debug_mode := true
+var debug_mode := false
 
-# Arrow
+# For Debug Arrow
 const ARROW_COLOR_VISIBLE := Color(0.0, 0.1, 1.0, 1.0)   # blue = normal
 const ARROW_COLOR_BLOCKED := Color(1.0, 0.0, 0.0, 1.0)   # red = blocked
 const ARROW_BASE_LENGTH := 1.0
 var arrows: Dictionary = {}
 
-# Hauntable
-var hauntables: Array[RigidBody2D] = []
-var available_hauntables: Array[RigidBody2D] = []
+# For Hauntable
+var hauntables: Array[RigidBody2D] = [] # Hauntables that are in range of the player
+var available_hauntables: Array[RigidBody2D] = [] # Hauntables that are in range and can be haunted by the player
 signal hauntable_array_changed
 
 func _ready() -> void:
+	# Add player to a node group called "player"
 	add_to_group("player")
 
 func _process(delta: float) -> void:
-	
 	# Emits a signal that sends a list of ALL hauntables and AVAILABLE hauntables
-	# Goes to -> hauntable.gd
-	if hauntables:
-			hauntable_array_changed.emit(hauntables, available_hauntables)
+	_update_available_hauntables()
+	hauntable_array_changed.emit(hauntables, available_hauntables)
 	
 	# Turn on and off for Debug Lines
 	debug_mode = false
@@ -96,10 +95,17 @@ func _get_nearest_hauntable() -> Node2D:
 			best = d
 			nearest = node
 	return nearest
+	
+# Function to update the available hauntables and hauntables array
+func _update_available_hauntables() -> void:
+	available_hauntables.clear()
+	for body in hauntables:
+		if _is_hauntable_blocked(body):
+			continue
+		available_hauntables.append(body)
+	
 
 func _on_haunt_detection_body_entered(body: Node2D) -> void:
-	if not _is_hauntable_blocked(body):
-		available_hauntables.append(body)
 	hauntables.append(body)
 
 func _on_haunt_detection_body_exited(body: Node2D) -> void:

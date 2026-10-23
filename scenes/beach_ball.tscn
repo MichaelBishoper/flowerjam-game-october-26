@@ -7,6 +7,7 @@
 radius = 498.51166
 
 [node name="Node2D" unique_id=257149692 instance=ExtResource("1_gdwxr")]
+bounce_factor = 0.807
 
 [node name="Sprite2D" parent="RigidBody2D" parent_id_path=PackedInt32Array(726434176) index="0" unique_id=725471885]
 scale = Vector2(1, 1.025)

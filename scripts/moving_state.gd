@@ -15,8 +15,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	# Set camera to follow player
 	camera_2d.set_target(player)
 	
-	print("Previous State: ", previous_state_path)
-	print("Current State: Moving")
+	#print("Previous State: ", previous_state_path)
+	#print("Current State: Moving")
 	
 	# Store the audio sfx to an array
 	sfx_array = [press_down, press_left, press_right, press_up]

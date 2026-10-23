@@ -7,8 +7,8 @@ class_name HauntingState extends PlayerState
 var hauntable: Hauntable
 
 func enter(previous_state_path: String, data := {}) -> void:	
-	print("Previous State: ", previous_state_path)
-	print("Current State: Haunting")
+	#print("Previous State: ", previous_state_path)
+	#print("Current State: Haunting")
 	
 	# Hide the player sprite
 	animated_sprite_2d.hide()

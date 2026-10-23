@@ -5,6 +5,7 @@ class_name Hauntable extends Node2D
 @onready var haunt_button: Button = $HauntButton
 @onready var rigid_body_2d: RigidBody2D = $RigidBody2D
 
+# Haunt Audio
 @onready var haunt: AudioStreamPlayer2D = $Haunt
 
 # Player and StateMachine references are defined in _ready()
@@ -16,15 +17,17 @@ var hauntables_array: Array[RigidBody2D]
 var available_hauntables_array: Array[RigidBody2D]
 var is_in_range: bool = false
 
-
 # For the Public Methods
 @export var hauntable_acceleration := 1200.0
 @export var hauntable_max_speed := 400.0
 
 signal button_pressed
 
+# For physics material properties
+@export_range(0.0, 1.0) var bounce_factor = 0.6
+@export_range(0.0, 1.0) var friction_factor = 0.5
 
-# -- CLAS METHODS -- #
+# -- CLASS METHODS -- #
 	
 func move(axis: float, delta: float) -> void:
 	# Movement logic
@@ -44,6 +47,11 @@ func move(axis: float, delta: float) -> void:
 func _ready() -> void:
 	# WHY DOES THIS FIX IT????
 	await get_tree().process_frame
+	
+	var mat := PhysicsMaterial.new()
+	mat.bounce = bounce_factor
+	mat.friction = friction_factor
+	rigid_body_2d.physics_material_override = mat
 	
 	# Define Player Reference
 	player = get_tree().get_first_node_in_group("player")
@@ -95,12 +103,3 @@ func _on_hauntable_array_changed(hauntables: Array[RigidBody2D], available_haunt
 func _on_haunt_button_pressed() -> void:
 	haunt.play()
 	button_pressed.emit(self)
-	
-
-func _on_rigid_body_2d_mouse_entered() -> void:
-	if player_state == "Selecting":
-		pass
-
-func _on_rigid_body_2d_mouse_exited() -> void:
-	if player_state == "Selecting":
-		pass

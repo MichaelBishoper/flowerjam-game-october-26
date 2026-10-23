@@ -1,19 +1,44 @@
 [gd_scene format=3 uid="uid://w1l35gvwqhsd"]
 
-[ext_resource type="Texture2D" uid="uid://4s0negkeg3hf" path="res://assets/trapdoor_temp.png" id="1_54wn0"]
+[ext_resource type="Script" uid="uid://0o46ifxpseor" path="res://scripts/trapdoor.gd" id="1_3p675"]
+[ext_resource type="Texture2D" uid="uid://c1b0ab2y755qa" path="res://assets/Hinge.png" id="2_3p675"]
+[ext_resource type="Texture2D" uid="uid://dvjx3hgoq4f8" path="res://assets/Trapdoor2.png" id="2_kv7b1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54wn0"]
-size = Vector2(640, 94)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p675"]
+size = Vector2(32, 33.5)
 
-[node name="Node2D" type="Node2D" unique_id=1823871400]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv7b1"]
+size = Vector2(850, 168)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=614001755]
+[node name="Node2D" type="Node2D" unique_id=290507245]
+z_index = 2
+position = Vector2(-10, 1)
+script = ExtResource("1_3p675")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=67686118]
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1561206507]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=699006023]
-texture = ExtResource("1_54wn0")
+[node name="HingeSprite" type="Sprite2D" parent="Wall" unique_id=1575834643]
+z_index = 1
+position = Vector2(575, -82)
+texture = ExtResource("2_3p675")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D" unique_id=1701365972]
-position = Vector2(0, 273)
-shape = SubResource("RectangleShape2D_54wn0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=496170074]
+z_index = 1
+position = Vector2(237, 34)
+shape = SubResource("RectangleShape2D_3p675")
+
+[node name="Trapdoor" type="RigidBody2D" parent="." unique_id=1360516897]
+inertia = 1000.0
+
+[node name="TrapdoorSprite" type="Sprite2D" parent="Trapdoor" unique_id=180430099]
+texture = ExtResource("2_kv7b1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trapdoor" unique_id=1284576910]
+position = Vector2(8, 26)
+shape = SubResource("RectangleShape2D_kv7b1")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1688883660]
+position = Vector2(251, -56)
+node_a = NodePath("../Wall")
+node_b = NodePath("../Trapdoor")
+softness = 0.1

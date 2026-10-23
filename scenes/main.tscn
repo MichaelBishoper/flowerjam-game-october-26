@@ -7,14 +7,14 @@
 [node name="Node2D" type="Node2D" unique_id=223524730]
 
 [node name="Player" parent="." unique_id=1577183643 instance=ExtResource("1_o5qli")]
-position = Vector2(-1725, -571)
+position = Vector2(-927, -2176)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1753659158 node_paths=PackedStringArray("target")]
 position = Vector2(-69, -1597)
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.25, 0.25)
 script = ExtResource("4_tbgi4")
 target = NodePath("../Player")
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1135079401]
 
-[node name="Node2D" parent="Rooms" unique_id=841318414 instance=ExtResource("3_sugp2")]
+[node name="TutorialRoom" parent="Rooms" unique_id=1370121526 instance=ExtResource("3_sugp2")]

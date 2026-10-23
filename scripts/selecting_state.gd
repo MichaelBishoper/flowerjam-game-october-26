@@ -7,8 +7,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	# Set camera to follow player
 	camera_2d.set_target(player)
 	
-	print("Previous State: ", previous_state_path)
-	print("Current State: Selecting")
+	#print("Previous State: ", previous_state_path)
+	#print("Current State: Selecting")
 	
 	animated_sprite_2d.show()
 
