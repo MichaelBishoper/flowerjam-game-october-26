@@ -2,43 +2,49 @@
 
 [ext_resource type="Script" uid="uid://0o46ifxpseor" path="res://scripts/trapdoor.gd" id="1_3p675"]
 [ext_resource type="Texture2D" uid="uid://c1b0ab2y755qa" path="res://assets/Hinge.png" id="2_3p675"]
-[ext_resource type="Texture2D" uid="uid://dvjx3hgoq4f8" path="res://assets/Trapdoor2.png" id="2_kv7b1"]
+[ext_resource type="Texture2D" uid="uid://dr052hbgesmhc" path="res://assets/Trapddor1920.png" id="3_kv7b1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3p675"]
 size = Vector2(32, 33.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kv7b1"]
-size = Vector2(850, 168)
+size = Vector2(442, 78)
 
 [node name="Node2D" type="Node2D" unique_id=290507245]
 z_index = 2
-position = Vector2(-10, 1)
 script = ExtResource("1_3p675")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1561206507]
 
 [node name="HingeSprite" type="Sprite2D" parent="Wall" unique_id=1575834643]
 z_index = 1
-position = Vector2(575, -82)
+position = Vector2(-11, 11.000005)
+rotation = 4.712389
+scale = Vector2(0.5163122, 0.52877074)
 texture = ExtResource("2_3p675")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=496170074]
 z_index = 1
-position = Vector2(237, 34)
+position = Vector2(207, -59)
 shape = SubResource("RectangleShape2D_3p675")
 
 [node name="Trapdoor" type="RigidBody2D" parent="." unique_id=1360516897]
+collision_mask = 2
+mass = 0.4
+center_of_mass_mode = 1
 inertia = 1000.0
 
 [node name="TrapdoorSprite" type="Sprite2D" parent="Trapdoor" unique_id=180430099]
-texture = ExtResource("2_kv7b1")
+position = Vector2(-318, -5)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("3_kv7b1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trapdoor" unique_id=1284576910]
-position = Vector2(8, 26)
+position = Vector2(-406, 3)
 shape = SubResource("RectangleShape2D_kv7b1")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1688883660]
-position = Vector2(251, -56)
+z_index = 1
 node_a = NodePath("../Wall")
 node_b = NodePath("../Trapdoor")
 softness = 0.1

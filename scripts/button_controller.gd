@@ -57,7 +57,6 @@ func _execute_state_logic() -> void:
 			_switch_state(State.IDLE)
 
 func _switch_state(new_state: ButtonController.State) -> void:
-	
 	if current_state == new_state:
 		return
 	previous_state = current_state
