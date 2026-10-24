@@ -112,8 +112,11 @@ func _on_haunt_detection_body_exited(body: Node2D) -> void:
 	hauntables.erase(body)
 	available_hauntables.erase(body)
 
-func _on_haunt_button_pressed(body: Node2D) -> void:
+# SELECTING to HAUNTING state logic is here
+func _on_haunt_button_pressed(body: Hauntable) -> void:
 	# BODY is a reference to the Node2D of the haunted object
+	# Don't show shader once the button is flashed
+	body.hide_shader()
 	animated_sprite_2d.play("haunt")
 	await animated_sprite_2d.animation_finished
 	# Transition to the haunting state with a reference to the haunted node!

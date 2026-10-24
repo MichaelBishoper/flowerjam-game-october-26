@@ -2,6 +2,7 @@ class_name HauntingState extends PlayerState
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var camera_2d: Camera = $"../../../Camera2D"
+@onready var unhaunt: AudioStreamPlayer = $"../../Unhaunt"
 
 # The current hauntable node, defined in the enter() function below
 var hauntable: Hauntable
@@ -37,14 +38,18 @@ func physics_update(_delta: float) -> void:
 	hauntable.move(input_dir, _delta)
 
 func handle_input(_event: InputEvent) -> void:
+	# Effectively the same as exit()
 	if Input.is_action_just_pressed("close"):
+		# Make player spawn back above the hauntable
+		#  TODO: Change this with OBJECT HEIGHT
+		player.global_position = hauntable.rigid_body_2d.global_position + Vector2(0.0, -100.0)
+		# Set camera's target back to player
+		camera_2d.set_target(player)
+		animated_sprite_2d.show()
+		unhaunt.play()
+		animated_sprite_2d.play("unhaunt")
+		await animated_sprite_2d.animation_finished
 		finished.emit(IDLE)
 
 func exit() -> void:
-	# Make player spawn back above the hauntable
-	#  TODO: Change this with OBJECT HEIGHT
-	player.global_position = hauntable.rigid_body_2d.global_position + Vector2(0.0, -100.0)
-	# Set camera's target back to player
-	camera_2d.set_target(player)
-	# Show the player sprite
-	animated_sprite_2d.show()
+	pass

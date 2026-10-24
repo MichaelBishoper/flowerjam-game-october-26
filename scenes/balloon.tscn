@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ivdboxirfpe2"]
+
+[ext_resource type="PackedScene" uid="uid://c64vg5atxulqv" path="res://scenes/hauntable.tscn" id="1_tpd1t"]
+[ext_resource type="Texture2D" uid="uid://dduuegy2atdc7" path="res://assets/Balloon.png" id="2_1eawp"]
+
+[node name="Node2D" unique_id=257149692 instance=ExtResource("1_tpd1t")]
+height = 330.0
+
+[node name="RigidBody2D" parent="." index="0" unique_id=726434176]
+mass = 0.176
+gravity_scale = -0.9
+linear_damp = 2.0
+
+[node name="Sprite2D" parent="RigidBody2D" index="0" unique_id=725471885]
+scale = Vector2(0.36, 0.369)
+texture = ExtResource("2_1eawp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" index="1" unique_id=41751808]
+position = Vector2(1, 0.5)
+scale = Vector2(0.36, 0.369)
+polygon = PackedVector2Array(54, -430.8, -20, -434.2, -20, -432.7, -56.399994, -429, -61.600006, -429, -121.399994, -411, -125.2, -411, -218.2, -348, -220.8, -348, -252.8, -313, -254.4, -313, -272.4, -280, -273.9, -280, -292.9, -224, -294.2, -224, -306, -168.4, -306, -15.399994, -293, 60, -293, 64.70001, -263, 142.59998, -263, 145.90002, -231, 209.90002, -231, 213.09998, -173, 310, -173, 312.40002, -143, 351.3, -143, 353.90002, -71, 414.90002, -71, 416.90002, -23.200012, 432.40002, -29, 438.3, -29, 446.40002, -11, 456.3, -11, 459.40002, 14.399994, 457, 18.799988, 457, 29, 445.5, 29, 438.2, 21.399994, 431.3, 57.5, 423, 60.399994, 423, 117.399994, 378, 119.899994, 378, 169.9, 315, 171.4, 315, 253.40002, 165, 254.79999, 165, 292.8, 61, 294.5, 61, 306, -23.700012, 306, -172.1, 305, -176.5, 305, -181.6, 281, -259.6, 281, -263.1, 249, -317, 249, -319.7, 209, -356.7, 209, -358.2, 128, -408.3, 128, -410.1, 54, -429.2)

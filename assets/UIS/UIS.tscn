@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://wucogtp2rlc5"]
 
-[ext_resource type="FontFile" uid="uid://cc77y1qv6nfep" path="res://UIS/Pelicula.otf" id="1_sngpb"]
-[ext_resource type="Texture2D" uid="uid://gl3cecm58xrw" path="res://UIS/ghosty.svg" id="3_jtib6"]
-[ext_resource type="Texture2D" uid="uid://cmmfs473y07po" path="res://UIS/GhostyHighlight.svg" id="4_21klt"]
-[ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://UIS/ContainerPurple.tres" id="5_1oqt7"]
-[ext_resource type="Texture2D" uid="uid://cmfgssc0wdaa1" path="res://UIS/Settings Wheel.png" id="6_aqgy6"]
-[ext_resource type="Texture2D" uid="uid://bvm5krt18ydl8" path="res://UIS/PlayIcon.png" id="7_sxf4d"]
+[ext_resource type="FontFile" uid="uid://cc77y1qv6nfep" path="res://assets/UIS/Pelicula.otf" id="1_sngpb"]
+[ext_resource type="Texture2D" uid="uid://gl3cecm58xrw" path="res://assets/UIS/ghosty.svg" id="3_jtib6"]
+[ext_resource type="Texture2D" uid="uid://cmmfs473y07po" path="res://assets/UIS/GhostyHighlight.svg" id="4_21klt"]
+[ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="5_1oqt7"]
+[ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="6_aqgy6"]
+[ext_resource type="Texture2D" uid="uid://bvm5krt18ydl8" path="res://assets/UIS/PlayIcon.png" id="7_sxf4d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 content_margin_top = 15.0

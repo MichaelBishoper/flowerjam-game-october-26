@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://ptmtyxo2tpn4"]
 
+[ext_resource type="PackedScene" uid="uid://dod5pfvwq0gus" path="res://scenes/haunting_dim_rectangle.tscn" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cfgtbcu28vj04" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://ch8lmkv04311l" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://c8sh3hh3in0tu" path="res://scenes/tutorial_room.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://bokfy18jb4sfb" path="res://scripts/camera_controller.gd" id="4_tbgi4"]
 
 [node name="Node2D" type="Node2D" unique_id=223524730]
+script = ExtResource("1_tbgi4")
+
+[node name="DimOverlay" parent="." unique_id=1249409771 instance=ExtResource("1_jyhfs")]
 
 [node name="Player" parent="." unique_id=1577183643 instance=ExtResource("1_o5qli")]
 position = Vector2(-927, -2176)

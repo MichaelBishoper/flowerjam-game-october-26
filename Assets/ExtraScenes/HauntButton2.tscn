@@ -58,6 +58,7 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
 [node name="Button" type="Button" unique_id=1470619825]
+z_index = 10
 offset_right = 345.0
 offset_bottom = 99.0
 theme_override_fonts/font = ExtResource("1_o501a")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8r0qbat65afj" path="res://assets/Apple1080p.png" id="2_7vr8k"]
 
 [node name="Node2D" unique_id=257149692 instance=ExtResource("1_h071m")]
+height = 280.0
 bounce_factor = 0.168
 
 [node name="Sprite2D" parent="RigidBody2D" parent_id_path=PackedInt32Array(726434176) index="0" unique_id=725471885]
