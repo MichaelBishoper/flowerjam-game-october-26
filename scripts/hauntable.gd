@@ -89,7 +89,6 @@ func _process(delta: float) -> void:
 	if player_state == "Selecting":
 		rigid_body_2d.freeze = true
 		if available_hauntables_array.has(rigid_body_2d):
-			rigid_body_2d.freeze = true
 			haunt_button.position = rigid_body_2d.position + Vector2(-100.0, -250.0)
 			haunt_button.show()
 	else:

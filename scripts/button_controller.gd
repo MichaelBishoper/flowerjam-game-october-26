@@ -7,6 +7,11 @@ class_name ButtonController extends Node2D
 
 @export var trapdoor: Trapdoor
 
+# Player and StateMachine references are defined in _ready()
+var player: Player
+var state_machine: StateMachine
+var player_state: String
+
 # State Machine Variables
 enum State { PRESSED, IDLE, HELD, RELEASED }
 @export var current_state = State.IDLE
@@ -16,13 +21,30 @@ var previous_state: ButtonController.State
 var hauntables_on_button: Array[RigidBody2D] = []
 
 func _ready() -> void:
+	# Define Player Reference
+	player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		push_warning("You are utterly fucked")
+		return
+	
+	# Define StateMachine Reference
+	state_machine = player.state_machine
+	if state_machine == null:
+		push_warning("You are utterly fucked")
+		return
+		
 	# Connect the Area2D's signals to local function
 	collision_detection.body_exited.connect(_on_body_exited)
 	collision_detection.body_entered.connect(_on_body_entered)
+	# Connect the StateMachine's signal to local function
+	state_machine.state_changed.connect(_on_player_state_changed)
 	
 func _process(delta: float) -> void:
 	_handle_state_transitions()
 	_execute_state_logic()
+
+func _physics_process(delta: float) -> void:
+	pass
 
 # -- STATE LOGIC -- #
 func _handle_state_transitions() -> void:
@@ -96,3 +118,6 @@ func _on_body_exited(body: RigidBody2D) -> void:
 	# Debug
 	#print("Exited: ", body)
 	hauntables_on_button.erase(body)
+
+func _on_player_state_changed(new_state: String, old_state: String) -> void:
+	player_state = new_state

@@ -2,6 +2,8 @@ class_name MovingState extends PlayerState
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var camera_2d: Camera = $"../../../Camera2D"
+@onready var ray: RayCast2D = $"../../Ray"
+@onready var h_slider: HSlider = $"../../UI/HSlider"
 
 # SFX Players
 @onready var press_right: AudioStreamPlayer2D = $"../../PressRight"
@@ -9,45 +11,104 @@ class_name MovingState extends PlayerState
 @onready var press_down: AudioStreamPlayer2D = $"../../PressDown"
 @onready var press_up: AudioStreamPlayer2D = $"../../PressUp"
 @onready var moving: AudioStreamPlayer2D = $"../../Moving"
-
+@onready var bump_light: AudioStreamPlayer = $"../../BumpLight"
+@onready var bump_heavy: AudioStreamPlayer = $"../../BumpHeavy"
 var sfx_array: Array[AudioStreamPlayer2D]
+
 var collision: KinematicCollision2D
+var flight_bar: float
+var is_flying := false
+signal flight_bar_updated(flight_left: float)
 
 func enter(previous_state_path: String, data := {}) -> void:
 	# Set camera to follow player
 	camera_2d.set_target(player)
 	
-	#print("Previous State: ", previous_state_path)
-	#print("Current State: Moving")
+	if previous_state_path == SELECTING or previous_state_path == HAUnTING:
+		flight_bar = data.get("flight_bar")
+		flight_bar_updated.emit(flight_bar)
+	else: flight_bar = player.flight_max_time
+	
+	print("Previous State: ", previous_state_path)
+	print("Current State: Moving")
 	
 	# Store the audio sfx to an array
 	sfx_array = [press_down, press_left, press_right, press_up]
 	
 	animated_sprite_2d.show()
-	animated_sprite_2d.play("temporary_secretary")
+	animated_sprite_2d.play("bob")
+	# Conect animatedsprite2d's signal to local function
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+	
+	# Connect local signal to local function
+	flight_bar_updated.connect(_on_flight_bar_updated)
+	# Define the slider's lower and higher bounds
+	h_slider.max_value = player.flight_max_time
+	h_slider.min_value = 0.0
+	
+func _on_flight_bar_updated(flight_left: float) -> void:
+	h_slider.value = flight_left
 
 func physics_update(_delta: float) -> void:
+	# For the downwards raycast to update the result to the current frame's
+	
+	ray.force_raycast_update()
+	# Raycast/Hover Logic
+	if ray.is_colliding():
+		var ground_y := ray.get_collision_point().y
+		# NOTE: Godot uses negative y coordiantes to mean up, so the lower point has the greater y value!!!!
+		var target_y := ground_y - player.hover_height
+		var current_y := player.global_position.y
+		
+		# Pull up the player if it is below the target_y
+		if current_y > target_y:
+			player.global_position.y = move_toward(current_y, target_y, player.hover_snap)
+			if player.velocity.y > 0.0:
+				player.velocity.y = 0.0
+	
+	# Movement Logic
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var target := Vector2(input_dir.x * player.max_speed_x, input_dir.y * player.max_speed_y)
 	
-	print(input_dir)
-	
+	# Horizontal Movement
 	if input_dir != Vector2.ZERO:
+		player.velocity.x = move_toward(player.velocity.x, target.x, player.acceleration_x * _delta)
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0.0, player.friction_x * _delta)
+	
+	# Vertical Movement
+	# Flight
+	var flight_pressed := Input.is_action_pressed("move_up")
+	is_flying = flight_pressed and flight_bar > 0.0
+	
+	if is_flying:
+		# Audio logic
 		if not moving.playing:
 			moving.play()
-		player.velocity.x = move_toward(player.velocity.x, target.x, player.acceleration_x * _delta)
-		player.velocity.y = move_toward(player.velocity.y, target.y, player.acceleration_y * _delta)
+		flight_bar -= _delta
+		player.velocity.y = move_toward(player.velocity.y, player.flight_acceleration, 2000.0 * _delta)
 	else:
+		# Audio logic
 		if moving.playing:
 			moving.stop()
-		player.velocity.x = move_toward(player.velocity.x, 0.0, player.friction_x * _delta)
-		player.velocity.y = move_toward(player.velocity.y, 0.0, player.friction_y * _delta)
-	
+		# Apply Gravity
+		player.velocity.y += player.gravity * _delta
+		player.velocity.y = minf(player.velocity.y, player.max_fall_speed) # Clamp to max fall speed
+		
+	# Collisions
 	if collision:
 		if player.velocity.x > 200.0:
+			# Audio Bump Heavy
+			if not bump_heavy.playing: 
+				bump_heavy.play()
 			animated_sprite_2d.play("bounce")
 		if player.velocity.x < -200.0:
+			# Audio Bump Heavy
+			if not bump_heavy.playing: 
+				bump_heavy.play()
 			animated_sprite_2d.play("bounce")
+		if not bump_light.playing and player.velocity.x < 200.0 and player.velocity.x > -200.0:
+			bump_light.play()
 	
 	# For Animations Later!!!
 	var direction_name := _infer_direction(input_dir)
@@ -55,8 +116,7 @@ func physics_update(_delta: float) -> void:
 		"Left":
 			pass
 		"Right":
-			pass
-		
+			pass	
 	
 	var motion = player.velocity * _delta
 	
@@ -67,7 +127,16 @@ func physics_update(_delta: float) -> void:
 		var normal = collision.get_normal()
 		var bounce_factor = 0.8
 		player.velocity = player.velocity.bounce(normal) * bounce_factor
-		
+	
+	if ray.is_colliding() and not is_flying:
+		var ground_y := ray.get_collision_point().y
+		var dist_to_ground := ground_y - player.global_position.y
+		# NOTE: Change 4.0 to adjust the tolerance
+		if dist_to_ground <= player.hover_height + 4.0: 
+			flight_bar = minf(flight_bar + player.flight_refill_time * _delta, player.flight_max_time)
+	
+	# Update flight bar
+	flight_bar_updated.emit(flight_bar)
 	
 	# State Changes
 	if player.velocity == Vector2.ZERO:
@@ -75,9 +144,10 @@ func physics_update(_delta: float) -> void:
 
 func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("select"):
-		finished.emit(SELECTING)
+		finished.emit(SELECTING, { "flight_bar" : flight_bar })
 	
 	# FORGIVE ME FOR MY CODING SINS PLEASE GOD
+	# Flipping logic plays first so the audio await code does not block it
 	if (Input.is_action_just_pressed("move_right")):
 		animated_sprite_2d.flip_h = true
 	if (Input.is_action_just_pressed("move_left")):
@@ -119,3 +189,7 @@ func _infer_direction(_direction: Vector2) -> String:
 
 func exit() -> void:
 	pass
+	
+func _on_animation_finished() -> void:
+	if animated_sprite_2d.animation == "bounce":
+		animated_sprite_2d.play("bob")

@@ -4,13 +4,26 @@ class_name Player extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $"../Camera2D"
+@onready var selecting: SelectingState = $StateMachine/Selecting
 
+# Movement variables (y coordinate movement is unused now, still too scared to delete it LOL)
 @export var max_speed_x := 750.0
 @export var max_speed_y := 800.0
 @export var acceleration_x := 900.0
 @export var acceleration_y := 1000.0
 @export var friction_x := 200.0
 @export var friction_y := 400.0
+
+# Gravity variables
+@export var gravity := 990.0
+@export var max_fall_speed := 1200.0
+
+# Flight variables
+@export var flight_max_time := 0.7
+@export var flight_acceleration := -900.0
+@export var flight_refill_time := 1.5
+@export var hover_height := 200.0
+@export var hover_snap := 4.0
 
 # FOR THE ARROW DEBUGS
 @export var arrow_scene: PackedScene
@@ -120,4 +133,4 @@ func _on_haunt_button_pressed(body: Hauntable) -> void:
 	animated_sprite_2d.play("haunt")
 	await animated_sprite_2d.animation_finished
 	# Transition to the haunting state with a reference to the haunted node!
-	state_machine._transition_to_next_state("Haunting", { "object": body })
+	state_machine._transition_to_next_state("Haunting", { "object": body, "flight_bar" : selecting.flight_bar })

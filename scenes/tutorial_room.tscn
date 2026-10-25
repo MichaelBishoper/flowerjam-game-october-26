@@ -43,7 +43,7 @@ trapdoor = NodePath("../Trapdoor")
 position = Vector2(-948, -1144)
 
 [node name="Feather" parent="." index="3" unique_id=1804552588 instance=ExtResource("4_p6nor")]
-position = Vector2(-692, -1329)
+position = Vector2(1408, -2900)
 speed = 100.0
 bounce_factor = 0.0
 friction_factor = 0.752

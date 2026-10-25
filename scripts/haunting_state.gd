@@ -6,10 +6,13 @@ class_name HauntingState extends PlayerState
 
 # The current hauntable node, defined in the enter() function below
 var hauntable: Hauntable
+var flight_bar: float
 
 func enter(previous_state_path: String, data := {}) -> void:	
 	#print("Previous State: ", previous_state_path)
 	#print("Current State: Haunting")
+	
+	flight_bar = data.get("flight_bar")
 	
 	# Hide the player sprite
 	animated_sprite_2d.hide()
@@ -49,7 +52,7 @@ func handle_input(_event: InputEvent) -> void:
 		unhaunt.play()
 		animated_sprite_2d.play("unhaunt")
 		await animated_sprite_2d.animation_finished
-		finished.emit(IDLE)
+		finished.emit(MOVING, { "flight_bar" : flight_bar })
 
 func exit() -> void:
 	pass
