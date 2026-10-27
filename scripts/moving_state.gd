@@ -20,6 +20,9 @@ var flight_bar: float
 var is_flying := false
 signal flight_bar_updated(flight_left: float)
 
+var is_just_landed: bool = false
+var was_landed: bool = false
+
 func enter(previous_state_path: String, data := {}) -> void:
 	# Set camera to follow player
 	camera_2d.set_target(player)
@@ -50,8 +53,11 @@ func _on_flight_bar_updated(flight_left: float) -> void:
 	h_slider.value = flight_left
 
 func physics_update(_delta: float) -> void:
-	# For the downwards raycast to update the result to the current frame's
 	
+	## DEBUG PRINTS
+	#print(player.velocity.y)
+	
+	# For the downwards raycast to update the result to the current frame's
 	ray.force_raycast_update()
 	# Raycast/Hover Logic
 	if ray.is_colliding():
@@ -95,28 +101,42 @@ func physics_update(_delta: float) -> void:
 		player.velocity.y += player.gravity * _delta
 		player.velocity.y = minf(player.velocity.y, player.max_fall_speed) # Clamp to max fall speed
 		
-	# Collisions
+	# Collisions and their animations and audio
 	if collision:
-		if player.velocity.x > 200.0:
-			# Audio Bump Heavy
+		if player.velocity.x * 1.3 > player.velocity.y:
+			if player.velocity.x > 200.0:
+				# Play Audio Bump Heavy
+				if not bump_heavy.playing: 
+					bump_heavy.play()
+				animated_sprite_2d.play("bounce")
+			if player.velocity.x < -200.0:
+				# Play Audio Bump Heavy
+				if not bump_heavy.playing: 
+					bump_heavy.play()
+				animated_sprite_2d.play("bounce")
+		elif player.velocity.x < player.velocity.y:
+			if player.velocity.y > 550.0:
+				# Play Audio Bump Heavy
+				if not bump_heavy.playing: 
+					bump_heavy.play()
+				print(player.velocity.y)
+				print("Bounce Up")
+	else:
+		if player.velocity.y < 550.0 and is_just_landed:
+			# Play Audio Bump Heavy
 			if not bump_heavy.playing: 
 				bump_heavy.play()
-			animated_sprite_2d.play("bounce")
-		if player.velocity.x < -200.0:
-			# Audio Bump Heavy
-			if not bump_heavy.playing: 
-				bump_heavy.play()
-			animated_sprite_2d.play("bounce")
-		if not bump_light.playing and player.velocity.x < 200.0 and player.velocity.x > -200.0:
-			bump_light.play()
+			print(player.velocity.y)
+			print("Bounce Down")
 	
+	# NOTE: Currently Unused
 	# For Animations Later!!!
-	var direction_name := _infer_direction(input_dir)
-	match direction_name:
-		"Left":
-			pass
-		"Right":
-			pass	
+	#var direction_name := _infer_direction(input_dir)
+	#match direction_name:
+		#"Left":
+			#pass
+		#"Right":
+			#pass	
 	
 	var motion = player.velocity * _delta
 	
@@ -128,13 +148,22 @@ func physics_update(_delta: float) -> void:
 		var bounce_factor = 0.8
 		player.velocity = player.velocity.bounce(normal) * bounce_factor
 	
+	# Flight Refill Logic
 	if ray.is_colliding() and not is_flying:
 		var ground_y := ray.get_collision_point().y
 		var dist_to_ground := ground_y - player.global_position.y
 		# NOTE: Change 4.0 to adjust the tolerance
+		# When refill happens
 		if dist_to_ground <= player.hover_height + 4.0: 
+			is_just_landed = not was_landed
+			was_landed = true
 			flight_bar = minf(flight_bar + player.flight_refill_time * _delta, player.flight_max_time)
-	
+		else:
+			is_just_landed = false
+			was_landed = false	
+	else:
+		was_landed = false
+		
 	# Update flight bar
 	flight_bar_updated.emit(flight_bar)
 	

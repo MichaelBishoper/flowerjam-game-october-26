@@ -11,6 +11,7 @@ class_name Hauntable extends Node2D
 @onready var haunt: AudioStreamPlayer = $Haunt
 @onready var ui_click: AudioStreamPlayer = $UIClick
 @onready var ui_hover: AudioStreamPlayer = $UiHover
+@onready var hit: AudioStreamPlayer = $Hit
 
 # Player and StateMachine references are defined in _ready()
 var player: Player
@@ -48,7 +49,6 @@ func move(axis: float, delta: float) -> void:
 func _ready() -> void:
 	# WHY DOES THIS FIX IT????
 	await get_tree().process_frame
-	
 	# Hide and make the shader local
 	hide_shader()
 	shader_material = shader_material.duplicate()
@@ -126,3 +126,10 @@ func _on_haunt_button_mouse_entered() -> void:
 	
 func _on_haunt_button_mouse_exited() -> void:
 	hide_shader()
+
+
+func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	pass
+
+func _on_rigid_body_2d_body_exited(body: Node) -> void:
+	pass # Replace with function body.

@@ -3,6 +3,7 @@ class_name HauntingState extends PlayerState
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var camera_2d: Camera = $"../../../Camera2D"
 @onready var unhaunt: AudioStreamPlayer = $"../../Unhaunt"
+@onready var hauntable_move: AudioStreamPlayer = $"../../HauntableMove"
 
 # The current hauntable node, defined in the enter() function below
 var hauntable: Hauntable
@@ -12,6 +13,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	#print("Previous State: ", previous_state_path)
 	#print("Current State: Haunting")
 	
+	# Get the flight bar from the data dictionary, this will be passed on in the finished signal!
 	flight_bar = data.get("flight_bar")
 	
 	# Hide the player sprite
@@ -52,6 +54,7 @@ func handle_input(_event: InputEvent) -> void:
 		unhaunt.play()
 		animated_sprite_2d.play("unhaunt")
 		await animated_sprite_2d.animation_finished
+		# Pass on flight_bar back to MOVING
 		finished.emit(MOVING, { "flight_bar" : flight_bar })
 
 func exit() -> void:

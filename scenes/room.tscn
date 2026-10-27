@@ -66,7 +66,7 @@ follow_viewport_enabled = true
 
 [node name="Decorations" type="TileMapLayer" parent="BackgroundLayer" unique_id=1459771147]
 z_index = -1
-tile_map_data = PackedByteArray("AAD8//f/AAACAAEAAAADAPf/AAACAAEAAED+//f/AAABAAEAAAD+//j/AAABAAEAAAD+//n/AAABAAEAAAD+//r/AAABAAEAAAD+//v/AAABAAEAAAD+//z/AAABAAEAAAD+//3/AAABAAIAAAD8//3/AAABAAAAAGD9//3/AAABAAEAAGA=")
+tile_map_data = PackedByteArray("AAD8//f/AAACAAEAAAADAPf/AAACAAEAAED+//f/AAABAAEAAAD+//j/AAABAAEAAAD+//n/AAABAAEAAAD+//v/AAABAAEAAAD+//z/AAABAAEAAAD+//3/AAABAAIAAAD8//3/AAABAAAAAGD9//3/AAABAAEAAGD+//r/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_ffxv4")
 
 [node name="Backgrounds" type="TileMapLayer" parent="BackgroundLayer" unique_id=1196533618]

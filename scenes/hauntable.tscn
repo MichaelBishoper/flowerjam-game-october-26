@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://lccxxmd3uxvp" path="res://assets/sfx/sfx_ghost_haunting.wav" id="4_eans2"]
 [ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="6_nxx8t"]
 [ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="7_tcdxa"]
+[ext_resource type="AudioStream" uid="uid://dfqew6xua16fi" path="res://assets/sfx/sfx_bump_light.mp3" id="8_tcdxa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eans2"]
 shader = ExtResource("2_6ybic")
@@ -23,6 +24,8 @@ collision_layer = 4
 collision_mask = 5
 input_pickable = true
 mass = 1.473
+contact_monitor = true
+max_contacts_reported = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=725471885]
 material = SubResource("ShaderMaterial_eans2")
@@ -50,6 +53,14 @@ volume_db = -5.0
 pitch_scale = 1.48
 bus = &"UI Bus"
 
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=684612906]
+stream = ExtResource("8_tcdxa")
+volume_db = -5.474
+pitch_scale = 0.8
+bus = &"SFX Bus"
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_exited" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_exited"]
 [connection signal="mouse_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_entered"]
 [connection signal="mouse_exited" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_exited"]
 [connection signal="mouse_entered" from="HauntButton" to="." method="_on_haunt_button_mouse_entered"]
