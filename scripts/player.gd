@@ -42,6 +42,18 @@ var hauntables: Array[RigidBody2D] = [] # Hauntables that are in range of the pl
 var available_hauntables: Array[RigidBody2D] = [] # Hauntables that are in range and can be haunted by the player
 signal hauntable_array_changed
 
+var _fade_tween: Tween
+
+# Public Methods
+## to_visible = false makes the player fade out, to_visible = true makes the player fade in
+func fade_player(to_visible: bool, duration: float = 0.3) -> void:
+	if _fade_tween and _fade_tween.is_running():
+		_fade_tween.kill()
+	_fade_tween = create_tween()
+	_fade_tween.tween_property(self, "modulate:a", 1.0 if to_visible else 0.0, duration)
+	await _fade_tween.finished
+	visible = to_visible
+
 func _ready() -> void:
 	# Add player to a node group called "player"
 	add_to_group("player")

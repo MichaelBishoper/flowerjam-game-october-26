@@ -211,9 +211,9 @@ play = NodePath("Menu/Play")
 credits = NodePath("Menu/VBoxContainer/Credits")
 exit = NodePath("Menu/VBoxContainer/Exit")
 settings = NodePath("SettingsWheel/Settings")
-music_slider = NodePath("Settings/MusicSlider")
-sfx_slider = NodePath("Settings/SFXSlider")
-ui_slider = NodePath("Settings/UISlider")
+music_slider = NodePath("Settings/PurplePanel/MarginContainer/VBoxContainer/MusicContainer/MusicSlider")
+sfx_slider = NodePath("Settings/PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider")
+ui_slider = NodePath("Settings/PurplePanel/MarginContainer/VBoxContainer/UIContainer/UISlider")
 settings_wheel = NodePath("SettingsWheel")
 menu = NodePath("Menu")
 settings_menu = NodePath("Settings")
@@ -241,7 +241,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wu84c")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
 
 [node name="Menu" type="Control" parent="." unique_id=1625792020]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,11 +250,18 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Play" type="Button" parent="Menu" unique_id=2052942279]
-layout_mode = 0
-offset_left = 454.0
-offset_top = 301.0
-offset_right = 698.0
-offset_bottom = 374.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -36.5
+offset_right = 122.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 2
 size_flags_stretch_ratio = 7.47
 theme = SubResource("Theme_wu84c")
@@ -339,6 +345,7 @@ text = "© tonim  &  mecil productions"
 fit_content = true
 
 [node name="Settings" type="Control" parent="." unique_id=1295015287]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -362,12 +369,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("5_5dd4i")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings" unique_id=615247662]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 200.0
-offset_right = 278.0
-offset_bottom = 236.0
+[node name="MarginContainer" type="MarginContainer" parent="Settings/PurplePanel" unique_id=859426553]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PurplePanel/MarginContainer" unique_id=713677740]
+layout_mode = 2
+
+[node name="MusicContainer" type="HBoxContainer" parent="Settings/PurplePanel/MarginContainer/VBoxContainer" unique_id=1870861197]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/PurplePanel/MarginContainer/VBoxContainer/MusicContainer" unique_id=615247662]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
 theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 theme_override_fonts/normal_font = ExtResource("1_ekxnf")
 theme_override_font_sizes/normal_font_size = 17
@@ -377,13 +394,11 @@ text = "Music"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="Settings" unique_id=822419703]
+[node name="MusicSlider" type="HSlider" parent="Settings/PurplePanel/MarginContainer/VBoxContainer/MusicContainer" unique_id=822419703]
 texture_filter = 3
-layout_mode = 0
-offset_left = 290.0
-offset_top = 210.0
-offset_right = 949.0
-offset_bottom = 226.0
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_constants/center_grabber = 0
 theme_override_styles/slider = SubResource("StyleBoxFlat_lgwnu")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_flqon")
@@ -392,12 +407,12 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Settings" unique_id=1864884667]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 250.0
-offset_right = 278.0
-offset_bottom = 286.0
+[node name="SFXContainer" type="HBoxContainer" parent="Settings/PurplePanel/MarginContainer/VBoxContainer" unique_id=673530919]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Settings/PurplePanel/MarginContainer/VBoxContainer/SFXContainer" unique_id=1864884667]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
 theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 theme_override_fonts/normal_font = ExtResource("1_ekxnf")
 theme_override_font_sizes/normal_font_size = 17
@@ -407,13 +422,11 @@ text = "SFX"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="SFXSlider" type="HSlider" parent="Settings" unique_id=74638363]
+[node name="SFXSlider" type="HSlider" parent="Settings/PurplePanel/MarginContainer/VBoxContainer/SFXContainer" unique_id=74638363]
 texture_filter = 3
-layout_mode = 0
-offset_left = 290.0
-offset_top = 260.0
-offset_right = 949.0
-offset_bottom = 276.0
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_constants/center_grabber = 0
 theme_override_styles/slider = SubResource("StyleBoxFlat_lgwnu")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_flqon")
@@ -422,12 +435,12 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Settings" unique_id=247301083]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 299.0
-offset_right = 278.0
-offset_bottom = 335.0
+[node name="UIContainer" type="HBoxContainer" parent="Settings/PurplePanel/MarginContainer/VBoxContainer" unique_id=954856399]
+layout_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Settings/PurplePanel/MarginContainer/VBoxContainer/UIContainer" unique_id=247301083]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
 theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 theme_override_fonts/normal_font = ExtResource("1_ekxnf")
 theme_override_font_sizes/normal_font_size = 17
@@ -437,13 +450,11 @@ text = "UI"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="UISlider" type="HSlider" parent="Settings" unique_id=1938785951]
+[node name="UISlider" type="HSlider" parent="Settings/PurplePanel/MarginContainer/VBoxContainer/UIContainer" unique_id=1938785951]
 texture_filter = 3
-layout_mode = 0
-offset_left = 290.0
-offset_top = 309.0
-offset_right = 949.0
-offset_bottom = 325.0
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_constants/center_grabber = 0
 theme_override_styles/slider = SubResource("StyleBoxFlat_lgwnu")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_flqon")
@@ -452,19 +463,19 @@ max_value = 1.75
 step = 0.01
 value = 1.75
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="Settings" unique_id=1961601221]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = 40.0
-offset_right = 110.0
-offset_bottom = 158.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="Settings/PurplePanel/MarginContainer" unique_id=1237598423]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 50
+
+[node name="ControlsLabel" type="RichTextLabel" parent="Settings/PurplePanel/MarginContainer/MarginContainer" unique_id=1961601221]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 theme_override_fonts/normal_font = ExtResource("1_ekxnf")
 theme_override_font_sizes/normal_font_size = 20
@@ -519,7 +530,8 @@ pitch_scale = 1.25
 [connection signal="mouse_entered" from="Menu/VBoxContainer/Credits" to="." method="_on_credits_mouse_entered"]
 [connection signal="pressed" from="Menu/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="Menu/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/VBoxContainer/Exit" to="." method="_on_exit_mouse_exited"]
 [connection signal="pressed" from="Menu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="Settings/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Settings/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="value_changed" from="Settings/UISlider" to="." method="_on_ui_slider_value_changed"]
+[connection signal="value_changed" from="Settings/PurplePanel/MarginContainer/VBoxContainer/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Settings/PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Settings/PurplePanel/MarginContainer/VBoxContainer/UIContainer/UISlider" to="." method="_on_ui_slider_value_changed"]

@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dod5pfvwq0gus" path="res://scenes/haunting_dim_rectangle.tscn" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cfgtbcu28vj04" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://ch8lmkv04311l" path="res://scripts/main.gd" id="1_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://c8sh3hh3in0tu" path="res://scenes/tutorial_room.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://bokfy18jb4sfb" path="res://scripts/camera_controller.gd" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dlmp55cqlh6ex" path="res://scenes/rooms/room_1_test.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://i87gt1tlvexg" path="res://scenes/rooms/room_2_test.tscn" id="6_tefeu"]
 
 [node name="Node2D" type="Node2D" unique_id=223524730]
 script = ExtResource("1_tbgi4")
@@ -12,9 +13,11 @@ script = ExtResource("1_tbgi4")
 [node name="DimOverlay" parent="." unique_id=1249409771 instance=ExtResource("1_jyhfs")]
 
 [node name="Player" parent="." unique_id=1577183643 instance=ExtResource("1_o5qli")]
-position = Vector2(-927, -2176)
+process_mode = 0
+position = Vector2(767, -3367)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1753659158 node_paths=PackedStringArray("target")]
+process_mode = 3
 position = Vector2(-69, -1597)
 zoom = Vector2(0.25, 0.25)
 script = ExtResource("4_tbgi4")
@@ -22,4 +25,8 @@ target = NodePath("../Player")
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1135079401]
 
-[node name="TutorialRoom" parent="Rooms" unique_id=1370121526 instance=ExtResource("3_sugp2")]
+[node name="Room1" parent="Rooms" unique_id=841318414 node_paths=PackedStringArray("target_room") instance=ExtResource("5_tbgi4")]
+target_room = NodePath("../Room2")
+
+[node name="Room2" parent="Rooms" unique_id=1099327698 instance=ExtResource("6_tefeu")]
+position = Vector2(8538, 8941)

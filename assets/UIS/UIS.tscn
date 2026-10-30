@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cmmfs473y07po" path="res://assets/UIS/GhostyHighlight.svg" id="4_21klt"]
 [ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="5_1oqt7"]
 [ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="6_aqgy6"]
+[ext_resource type="Texture2D" uid="uid://c5yh026qkf8mv" path="res://assets/RestartIcon.png" id="6_wp7sy"]
 [ext_resource type="Texture2D" uid="uid://bvm5krt18ydl8" path="res://assets/UIS/PlayIcon.png" id="7_sxf4d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
@@ -181,6 +182,20 @@ texture_margin_bottom = 12.0
 texture = ExtResource("6_aqgy6")
 modulate_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5vmd"]
+texture = ExtResource("6_wp7sy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wp7sy"]
+texture = ExtResource("6_wp7sy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74hx2"]
+texture = ExtResource("6_wp7sy")
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+modulate_color = Color(0.86, 0.86, 0.86, 1)
+
 [node name="Control" type="Control" unique_id=2109374161]
 layout_mode = 3
 anchors_preset = 0
@@ -295,3 +310,13 @@ offset_bottom = 579.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_g4v7s")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w56mx")
+
+[node name="Button4" type="Button" parent="." unique_id=1497994165]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 239.0
+offset_right = 632.6786
+offset_bottom = 380.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_g5vmd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wp7sy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_74hx2")

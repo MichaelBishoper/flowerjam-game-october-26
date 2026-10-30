@@ -53,10 +53,6 @@ func _on_flight_bar_updated(flight_left: float) -> void:
 	h_slider.value = flight_left
 
 func physics_update(_delta: float) -> void:
-	
-	## DEBUG PRINTS
-	#print(player.velocity.y)
-	
 	# For the downwards raycast to update the result to the current frame's
 	ray.force_raycast_update()
 	# Raycast/Hover Logic
@@ -75,6 +71,10 @@ func physics_update(_delta: float) -> void:
 	# Movement Logic
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var target := Vector2(input_dir.x * player.max_speed_x, input_dir.y * player.max_speed_y)
+	
+	## DEBUG PRINTS
+	#print("Player Velo: ", player.velocity.y)
+	#print("Target Velo: ", target.y)
 	
 	# Horizontal Movement
 	if input_dir != Vector2.ZERO:
@@ -97,9 +97,15 @@ func physics_update(_delta: float) -> void:
 		# Audio logic
 		if moving.playing:
 			moving.stop()
-		# Apply Gravity
-		player.velocity.y += player.gravity * _delta
-		player.velocity.y = minf(player.velocity.y, player.max_fall_speed) # Clamp to max fall speed
+		# Horizontal Movement
+		# Falling input
+		if Input.is_action_just_pressed("move_down"):
+			player.velocity.y = move_toward(player.velocity.y, target.y, player.acceleration_y * _delta)
+		else:
+			# player.velocity.y = move_toward(player.velocity.y, 0.0, player.friction_y * _delta)
+			# Apply gravity
+			player.velocity.y += player.gravity * _delta
+			player.velocity.y = minf(player.velocity.y, player.max_fall_speed) # Clamp to max fall speed
 		
 	# Collisions and their animations and audio
 	if collision:
@@ -119,6 +125,7 @@ func physics_update(_delta: float) -> void:
 				# Play Audio Bump Heavy
 				if not bump_heavy.playing: 
 					bump_heavy.play()
+				animated_sprite_2d.play("bounce_up")
 				print(player.velocity.y)
 				print("Bounce Up")
 	else:
@@ -126,20 +133,11 @@ func physics_update(_delta: float) -> void:
 			# Play Audio Bump Heavy
 			if not bump_heavy.playing: 
 				bump_heavy.play()
-			print(player.velocity.y)
-			print("Bounce Down")
-	
-	# NOTE: Currently Unused
-	# For Animations Later!!!
-	#var direction_name := _infer_direction(input_dir)
-	#match direction_name:
-		#"Left":
-			#pass
-		#"Right":
-			#pass	
+			# DEBUG: For Velocity
+			#print(player.velocity.y)
+			#print("Bounce Down")
 	
 	var motion = player.velocity * _delta
-	
 	collision = player.move_and_collide(motion)
 	
 	if collision:

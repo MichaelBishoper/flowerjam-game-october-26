@@ -52,6 +52,9 @@ func _on_exit_mouse_entered() -> void:
 	if not menu.visible:
 		return
 	button_hover.play()
+
+func _on_exit_mouse_exited() -> void:
+	pass
 	
 func _on_exit_pressed() -> void:
 	if not menu.visible:

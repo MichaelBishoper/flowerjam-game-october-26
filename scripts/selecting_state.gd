@@ -1,6 +1,8 @@
 class_name SelectingState extends PlayerState
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+## The restart button
+@onready var restart: Button = $"../../UI/Restart"
 @onready var camera_2d: Camera = $"../../../Camera2D"
 @onready var circle_overlay: CanvasLayer = $"../../CircleOverlay"
 @onready var selecting: AudioStreamPlayer = $"../../Selecting"
@@ -10,9 +12,11 @@ var dim_overlay: CanvasLayer
 var flight_bar: float
 
 func enter(previous_state_path: String, data := {}) -> void:
+	restart.disabled = true
+	
 	if moving.playing:
 		moving.stop()
-	
+
 	animated_sprite_2d.play("temporary_secretary")
 	
 	# Get the last flight bar from the moving state
@@ -37,6 +41,7 @@ func handle_input(_event: InputEvent) -> void:
 		finished.emit(MOVING, { "flight_bar" : flight_bar })
 
 func exit() -> void:
+	restart.disabled = false
 	if dim_overlay:
 		dim_overlay.undim()
 	if circle_overlay:
