@@ -27,7 +27,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	# Set camera to follow player
 	camera_2d.set_target(player)
 	
-	if previous_state_path == SELECTING or previous_state_path == HAUnTING:
+	if previous_state_path == SELECTING or previous_state_path == HAUnTING or previous_state_path == IDLE:
 		flight_bar = data.get("flight_bar")
 		flight_bar_updated.emit(flight_bar)
 	else: flight_bar = player.flight_max_time

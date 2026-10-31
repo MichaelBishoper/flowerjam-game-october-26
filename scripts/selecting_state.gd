@@ -7,12 +7,14 @@ class_name SelectingState extends PlayerState
 @onready var circle_overlay: CanvasLayer = $"../../CircleOverlay"
 @onready var selecting: AudioStreamPlayer = $"../../Selecting"
 @onready var moving: AudioStreamPlayer2D = $"../../Moving"
+@export var settings: Button
 
 var dim_overlay: CanvasLayer
 var flight_bar: float
 
 func enter(previous_state_path: String, data := {}) -> void:
 	restart.disabled = true
+	settings.disabled = true
 	
 	if moving.playing:
 		moving.stop()
@@ -30,8 +32,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	if circle_overlay:
 		circle_overlay.show_circle()
 		
-	#print("Previous State: ", previous_state_path)
-	#print("Current State: Selecting")
+	print("Previous State: ", previous_state_path)
+	print("Current State: Selecting")
 	
 	animated_sprite_2d.show()
 
@@ -42,6 +44,7 @@ func handle_input(_event: InputEvent) -> void:
 
 func exit() -> void:
 	restart.disabled = false
+	settings.disabled = false
 	if dim_overlay:
 		dim_overlay.undim()
 	if circle_overlay:

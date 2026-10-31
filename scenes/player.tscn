@@ -30,9 +30,16 @@
 [ext_resource type="Script" uid="uid://dcbs11qerc8de" path="res://scripts/ghost_jump_bar.gd" id="25_ke2ow"]
 [ext_resource type="AudioStream" uid="uid://dfqew6xua16fi" path="res://assets/sfx/sfx_bump_light.mp3" id="26_ujl30"]
 [ext_resource type="AudioStream" uid="uid://tkieuomcp7qr" path="res://assets/sfx/sfx_bump_heavy.mp3" id="27_31cv2"]
+[ext_resource type="AudioStream" uid="uid://utrfkqibyc6h" path="res://assets/sfx/sfx_settings_click.wav" id="27_bj30b"]
+[ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="27_cs1tg"]
+[ext_resource type="AudioStream" uid="uid://bplmqlbb8vukk" path="res://assets/sfx/sfx_settings_hover.wav" id="27_j2b1d"]
 [ext_resource type="AudioStream" uid="uid://b0uq5soxrtssj" path="res://assets/sfx/sfx_hauntable_move.mp3" id="29_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://c5yh026qkf8mv" path="res://assets/RestartIcon.png" id="30_wnwbv"]
 [ext_resource type="Script" uid="uid://cw425v4v5ffm7" path="res://scripts/restart_button.gd" id="31_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="34_md1ol"]
+[ext_resource type="Script" uid="uid://3osdooolgybq" path="res://scripts/game_settings.gd" id="36_jc3p3"]
+[ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="37_t4otl"]
+[ext_resource type="FontFile" uid="uid://cc77y1qv6nfep" path="res://assets/UIS/Pelicula.otf" id="38_j2b1d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fulsm"]
 
@@ -638,6 +645,140 @@ modulate_color = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("30_wnwbv")
 modulate_color = Color(0.581033, 0.58103293, 0.5810329, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj30b"]
+texture = ExtResource("34_md1ol")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jc3p3"]
+texture = ExtResource("34_md1ol")
+modulate_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t4otl"]
+texture = ExtResource("34_md1ol")
+modulate_color = Color(0.47397572, 0.47397578, 0.4739756, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cs1tg"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.5248823, 0.39211932, 0.6628742, 0.47843137)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.11489672, 0.11489683, 0.1148968, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dvfe"]
+bg_color = Color(0.30556285, 0.27319935, 0.3979589, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 8.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_giy8y"]
+bg_color = Color(0.6797674, 0.4761204, 0.96295553, 1)
+corner_radius_top_left = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 8.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdfoy"]
+bg_color = Color(0.73333335, 0.6392157, 0.8117647, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 8.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhpqf"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.5248823, 0.39211932, 0.6628742, 0.47843137)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.11489672, 0.11489683, 0.1148968, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4otl"]
+content_margin_top = 15.0
+bg_color = Color(0.4509804, 0.34509805, 0.5372549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 11
+border_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 9
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2b1d"]
+content_margin_top = 15.0
+bg_color = Color(0.73333335, 0.6392157, 0.8117647, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 11
+border_color = Color(0.38170353, 0.38170314, 0.38170323, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 9
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5jhy"]
+content_margin_top = 15.0
+bg_color = Color(0.73333335, 0.6392157, 0.8117647, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 11
+border_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 9
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_holxr"]
+bg_color = Color(0.4495961, 0.3457556, 0.5378492, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 11
+border_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 9
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
 [node name="Player" type="CharacterBody2D" unique_id=1577183643]
 process_mode = 3
 collision_layer = 2
@@ -663,10 +804,8 @@ material = SubResource("ShaderMaterial_fulsm")
 position = Vector2(3, -19)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wgif1")
-animation = &"bounce_up"
+animation = &"temporary_secretary"
 autoplay = "bob"
-frame = 5
-frame_progress = 1.0
 script = ExtResource("7_wqfne")
 
 [node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=61936293]
@@ -684,8 +823,9 @@ z_index = 99
 position = Vector2(5, -6)
 shape = SubResource("CapsuleShape2D_sugp2")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1354941162]
+[node name="StateMachine" type="Node" parent="." unique_id=1354941162 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_qhqgy")
+initial_state = NodePath("Moving")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=698504713]
 script = ExtResource("4_dqkch")
@@ -694,11 +834,14 @@ bob_amplitude = 9.0
 [node name="Moving" type="Node" parent="StateMachine" unique_id=645583584]
 script = ExtResource("5_qlg0r")
 
-[node name="Selecting" type="Node" parent="StateMachine" unique_id=79143708]
+[node name="Selecting" type="Node" parent="StateMachine" unique_id=79143708 node_paths=PackedStringArray("settings")]
 script = ExtResource("7_smehm")
+settings = NodePath("../../UI/Settings")
 
-[node name="Haunting" type="Node" parent="StateMachine" unique_id=420506253]
+[node name="Haunting" type="Node" parent="StateMachine" unique_id=420506253 node_paths=PackedStringArray("settings", "restart")]
 script = ExtResource("9_y4r1p")
+settings = NodePath("../../UI/Settings")
+restart = NodePath("../../UI/Restart")
 
 [node name="HauntDetection" type="Area2D" parent="." unique_id=920223942]
 collision_mask = 4
@@ -731,42 +874,66 @@ bus = &"SFX Bus"
 stream = ExtResource("15_oprun")
 volume_db = 8.748
 pitch_scale = 1.93
-
-[node name="Unhaunt" type="AudioStreamPlayer" parent="." unique_id=1751653451]
-stream = ExtResource("18_60mlk")
-volume_db = 5.0
-pitch_scale = 1.3
+bus = &"SFX Bus"
 
 [node name="Moving" type="AudioStreamPlayer2D" parent="." unique_id=366584828]
 stream = ExtResource("19_i4ail")
 volume_db = -4.0
 pitch_scale = 1.7
 attenuation = 0.0
+bus = &"SFX Bus"
+
+[node name="Unhaunt" type="AudioStreamPlayer" parent="." unique_id=1751653451]
+stream = ExtResource("18_60mlk")
+volume_db = 5.0
+pitch_scale = 1.3
+bus = &"SFX Bus"
 
 [node name="Selecting" type="AudioStreamPlayer" parent="." unique_id=573863796]
 stream = ExtResource("20_a38lo")
 volume_db = 1.944
 pitch_scale = 1.33
+bus = &"SFX Bus"
 
 [node name="BumpLight" type="AudioStreamPlayer" parent="." unique_id=2012741120]
 stream = ExtResource("26_ujl30")
 volume_db = -6.505
 pitch_scale = 0.75
+bus = &"SFX Bus"
 
 [node name="BumpHeavy" type="AudioStreamPlayer" parent="." unique_id=225026511]
 stream = ExtResource("27_31cv2")
 volume_db = -4.561
 pitch_scale = 1.5
+bus = &"SFX Bus"
 
 [node name="HauntableMove" type="AudioStreamPlayer" parent="." unique_id=1392397585]
 stream = ExtResource("29_dt7fs")
 volume_db = -5.474
 pitch_scale = 1.14
+bus = &"SFX Bus"
 
-[node name="Restart" type="AudioStreamPlayer" parent="." unique_id=1898814905]
+[node name="RestartClick" type="AudioStreamPlayer" parent="." unique_id=1898814905]
 bus = &"UI Bus"
 
-[node name="RestartHover" type="AudioStreamPlayer" parent="." unique_id=706020393]
+[node name="RestartHover" type="AudioStreamPlayer" parent="." unique_id=1984590294]
+stream = ExtResource("27_cs1tg")
+volume_db = 4.0
+pitch_scale = 1.44
+bus = &"UI Bus"
+
+[node name="SettingsHover" type="AudioStreamPlayer" parent="." unique_id=706020393]
+process_mode = 3
+stream = ExtResource("27_j2b1d")
+volume_db = 1.74
+pitch_scale = 1.1
+bus = &"UI Bus"
+
+[node name="SettingsClick" type="AudioStreamPlayer" parent="." unique_id=1808937333]
+process_mode = 3
+stream = ExtResource("27_bj30b")
+pitch_scale = 1.54
+max_polyphony = 4
 bus = &"UI Bus"
 
 [node name="CircleOverlay" type="CanvasLayer" parent="." unique_id=1767677307]
@@ -804,6 +971,7 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_pf23h")
 script = ExtResource("25_ke2ow")
 
 [node name="Restart" type="Button" parent="UI" unique_id=1869903268]
+process_mode = 3
 offset_left = 1027.0001
 offset_top = -30.999996
 offset_right = 1169.6191
@@ -818,5 +986,195 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_487ah")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_md1ol")
 script = ExtResource("31_gl8cc")
 
+[node name="Settings" type="Button" parent="UI" unique_id=472475252 node_paths=PackedStringArray("settings_click")]
+process_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.67859
+offset_top = -99.0
+offset_right = 42.999878
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_bj30b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bj30b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jc3p3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_t4otl")
+script = ExtResource("36_jc3p3")
+settings_click = NodePath("../../SettingsClick")
+
+[node name="InGameMenu" type="CanvasLayer" parent="." unique_id=1834337478]
+process_mode = 2
+visible = false
+
+[node name="PurplePanel" type="PanelContainer" parent="InGameMenu" unique_id=1083411179]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -431.75
+offset_top = -164.125
+offset_right = 431.75
+offset_bottom = 234.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("37_t4otl")
+
+[node name="MarginContainer" type="MarginContainer" parent="InGameMenu/PurplePanel" unique_id=601630494]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGameMenu/PurplePanel/MarginContainer" unique_id=1091769234]
+layout_mode = 2
+
+[node name="MusicContainer" type="HBoxContainer" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer" unique_id=582068542]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/MusicContainer" unique_id=1149564263]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+theme_override_fonts/normal_font = ExtResource("38_j2b1d")
+theme_override_font_sizes/normal_font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_cs1tg")
+bbcode_enabled = true
+text = "Music"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/MusicContainer" unique_id=365255654]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_2dvfe")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_giy8y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fdfoy")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXContainer" type="HBoxContainer" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer" unique_id=1476565381]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/SFXContainer" unique_id=327423384]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+theme_override_fonts/normal_font = ExtResource("38_j2b1d")
+theme_override_font_sizes/normal_font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_cs1tg")
+bbcode_enabled = true
+text = "SFX"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/SFXContainer" unique_id=399841909]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_2dvfe")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_giy8y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fdfoy")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="UIContainer" type="HBoxContainer" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer" unique_id=1971008875]
+layout_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/UIContainer" unique_id=1298481543]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+theme_override_fonts/normal_font = ExtResource("38_j2b1d")
+theme_override_font_sizes/normal_font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_cs1tg")
+bbcode_enabled = true
+text = "UI"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="UISlider" type="HSlider" parent="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/UIContainer" unique_id=1526876878]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_2dvfe")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_giy8y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fdfoy")
+max_value = 1.75
+step = 0.01
+value = 1.75
+
+[node name="MarginContainer" type="MarginContainer" parent="InGameMenu/PurplePanel/MarginContainer" unique_id=1983258045]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGameMenu/PurplePanel/MarginContainer/MarginContainer" unique_id=182736745]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="ControlsLabel" type="RichTextLabel" parent="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer" unique_id=1400298705]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+theme_override_fonts/normal_font = ExtResource("38_j2b1d")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_hhpqf")
+bbcode_enabled = true
+text = "Controls: 
+WASD - Move
+C - Select
+X - Exit  Haunting
+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer" unique_id=483634033]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Exit" type="Button" parent="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=381377118]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 7.47
+theme_override_fonts/font = ExtResource("38_j2b1d")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4otl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j2b1d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5jhy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_holxr")
+text = "Main Menu
+"
+autowrap_mode = 3
+
 [connection signal="body_entered" from="HauntDetection" to="." method="_on_haunt_detection_body_entered"]
 [connection signal="body_exited" from="HauntDetection" to="." method="_on_haunt_detection_body_exited"]
+[connection signal="pressed" from="UI/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="UI/Settings" to="StateMachine/Idle" method="_on_settings_pressed"]
+[connection signal="pressed" from="UI/Settings" to="StateMachine/Moving" method="_on_settings_pressed"]

@@ -5,6 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $"../Camera2D"
 @onready var selecting: SelectingState = $StateMachine/Selecting
+@onready var in_game_menu: CanvasLayer = $InGameMenu
+@onready var settings: Button = $UI/Settings
 
 # Movement variables (y coordinate movement is unused now, still too scared to delete it LOL)
 @export var max_speed_x := 750.0

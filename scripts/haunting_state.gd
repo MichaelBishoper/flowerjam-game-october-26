@@ -3,17 +3,19 @@ class_name HauntingState extends PlayerState
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var camera_2d: Camera = $"../../../Camera2D"
 ## The restart button
-@onready var restart: Button = $"../../UI/Restart"
 @onready var unhaunt: AudioStreamPlayer = $"../../Unhaunt"
 @onready var hauntable_move: AudioStreamPlayer = $"../../HauntableMove"
+@export var settings: Button
+@export var restart: Button
 
 # The current hauntable node, defined in the enter() function below
 var hauntable: Hauntable
 var flight_bar: float
 
 func enter(previous_state_path: String, data := {}) -> void:	
-	#print("Previous State: ", previous_state_path)
-	#print("Current State: Haunting")
+	print("Previous State: ", previous_state_path)
+	print("Current State: Haunting")
+	settings.disabled = true
 	restart.disabled = true
 	
 	# Get the flight bar from the data dictionary, this will be passed on in the finished signal!
@@ -61,4 +63,5 @@ func handle_input(_event: InputEvent) -> void:
 		finished.emit(MOVING, { "flight_bar" : flight_bar })
 
 func exit() -> void:
+	settings.disabled = false
 	restart.disabled = false

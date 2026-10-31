@@ -8,6 +8,8 @@ class_name Room extends Node2D
 @export var target_room: Room
 @export var entrance: Area2D
 @export var exit: Area2D
+
+
 ## entrance's child
 var anim: AnimatedSprite2D
 ## Reference to the player node
@@ -75,7 +77,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	# If player is in selecting or haunting state then don't restart
 	if (Input.is_action_just_pressed("restart") and _player_inside 
 		and state_machine.state.name != "Selecting" 
-		and state_machine.state.name != "Haunting"):
+		and state_machine.state.name != "Haunting"
+		and not get_tree().paused):
 		_restore_initial_position()
 
 # RESTORE AND STORE POSITIONS FUNCTIONS FOR REWIND
@@ -169,4 +172,3 @@ func _on_exit_body_entered(body: Node2D) -> void:
 func _on_exit_body_exited(body: Node2D) -> void:
 	restart.disabled = false
 	print("The exit was exited ")
-	print(restart.disabled)
