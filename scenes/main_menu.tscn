@@ -206,6 +206,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=2046707308 node_paths=PackedStringArray("play", "credits", "exit", "settings", "music_slider", "sfx_slider", "ui_slider", "settings_wheel", "menu", "settings_menu")]
+process_mode = 3
 script = ExtResource("1_wu84c")
 play = NodePath("Menu/Play")
 credits = NodePath("Menu/VBoxContainer/Credits")

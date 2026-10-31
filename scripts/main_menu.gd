@@ -28,8 +28,8 @@ var tween: Tween
 
 func _ready() -> void:
 	settings_wheel.visible = true
-	settings_menu.visible = false
 	menu.visible = true
+	settings_menu.visible = false
 	# Set pivot offsets of all buttons to center
 	var buttons: Array[Button] = [play, credits, exit, settings]
 	for button in buttons:
@@ -78,6 +78,7 @@ func _on_play_pressed() -> void:
 	if not menu.visible:
 		return
 	play_click.play()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 # Settings
 func _on_settings_mouse_entered() -> void:

@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://3osdooolgybq" path="res://scripts/game_settings.gd" id="36_jc3p3"]
 [ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="37_t4otl"]
 [ext_resource type="FontFile" uid="uid://cc77y1qv6nfep" path="res://assets/UIS/Pelicula.otf" id="38_j2b1d"]
+[ext_resource type="Script" uid="uid://dumdo521bk0st" path="res://scripts/in_game_menu.gd" id="39_2dvfe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fulsm"]
 
@@ -1008,9 +1009,11 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_t4otl")
 script = ExtResource("36_jc3p3")
 settings_click = NodePath("../../SettingsClick")
 
-[node name="InGameMenu" type="CanvasLayer" parent="." unique_id=1834337478]
+[node name="InGameMenu" type="CanvasLayer" parent="." unique_id=1834337478 node_paths=PackedStringArray("exit")]
 process_mode = 2
 visible = false
+script = ExtResource("39_2dvfe")
+exit = NodePath("PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Exit")
 
 [node name="PurplePanel" type="PanelContainer" parent="InGameMenu" unique_id=1083411179]
 anchors_preset = 8
@@ -1178,3 +1181,4 @@ autowrap_mode = 3
 [connection signal="pressed" from="UI/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Settings" to="StateMachine/Idle" method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Settings" to="StateMachine/Moving" method="_on_settings_pressed"]
+[connection signal="pressed" from="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Exit" to="InGameMenu" method="_on_exit_pressed"]
