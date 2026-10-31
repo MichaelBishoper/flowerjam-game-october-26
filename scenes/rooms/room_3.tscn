@@ -1,0 +1,78 @@
+[gd_scene format=4 uid="uid://djofhdl8l08vi"]
+
+[ext_resource type="PackedScene" uid="uid://df1vw8nxrtidc" path="res://scenes/room.tscn" id="1_etvqs"]
+[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://Assets/Tileset1920p-640p-per-tile.png" id="2_josgj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5ssp"]
+texture = ExtResource("2_josgj")
+texture_region_size = Vector2i(640, 640)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, 320, -320, 320, -226.25604, 320, -133.09999, 310.20416, -133.24559, 300.08002, -136.73001, 287.55768, -144.83217, 277.09, -158.51001, 248.32133, -177.74857, 204.87169, -189.33514, 178.53856, -192.23178, 153.67, -192.39, 113.740005, -189.97, 91.1126, -182.48853, 68.46612, -170.63861, 38.72, -137.94, 18.169853, -130.61227, -2.8966427, -129.82228, -20.013172, -130.87561, -36.86637, -137.19556, -61.70999, -164.56, -78.73603, -176.69524, -95.32589, -184.59517, -111.91577, -190.12512, -133.77226, -192.4951, -162.73868, -192.4951, -190.91513, -190.91513, -223.30487, -185.12183, -264.9112, -168.26865, -280.1844, -154.04875, -289.6643, -142.19885, -306.78085, -133.77225, -320, -131.92896, -320, -222.82849)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, 320, -320, 320, -226.25604, 320, -133.09999, 310.20416, -133.24559, 300.08002, -136.73001, 287.55768, -144.83217, 277.09, -158.51001, 248.32133, -177.74857, 204.87169, -189.33514, 178.53856, -192.23178, 153.67, -192.39, 113.740005, -189.97, 91.1126, -182.48853, 68.46612, -170.63861, 38.72, -137.94, 18.169853, -130.61227, -2.8966427, -129.82228, -20.013172, -130.87561, -36.86637, -137.19556, -61.70999, -164.56, -78.73603, -176.69524, -95.32589, -184.59517, -111.91577, -190.12512, -133.77226, -192.4951, -162.73868, -192.4951, -190.91513, -190.91513, -223.30487, -185.12183, -264.9112, -168.26865, -280.1844, -154.04875, -289.6643, -142.19885, -306.78085, -133.77225, -320, -131.92896, -320, -222.82849)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, 320, -320, 320, -226.25604, 320, 157.08496, 310.66498, 156.4477, 299.49768, 150.21533, 291.10056, 142.28473, 282.2369, 125.02395, 278.50485, 98.43304, 274.30627, 76.507195, 270.23508, 51.273422, 261.71057, 16.327757, 245.84935, -10.729668, 231.38762, -35.92106, 209.46176, -54.11484, 194.06703, -61.57896, 170.62119, -70.29419, 149.29353, -73.34099, 92.927605, -73.55862, 44.1787, -76.82306, 29.597553, -81.82852, 18.181816, -89.256195, -0.43525887, -103.80907, -13.547371, -116.281624, -25.809093, -127.4523, -37.598427, -143.0652, -61.70999, -164.56, -78.73603, -176.69524, -95.32589, -184.59517, -111.91577, -190.12512, -133.77226, -192.4951, -162.73868, -192.4951, -190.91513, -190.91513, -223.30487, -185.12183, -264.12122, -168.00531, -279.13107, -154.57541, -289.66434, -141.14552, -306.78085, -133.77225, -320, -131.92896, -320, -222.82849)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, 320, -320, 320, 320, 190.5412, 320, 191.24374, 11.611225, -43.712852, -225.39442, -320, -222.82849)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, 320, -320, 320, -226.25604, -320, -222.82849)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(188.30579, -320, 320, -320, 320, 204.22101, 191.24374, 204.22101)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(188.30579, -320, 320, -320, 320, -56.674866, 190.84389, -56.67485)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, 320, -320, -144.04218, -320, -144.56883, -277.81442, -144.3055, -247.79468, -144.3055, -215.40492, -146.41216, -200.9217, -162.73868, -192.4951, -190.91513, -190.91513, -223.30487, -185.12183, -264.12122, -168.00531, -279.13107, -154.57541, -289.66434, -141.14552, -306.78085, -133.77225, -320, -131.92896, -320, -222.82849)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, -127.22925, -320, -127.22925, -229.59099, -126.45816, -201.44632, -129.92807, -189.10895, -138.02448, -183.32579, -148.0486, -182.16916, -159.22935, -184.86797, -172.72337, -190.65112, -182.74748, -191.80774, -202.02464, -190.26556, -218.98856, -187.95232, -230.1693, -182.94025, -243.66331, -178.31374, -261.01276, -171.37396, -273.7357, -161.34982, -284.53088, -149.398, -294.94055, -139.37387, -306.1213, -134.36182, -320, -131.98132, -320, -228.53137)
+3:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(109.83679, -320, 111.83939, -224.15674, 111.83939, -215.55371, 110.88351, -205.99478, 112.476654, -195.79861, 115.34434, -187.5142, 124.90326, -183.69064, 137.32985, -183.37201, 150.71234, -186.55832, 159.31538, -191.97504, 166.64389, -192.6123, 178.75186, -191.6564, 195.32065, -190.70052, 211.2522, -188.4701, 225.59058, -184.96516, 237.37991, -180.82297, 249.48788, -176.0435, 260.9586, -169.98952, 269.88025, -163.6169, 277.52737, -156.60703, 286.76767, -145.45496, 292.18442, -140.35686, 298.87564, -136.5333, 307.7973, -133.98424, 320, -132.70972, 320, -227.6456, 320, -320)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-320, -320, -120.46617, -320, -129.32397, -228.53137, -320, -228.53137)
+3:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(109.83679, -320, 113.37988, -225.87404, 320, -227.6456, 320, -320)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-161.21204, -320, 320, -320, 320, -228.53137, -157.66893, -228.53137)
+0:1/0 = 0
+4:2/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ahsqd"]
+tile_size = Vector2i(640, 640)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_g5ssp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6v3f"]
+size = Vector2(5668, 4558)
+
+[node name="Node2D" unique_id=841318414 instance=ExtResource("1_etvqs")]
+level_title_text = "Level Three - Attic"
+
+[node name="Balloon" parent="." index="0" unique_id=257149692]
+position = Vector2(2145, -2889)
+
+[node name="Feather" parent="." index="1" unique_id=1397094081]
+position = Vector2(2187, -6018)
+
+[node name="BeachBall" parent="." index="2" unique_id=169957972]
+visible = false
+position = Vector2(-119, -2541)
+
+[node name="Apple" parent="." index="3" unique_id=1868249461]
+visible = false
+position = Vector2(-838, -2414)
+
+[node name="Entrance" parent="." index="5" unique_id=1778236408]
+position = Vector2(-2112, -4270)
+
+[node name="Exit" parent="." index="6" unique_id=551753817]
+position = Vector2(-2114, -2347)
+
+[node name="TileMapLayer" parent="." index="7" unique_id=990599543]
+tile_map_data = PackedByteArray("AAD8//r/AAABAAAAAAD9//r/AAABAAAAAAD8//3/AAABAAAAAAD9//3/AAABAAAAAAD+//r/AAABAAAAAAD+//3/AAABAAAAAAD///r/AAABAAAAAAD7//3/AAAAAAAAABD7//z/AAAAAAEAABD7//v/AAABAAEAABD7//r/AAAAAAAAABAAAPr/AAABAAAAAAD7//n/AAAAAAEAABD7//j/AAAAAAEAABD7//f/AAABAAEAABD8//f/AAACAAEAAAD9//f/AAACAAEAAAD+//f/AAACAAEAAAD///f/AAACAAEAAAAAAPf/AAACAAEAAAD///3/AAAAAAAAAAD6//r/AAACAAIAABADAPn/AAAAAAEAABABAP3/AAABAAAAAAACAP3/AAABAAAAAAADAP3/AAAAAAAAAAADAPz/AAAAAAEAAAADAPv/AAABAAEAAAADAPr/AAAAAAEAABADAPj/AAAAAAEAABADAPf/AAABAAEAABABAPf/AAACAAEAAAADAPb/AAABAAEAAAACAPb/AAACAAEAAAABAPb/AAACAAEAAAAAAPb/AAACAAEAAAD///b/AAACAAEAAAD+//b/AAACAAEAAAD9//b/AAACAAEAAAD8//b/AAACAAEAAAD7//b/AAABAAEAABACAPf/AAABAAIAABD///z/AAAAAAEAAAD///v/AAABAAEAAAAAAP3/AAABAAAAAAAAAPv/AAABAAIAAGABAPr/AAAEAAAAAAA=")
+tile_set = SubResource("TileSet_ahsqd")
+
+[node name="CollisionShape2D" parent="TileMapLayer/Area2D" parent_id_path=PackedInt32Array(1942567451) index="0" unique_id=1718028998]
+position = Vector2(-325, -4075)
+shape = SubResource("RectangleShape2D_y6v3f")
+
+[node name="Decorations" parent="BackgroundLayer" parent_id_path=PackedInt32Array(2127877515) index="0" unique_id=1459771147]
+tile_map_data = PackedByteArray()

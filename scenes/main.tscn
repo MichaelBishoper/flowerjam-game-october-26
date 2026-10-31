@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dmog87j5qmi0y" path="res://scenes/rooms/test_scene.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dlmp55cqlh6ex" path="res://scenes/rooms/room_1_test.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://i87gt1tlvexg" path="res://scenes/rooms/room_2_test.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://djofhdl8l08vi" path="res://scenes/rooms/room_3.tscn" id="8_tipki"]
 
 [node name="Node2D" type="Node2D" unique_id=223524730]
 script = ExtResource("1_tbgi4")
@@ -15,7 +16,7 @@ script = ExtResource("1_tbgi4")
 
 [node name="Player" parent="." unique_id=1577183643 instance=ExtResource("1_o5qli")]
 process_mode = 0
-position = Vector2(8829, -3760)
+position = Vector2(7788, 12443)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1753659158 node_paths=PackedStringArray("target")]
 process_mode = 3
@@ -33,5 +34,9 @@ target_room = NodePath("../Room1")
 [node name="Room1" parent="Rooms" unique_id=1452672631 node_paths=PackedStringArray("target_room") instance=ExtResource("5_tbgi4")]
 target_room = NodePath("../Room2")
 
-[node name="Room2" parent="Rooms" unique_id=1099327698 instance=ExtResource("6_tefeu")]
+[node name="Room2" parent="Rooms" unique_id=1099327698 node_paths=PackedStringArray("target_room") instance=ExtResource("6_tefeu")]
 position = Vector2(8538, 8941)
+target_room = NodePath("../Room3")
+
+[node name="Room3" parent="Rooms" unique_id=2047389011 instance=ExtResource("8_tipki")]
+position = Vector2(8439, 16693)
