@@ -5,10 +5,10 @@ class_name Room extends Node2D
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var area_2d: Area2D = $TileMapLayer/Area2D
 @onready var collision_shape_2d: CollisionShape2D = $TileMapLayer/Area2D/CollisionShape2D
+@export var level_title: Label
 @export var target_room: Room
 @export var entrance: Area2D
 @export var exit: Area2D
-
 
 ## entrance's child
 var anim: AnimatedSprite2D
@@ -26,12 +26,14 @@ var restart: Button
 # Room Logic
 var is_current_room: bool = false
 var _is_door_closed: bool = false
+## Detects if player is colliding with the Area2D of the room
 var _player_inside := false
 ## For [b]one time[/b] room execution logic, currently used for the entrance closing animation
 var _player_just_entered := false
 ## Stores the initial positions of the hauntables
 var _initial_positions: Dictionary = {}
-
+## The title of the level. Ex: Level 1 - Learning the Ropes
+@export var level_title_text: String = ""
 ## Getter for room limits
 func get_limits() -> Rect2:
 	return _limits
@@ -59,9 +61,13 @@ func _ready() -> void:
 	# Connect the restart's pressed signal to local function
 	if not restart.pressed.is_connected(_restore_initial_position):
 		restart.pressed.connect(_restore_initial_position)
+	# Set label title to not visible
+	level_title.visible = false
 
 func _process(delta: float) -> void:
 	if _player_just_entered:
+		level_title.text = level_title_text
+		level_title.typewrite(level_title.text)
 		_is_door_closed = false
 		anim.play("door_idle_open")
 		_player_just_entered = false
@@ -141,6 +147,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		
 		_player_inside = false
 		restart.pressed.disconnect(_restore_initial_position)
 

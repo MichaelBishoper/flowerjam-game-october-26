@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="27_cs1tg"]
 [ext_resource type="AudioStream" uid="uid://bplmqlbb8vukk" path="res://assets/sfx/sfx_settings_hover.wav" id="27_j2b1d"]
 [ext_resource type="AudioStream" uid="uid://b0uq5soxrtssj" path="res://assets/sfx/sfx_hauntable_move.mp3" id="29_dt7fs"]
+[ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="30_giy8y"]
 [ext_resource type="Texture2D" uid="uid://c5yh026qkf8mv" path="res://assets/RestartIcon.png" id="30_wnwbv"]
 [ext_resource type="Script" uid="uid://cw425v4v5ffm7" path="res://scripts/restart_button.gd" id="31_gl8cc"]
 [ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="34_md1ol"]
@@ -920,7 +921,7 @@ bus = &"UI Bus"
 [node name="RestartHover" type="AudioStreamPlayer" parent="." unique_id=1984590294]
 stream = ExtResource("27_cs1tg")
 volume_db = 4.0
-pitch_scale = 1.44
+pitch_scale = 2.3
 bus = &"UI Bus"
 
 [node name="SettingsHover" type="AudioStreamPlayer" parent="." unique_id=706020393]
@@ -936,6 +937,11 @@ stream = ExtResource("27_bj30b")
 pitch_scale = 1.54
 max_polyphony = 4
 bus = &"UI Bus"
+
+[node name="UiClick" type="AudioStreamPlayer" parent="." unique_id=586277471]
+stream = ExtResource("30_giy8y")
+volume_db = 2.0
+pitch_scale = 1.3
 
 [node name="CircleOverlay" type="CanvasLayer" parent="." unique_id=1767677307]
 layer = -1
@@ -1188,4 +1194,5 @@ autowrap_mode = 3
 [connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider" to="InGameMenu" method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/UIContainer/UISlider" to="InGameMenu" method="_on_ui_slider_value_changed"]
+[connection signal="mouse_entered" from="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Exit" to="InGameMenu" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Exit" to="InGameMenu" method="_on_exit_pressed"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Floweram game october 26"
-run/main_scene="uid://ptmtyxo2tpn4"
+run/main_scene="uid://dtbs3ooqj30q7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
