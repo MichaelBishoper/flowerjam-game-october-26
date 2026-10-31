@@ -4,6 +4,7 @@ extends Node2D
 @onready var player: Player = $Player
 
 func _ready() -> void:
+	get_tree().paused = false
 	# Hide the dim overlay for selecting mode
 	dim_overlay.hide()
 	

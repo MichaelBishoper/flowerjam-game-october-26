@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://fncguq8qdtvg"
 [autoload]
 
 TransitionsAutoload="*uid://buktpbmbjf0c4"
+SettingsAutoload="*uid://1ijtj0bc2t42"
 
 [display]
 

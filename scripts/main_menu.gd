@@ -27,6 +27,11 @@ extends CanvasLayer
 var tween: Tween
 
 func _ready() -> void:
+	# Set the volume slider values to the autoload's
+	music_slider.value = SettingsAutoload.music_volume
+	sfx_slider.value = SettingsAutoload.sfx_volume
+	ui_slider.value = SettingsAutoload.ui_volume
+	
 	settings_wheel.visible = true
 	menu.visible = true
 	settings_menu.visible = false
@@ -108,26 +113,26 @@ func _on_settings_pressed() -> void:
 func _on_music_slider_value_changed(value: float) -> void:
 	if not settings_menu.visible:
 		return
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music Bus"), linear_to_db(value))
-	# No Earrape Guard
-	if AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music Bus")) > 0.0:
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music Bus"), linear_to_db(0.0))
+	SettingsAutoload.music_volume = value
+	_apply_volume("Music Bus", value)
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	if not settings_menu.visible:
 		return
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX Bus"), linear_to_db(value))
-	# No Earrape Guard
-	if AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX Bus")) > 0.0:
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX Bus"), linear_to_db(0.0))
+	SettingsAutoload.sfx_volume = value
+	_apply_volume("SFX Bus", value)
 
 func _on_ui_slider_value_changed(value: float) -> void:
 	if not settings_menu.visible:
 		return
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI Bus"), linear_to_db(value))
-	# No Earrape Guard
-	#if AudioServer.get_bus_volume_db(AudioServer.get_bus_index("UI Bus")) > 0.0:
-		#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI Bus"), linear_to_db(0.0))
+	SettingsAutoload.ui_volume = value
+	_apply_volume("UI Bus", value, 2.0)
+
+## Helper function to set bus volumes
+func _apply_volume(bus_name: String, value: float, max_value := 1.0) -> void:
+	var bus := AudioServer.get_bus_index(bus_name)
+	# Clamps the volume between a linear range of 0.0 and 1.0
+	AudioServer.set_bus_volume_db(bus, linear_to_db(clampf(value, 0.0, max_value)))
 
 func _play_audio(audio_stream: AudioStreamPlayer) -> void:
 	if not audio_stream.playing:

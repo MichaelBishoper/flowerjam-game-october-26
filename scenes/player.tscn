@@ -886,13 +886,13 @@ bus = &"SFX Bus"
 
 [node name="Unhaunt" type="AudioStreamPlayer" parent="." unique_id=1751653451]
 stream = ExtResource("18_60mlk")
-volume_db = 5.0
+volume_db = 8.0
 pitch_scale = 1.3
 bus = &"SFX Bus"
 
 [node name="Selecting" type="AudioStreamPlayer" parent="." unique_id=573863796]
 stream = ExtResource("20_a38lo")
-volume_db = 1.944
+volume_db = 3.0
 pitch_scale = 1.33
 bus = &"SFX Bus"
 
@@ -1009,11 +1009,14 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_t4otl")
 script = ExtResource("36_jc3p3")
 settings_click = NodePath("../../SettingsClick")
 
-[node name="InGameMenu" type="CanvasLayer" parent="." unique_id=1834337478 node_paths=PackedStringArray("exit")]
+[node name="InGameMenu" type="CanvasLayer" parent="." unique_id=1834337478 node_paths=PackedStringArray("exit", "music_slider", "sfx_slider", "ui_slider")]
 process_mode = 2
 visible = false
 script = ExtResource("39_2dvfe")
 exit = NodePath("PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Exit")
+music_slider = NodePath("PurplePanel/MarginContainer/VBoxContainer/MusicContainer/MusicSlider")
+sfx_slider = NodePath("PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider")
+ui_slider = NodePath("PurplePanel/MarginContainer/VBoxContainer/UIContainer/UISlider")
 
 [node name="PurplePanel" type="PanelContainer" parent="InGameMenu" unique_id=1083411179]
 anchors_preset = 8
@@ -1181,4 +1184,8 @@ autowrap_mode = 3
 [connection signal="pressed" from="UI/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Settings" to="StateMachine/Idle" method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Settings" to="StateMachine/Moving" method="_on_settings_pressed"]
+[connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/MusicContainer/MusicSlider" to="InGameMenu" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/SFXContainer/SFXSlider" to="InGameMenu" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="InGameMenu/PurplePanel/MarginContainer/VBoxContainer/UIContainer/UISlider" to="InGameMenu" method="_on_ui_slider_value_changed"]
 [connection signal="pressed" from="InGameMenu/PurplePanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Exit" to="InGameMenu" method="_on_exit_pressed"]

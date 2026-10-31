@@ -38,18 +38,18 @@ offset_transform_pivot_ratio = Vector2(0, 0)
 
 [node name="Haunt" type="AudioStreamPlayer" parent="." unique_id=1999804372]
 stream = ExtResource("4_eans2")
-volume_db = 5.0
+volume_db = 8.0
 pitch_scale = 1.44
 
 [node name="UIClick" type="AudioStreamPlayer" parent="." unique_id=1681284847]
 stream = ExtResource("6_nxx8t")
-volume_db = -4.2
+volume_db = 2.0
 pitch_scale = 1.42
 bus = &"UI Bus"
 
 [node name="UiHover" type="AudioStreamPlayer" parent="." unique_id=783178385]
 stream = ExtResource("7_tcdxa")
-volume_db = -5.0
+volume_db = 2.0
 pitch_scale = 1.48
 bus = &"UI Bus"
 
