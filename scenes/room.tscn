@@ -117,14 +117,6 @@ collision_mask = 3
 layer = -2
 follow_viewport_enabled = true
 
-[node name="Decorations" type="TileMapLayer" parent="BackgroundLayer" unique_id=1459771147]
-z_index = -1
-tile_map_data = PackedByteArray("AAD8//f/AAACAAEAAAADAPf/AAACAAEAAED+//f/AAABAAEAAAD+//j/AAABAAEAAAD+//n/AAABAAEAAAD+//v/AAABAAEAAAD+//z/AAABAAEAAAD+//3/AAABAAIAAAD8//3/AAABAAAAAGD9//3/AAABAAEAAGD+//r/AAABAAEAAAA=")
-tile_set = SubResource("TileSet_ffxv4")
-
-[node name="Backgrounds" type="TileMapLayer" parent="BackgroundLayer" unique_id=1196533618]
-tile_set = SubResource("TileSet_85yof")
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=1263133582]
 layer = 9999
 
@@ -140,6 +132,14 @@ script = ExtResource("12_tk5fv")
 [node name="Timer" type="Timer" parent="UI/LevelTitle" unique_id=529242837]
 wait_time = 3.0
 one_shot = true
+
+[node name="Decorations" type="TileMapLayer" parent="." unique_id=1459771147]
+z_index = -1
+tile_map_data = PackedByteArray("AAD8//f/AAACAAEAAAADAPf/AAACAAEAAED+//f/AAABAAEAAAD+//j/AAABAAEAAAD+//n/AAABAAEAAAD+//v/AAABAAEAAAD+//z/AAABAAEAAAD+//3/AAABAAIAAAD8//3/AAABAAAAAGD9//3/AAABAAEAAGD+//r/AAABAAEAAAA=")
+tile_set = SubResource("TileSet_ffxv4")
+
+[node name="Backgrounds" type="TileMapLayer" parent="." unique_id=1196533618]
+tile_set = SubResource("TileSet_85yof")
 
 [connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
 [connection signal="area_entered" from="TileMapLayer/Area2D" to="." method="_on_area_2d_area_entered"]
