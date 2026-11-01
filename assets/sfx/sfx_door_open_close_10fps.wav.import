@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cqk2w2x5472kj"
-path="res://.godot/imported/sfx_door_open_close_10fps.wav-9eab865571948ecedf3b25fe77b54e33.sample"
+path="res://.godot/imported/sfx_door_open_close_10fps.wav-b5cd11b25a216d61fc1ed6b4b29c067d.sample"
 
 [deps]
 
-source_file="res://assets/sfx/sfx_door_open_close_10fps.wav"
-dest_files=["res://.godot/imported/sfx_door_open_close_10fps.wav-9eab865571948ecedf3b25fe77b54e33.sample"]
+source_file="res://Assets/sfx/sfx_door_open_close_10fps.wav"
+dest_files=["res://.godot/imported/sfx_door_open_close_10fps.wav-b5cd11b25a216d61fc1ed6b4b29c067d.sample"]
 
 [params]
 
