@@ -3,18 +3,19 @@
 [ext_resource type="Script" uid="uid://omo6x6dkqr17" path="res://scripts/room.gd" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://dc1puru13x0aq" path="res://scenes/beach_ball.tscn" id="2_7dqbv"]
 [ext_resource type="PackedScene" uid="uid://b37e4langim0i" path="res://scenes/exit.tscn" id="2_14vil"]
-[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
+[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://Assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
 [ext_resource type="Script" uid="uid://yp3t4qcqqgnr" path="res://scripts/room_transition.gd" id="2_jn645"]
 [ext_resource type="PackedScene" uid="uid://d38n6p3qfdp7" path="res://scenes/entrance.tscn" id="2_jxe34"]
 [ext_resource type="PackedScene" uid="uid://ivdboxirfpe2" path="res://scenes/balloon.tscn" id="2_qtoah"]
 [ext_resource type="PackedScene" uid="uid://brpycd08mf3p1" path="res://scenes/apple.tscn" id="2_qvc4m"]
 [ext_resource type="PackedScene" uid="uid://ew56m4hbw7vn" path="res://scenes/feather.tscn" id="2_ybpoa"]
-[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://assets/ObjectsTileset.png" id="3_85yof"]
+[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://Assets/ObjectsTileset.png" id="3_85yof"]
 [ext_resource type="FontFile" uid="uid://tgtvfg0b2jhp" path="res://Pelicula.otf" id="11_eom3m"]
 [ext_resource type="Script" uid="uid://cb6co6bqbhyip" path="res://scripts/level_title.gd" id="12_tk5fv"]
-[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
-[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
-[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://assets/sfx/sfx_door_open_close_10fps.wav" id="15_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://Assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
+[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://Assets/BackgroungTileset.png" id="13_dynfe"]
+[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://Assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://Assets/sfx/sfx_door_open_close_10fps.wav" id="15_3j2fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85yof"]
 texture = ExtResource("2_ffxv4")
@@ -43,6 +44,10 @@ texture_region_size = Vector2i(640, 640)
 3:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(109.83679, -320, 113.37988, -225.87404, 320, -227.6456, 320, -320)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-161.21204, -320, 320, -320, 320, -228.53137, -157.66893, -228.53137)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(190, -361, 320, -320, 320, 320, 190, 320)
+4:0/0 = 0
+4:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_36trf"]
 tile_size = Vector2i(640, 640)
@@ -59,13 +64,27 @@ texture_region_size = Vector2i(640, 640)
 1:1/0 = 0
 2:1/0 = 0
 1:2/0 = 0
+0:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ffxv4"]
 tile_size = Vector2i(640, 640)
 sources/0 = SubResource("TileSetAtlasSource_14vil")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfrn5"]
+texture = ExtResource("13_dynfe")
+texture_region_size = Vector2i(640, 640)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_85yof"]
 tile_size = Vector2i(640, 640)
+sources/0 = SubResource("TileSetAtlasSource_vfrn5")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tk5fv"]
 random_pitch = 1.1040713
@@ -150,6 +169,7 @@ tile_map_data = PackedByteArray("AAD8//f/AAACAAEAAAADAPf/AAACAAEAAED+//f/AAABAAE
 tile_set = SubResource("TileSet_ffxv4")
 
 [node name="Backgrounds" type="TileMapLayer" parent="." unique_id=1196533618]
+z_index = -2
 tile_set = SubResource("TileSet_85yof")
 
 [node name="Typewriter" type="AudioStreamPlayer" parent="." unique_id=2025071519]
