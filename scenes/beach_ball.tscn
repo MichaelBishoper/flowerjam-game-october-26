@@ -2,9 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://c64vg5atxulqv" path="res://scenes/hauntable.tscn" id="1_gdwxr"]
 [ext_resource type="Texture2D" uid="uid://fa7bqsccpvcw" path="res://assets/Ball.png" id="2_l0jqp"]
+[ext_resource type="AudioStream" uid="uid://dpc7dlkmfxvy6" path="res://assets/sfx/sfx_object_collide_3.wav" id="5_822s7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcwwn"]
 radius = 498.51166
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gcwwn"]
+random_pitch = 1.0110936
+streams_count = 1
+stream_0/stream = ExtResource("5_822s7")
 
 [node name="Node2D" unique_id=257149692 instance=ExtResource("1_gdwxr")]
 speed = 600.0
@@ -12,8 +18,9 @@ height = 600.0
 hauntable_max_speed = 600.0
 bounce_factor = 0.83
 
-[node name="RigidBody2D" parent="." index="0" unique_id=726434176]
+[node name="RigidBody2D" parent="." index="0" unique_id=726434176 groups=["beach_ball"]]
 gravity_scale = 0.5
+vel_threshold = 500.0
 
 [node name="Sprite2D" parent="RigidBody2D" index="0" unique_id=725471885]
 scale = Vector2(1, 1.025)
@@ -23,3 +30,9 @@ texture = ExtResource("2_l0jqp")
 position = Vector2(0, 3)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_gcwwn")
+
+[node name="ObjectCollision" parent="RigidBody2D" index="2" unique_id=2014118339]
+stream = SubResource("AudioStreamRandomizer_gcwwn")
+volume_db = 12.0
+pitch_scale = 0.52
+max_distance = 2500.0

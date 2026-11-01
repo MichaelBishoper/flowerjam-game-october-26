@@ -26,6 +26,7 @@ SettingsAutoload="*uid://1ijtj0bc2t42"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -33,6 +34,10 @@ window/stretch/aspect="expand"
 
 light="objects which don't affect the button"
 room="a group for every room"
+beach_ball=""
+apple=""
+balloon=""
+feather=""
 
 [input]
 

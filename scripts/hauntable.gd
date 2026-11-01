@@ -126,10 +126,3 @@ func _on_haunt_button_mouse_entered() -> void:
 	
 func _on_haunt_button_mouse_exited() -> void:
 	hide_shader()
-
-
-func _on_rigid_body_2d_body_entered(body: Node) -> void:
-	pass
-
-func _on_rigid_body_2d_body_exited(body: Node) -> void:
-	pass # Replace with function body.

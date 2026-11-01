@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2ntfj6grydsm"
-path="res://.godot/imported/Trapdoor.png-1c3cd3d82478f8864e21b8c63356b9b6.ctex"
+path="res://.godot/imported/Trapdoor.png-a6ae7e23499590ceebb706ffd606420d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Trapdoor.png"
-dest_files=["res://.godot/imported/Trapdoor.png-1c3cd3d82478f8864e21b8c63356b9b6.ctex"]
+source_file="res://assets/Trapdoor.png"
+dest_files=["res://.godot/imported/Trapdoor.png-a6ae7e23499590ceebb706ffd606420d.ctex"]
 
 [params]
 

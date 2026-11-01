@@ -184,4 +184,3 @@ func _on_exit_body_entered(body: Node2D) -> void:
 
 func _on_exit_body_exited(body: Node2D) -> void:
 	restart.disabled = false
-	print("The exit was exited ")

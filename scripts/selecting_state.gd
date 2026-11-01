@@ -32,8 +32,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	if circle_overlay:
 		circle_overlay.show_circle()
 		
-	print("Previous State: ", previous_state_path)
-	print("Current State: Selecting")
+	#print("Previous State: ", previous_state_path)
+	#print("Current State: Selecting")
 	
 	animated_sprite_2d.show()
 

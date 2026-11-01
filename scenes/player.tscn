@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://dbr1lf3c7ya7a" path="res://assets/sfx/sfx_reverse_button_hover.wav" id="27_giy8y"]
 [ext_resource type="AudioStream" uid="uid://bplmqlbb8vukk" path="res://assets/sfx/sfx_settings_hover.wav" id="27_j2b1d"]
 [ext_resource type="AudioStream" uid="uid://b0uq5soxrtssj" path="res://assets/sfx/sfx_hauntable_move.mp3" id="29_dt7fs"]
+[ext_resource type="AudioStream" uid="uid://dqfhsyrxfdfej" path="res://assets/sfx/sfx_reverse_button_disabled_hover.wav" id="29_g5jhy"]
 [ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="30_giy8y"]
 [ext_resource type="Texture2D" uid="uid://c5yh026qkf8mv" path="res://assets/RestartIcon.png" id="30_wnwbv"]
 [ext_resource type="Script" uid="uid://cw425v4v5ffm7" path="res://scripts/restart_button.gd" id="31_gl8cc"]
@@ -895,7 +896,7 @@ bus = &"SFX Bus"
 
 [node name="Selecting" type="AudioStreamPlayer" parent="." unique_id=573863796]
 stream = ExtResource("20_a38lo")
-volume_db = 3.0
+volume_db = 12.0
 pitch_scale = 1.33
 bus = &"SFX Bus"
 
@@ -927,6 +928,14 @@ bus = &"UI Bus"
 stream = ExtResource("27_giy8y")
 volume_db = 4.0
 pitch_scale = 1.2
+bus = &"UI Bus"
+
+[node name="RestartDisabledHover" type="AudioStreamPlayer" parent="." unique_id=1941533605]
+process_mode = 3
+stream = ExtResource("29_g5jhy")
+volume_db = 4.0
+pitch_scale = 1.1
+max_polyphony = 4
 bus = &"UI Bus"
 
 [node name="SettingsHover" type="AudioStreamPlayer" parent="." unique_id=706020393]

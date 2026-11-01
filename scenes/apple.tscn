@@ -2,17 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://c64vg5atxulqv" path="res://scenes/hauntable.tscn" id="1_h071m"]
 [ext_resource type="Texture2D" uid="uid://c8r0qbat65afj" path="res://assets/Apple1080p.png" id="2_7vr8k"]
+[ext_resource type="AudioStream" uid="uid://d1mkwtthfk0vq" path="res://assets/sfx/sfx_object_collide_2.wav" id="3_3dmh2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7vr8k"]
+random_pitch = 2.196439
+random_volume_offset_db = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("3_3dmh2")
 
 [node name="Node2D" unique_id=257149692 instance=ExtResource("1_h071m")]
 height = 280.0
 bounce_factor = 0.168
 
-[node name="Sprite2D" parent="RigidBody2D" parent_id_path=PackedInt32Array(726434176) index="0" unique_id=725471885]
+[node name="RigidBody2D" parent="." index="0" unique_id=726434176 groups=["apple"]]
+
+[node name="Sprite2D" parent="RigidBody2D" index="0" unique_id=725471885]
 position = Vector2(1, 1.9999998)
 scale = Vector2(0.35, 0.359)
 texture = ExtResource("2_7vr8k")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" parent_id_path=PackedInt32Array(726434176) index="1" unique_id=1275608491]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" index="1" unique_id=1275608491]
 position = Vector2(1, 1.9999998)
 scale = Vector2(0.35, 0.359)
 polygon = PackedVector2Array(181.29999, -365.8, 169, -360.7, 169, -355.5, 122.20001, -271.3, -29.5, -318, -86, -318, -143.1, -306, -148.20001, -306, -218.1, -256, -222.6, -256, -309.6, -114, -312.7, -114, -363.7, 75, -368.7, 75, -342, 243.90002, -342, 249.59998, -214, 359.5, -214, 364.2, -123, 382.09998, -123, 385.40002, -8.599976, 381, -1.2000122, 381, 89.900024, 347, 94.29999, 347, 149.29999, 307, 152.59998, 307, 290.59998, 144, 294.59998, 144, 330.59998, 15, 335.2, 15, 327, -58, 327, -64.399994, 297, -124.399994, 297, -128.4, 188.79999, -226, 190.90002, -225.20001, 211.29999, -248.20001, 239, -235.6, 239, -228.1, 285.3, -240, 290.90002, -240, 296.59998, -250.20001, 268, -296.8, 268, -302, 210.40002, -322.6, 212, -325.5, 212, -335.1)
+
+[node name="ObjectCollision" parent="RigidBody2D" index="2" unique_id=2014118339]
+stream = SubResource("AudioStreamRandomizer_7vr8k")
+volume_db = -2.0
+pitch_scale = 4.0
+max_distance = 1200.0

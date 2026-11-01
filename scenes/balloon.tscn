@@ -6,7 +6,7 @@
 [node name="Node2D" unique_id=257149692 instance=ExtResource("1_tpd1t")]
 height = 330.0
 
-[node name="RigidBody2D" parent="." index="0" unique_id=726434176]
+[node name="RigidBody2D" parent="." index="0" unique_id=726434176 groups=["balloon"]]
 mass = 0.176
 gravity_scale = -0.9
 linear_damp = 2.0

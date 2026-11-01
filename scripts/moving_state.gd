@@ -32,8 +32,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 		flight_bar_updated.emit(flight_bar)
 	else: flight_bar = player.flight_max_time
 	
-	print("Previous State: ", previous_state_path)
-	print("Current State: Moving")
+	#print("Previous State: ", previous_state_path)
+	#print("Current State: Moving")
 	
 	# Store the audio sfx to an array
 	sfx_array = [press_down, press_left, press_right, press_up]
@@ -126,8 +126,8 @@ func physics_update(_delta: float) -> void:
 				if not bump_heavy.playing: 
 					bump_heavy.play()
 				animated_sprite_2d.play("bounce_up")
-				print(player.velocity.y)
-				print("Bounce Up")
+				#print(player.velocity.y)
+				#print("Bounce Up")
 	else:
 		if player.velocity.y < 550.0 and is_just_landed:
 			# Play Audio Bump Heavy

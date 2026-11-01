@@ -6,7 +6,7 @@
 [node name="Node2D" unique_id=257149692 instance=ExtResource("1_f7sq6")]
 height = 190.0
 
-[node name="RigidBody2D" parent="." index="0" unique_id=726434176 groups=["light"]]
+[node name="RigidBody2D" parent="." index="0" unique_id=726434176 groups=["feather", "light"]]
 mass = 0.069
 gravity_scale = 0.6
 linear_damp = 3.0

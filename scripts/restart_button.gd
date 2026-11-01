@@ -1,7 +1,8 @@
 extends Button
-# TODO: Create sound effects for restart and restart hover
+
 @onready var restart_click: AudioStreamPlayer = $"../../RestartClick"
 @onready var restart_hover: AudioStreamPlayer = $"../../RestartHover"
+@onready var restart_disabled_hover: AudioStreamPlayer = $"../../RestartDisabledHover"
 @onready var state_machine: StateMachine = $"../../StateMachine"
 
 var tween: Tween
@@ -41,6 +42,8 @@ func _on_mouse_entered() -> void:
 		tween = create_tween()
 		tween.tween_property(self, "rotation_degrees", 0.0, 0.15)
 		return
+	elif get_tree().paused:
+		restart_disabled_hover.play()
 	if tween and tween.is_running():
 		tween.kill()
 	tween = create_tween()

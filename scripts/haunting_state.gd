@@ -13,8 +13,8 @@ var hauntable: Hauntable
 var flight_bar: float
 
 func enter(previous_state_path: String, data := {}) -> void:	
-	print("Previous State: ", previous_state_path)
-	print("Current State: Haunting")
+	#print("Previous State: ", previous_state_path)
+	#print("Current State: Haunting")
 	settings.disabled = true
 	restart.disabled = true
 	

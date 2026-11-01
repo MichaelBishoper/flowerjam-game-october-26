@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dmwpn643m3y6b" path="res://scripts/hauntable.gd" id="1_6o2tq"]
 [ext_resource type="Shader" uid="uid://ce57r2iarm5jg" path="res://scripts/hauntable.gdshader" id="2_6ybic"]
 [ext_resource type="Texture2D" uid="uid://f5kui480qpkw" path="res://assets/sprites/icon.svg" id="2_ejxkj"]
+[ext_resource type="Script" uid="uid://dm57yidrcya4a" path="res://scripts/hauntable_rigid_body.gd" id="2_tcdxa"]
 [ext_resource type="PackedScene" uid="uid://binc5y666kb0r" path="res://assets/ExtraScenes/HauntButton2.tscn" id="3_6ybic"]
 [ext_resource type="AudioStream" uid="uid://lccxxmd3uxvp" path="res://assets/sfx/sfx_ghost_haunting.wav" id="4_eans2"]
 [ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="6_nxx8t"]
 [ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="7_tcdxa"]
-[ext_resource type="AudioStream" uid="uid://dfqew6xua16fi" path="res://assets/sfx/sfx_bump_light.mp3" id="8_tcdxa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eans2"]
 shader = ExtResource("2_6ybic")
@@ -19,19 +19,24 @@ shader_parameter/highlight_width = 15.0
 [node name="Node2D" type="Node2D" unique_id=257149692]
 script = ExtResource("1_6o2tq")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=726434176]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=726434176 node_paths=PackedStringArray("object_collision")]
 collision_layer = 4
 collision_mask = 5
 input_pickable = true
 mass = 1.473
 contact_monitor = true
-max_contacts_reported = 5
+max_contacts_reported = 2
+script = ExtResource("2_tcdxa")
+object_collision = NodePath("ObjectCollision")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=725471885]
 material = SubResource("ShaderMaterial_eans2")
 position = Vector2(1, 0.5)
 scale = Vector2(1.5625, 1.6015625)
 texture = ExtResource("2_ejxkj")
+
+[node name="ObjectCollision" type="AudioStreamPlayer2D" parent="RigidBody2D" unique_id=2014118339]
+bus = &"SFX Bus"
 
 [node name="HauntButton" parent="." unique_id=1470619825 instance=ExtResource("3_6ybic")]
 offset_transform_pivot_ratio = Vector2(0, 0)
@@ -52,12 +57,6 @@ stream = ExtResource("7_tcdxa")
 volume_db = 2.0
 pitch_scale = 1.48
 bus = &"UI Bus"
-
-[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=684612906]
-stream = ExtResource("8_tcdxa")
-volume_db = -5.474
-pitch_scale = 0.8
-bus = &"SFX Bus"
 
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
 [connection signal="body_exited" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_exited"]

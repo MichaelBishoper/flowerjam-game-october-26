@@ -23,4 +23,6 @@ func _on_button_pressed() -> void:
 	settings_click.play()
 
 func _on_mouse_entered() -> void:
+	if disabled:
+		return
 	settings_hover.play()
