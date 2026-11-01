@@ -146,8 +146,10 @@ z_index = -1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1925505038]
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_ba6v0")
-animation = &"door_idle_open"
+animation = &"door_swing_close"
 autoplay = "door_idle_open"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1127897736]
 position = Vector2(261, 3.5)
