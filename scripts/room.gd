@@ -9,6 +9,7 @@ class_name Room extends Node2D
 @export var target_room: Room
 @export var entrance: Area2D
 @export var exit: Area2D
+@export var door_swing_closed: AudioStreamPlayer2D
 
 ## entrance's child
 var anim: AnimatedSprite2D
@@ -79,6 +80,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.is_action_just_pressed("move_up") or 
 		Input.is_action_just_pressed("move_down")) and not _is_door_closed):
 		anim.play("door_swing_close")
+		await anim.animation_finished
+		anim.play("door_idle_close")
 		_is_door_closed = true
 	# If player is in selecting or haunting state then don't restart
 	if (Input.is_action_just_pressed("restart") and _player_inside 
@@ -151,7 +154,7 @@ func _on_body_exited(body: Node2D) -> void:
 		_player_inside = false
 		restart.pressed.disconnect(_restore_initial_position)
 
-# Fires when player enters the door
+# Fires when player enters the exit
 func _on_exit_body_entered(body: Node2D) -> void:
 	if target_room:
 		restart.disabled = true
@@ -162,7 +165,10 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		# Get the animatedsprite2d reference
 		var anim = exit.get_node("AnimatedSprite2D") as AnimatedSprite2D
 		anim.play("door_swing_close")
+		# Play audio
+		door_swing_closed.play()
 		await anim.animation_finished
+		anim.play("door_idle_close")
 		# Play room transition animation
 		await room_transition.transition_enter()
 		var spawn_point := target_room.entrance.global_position

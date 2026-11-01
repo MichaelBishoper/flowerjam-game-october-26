@@ -6,6 +6,7 @@ extends CanvasLayer
 @export var ui_slider: HSlider
 @onready var restart_hover: AudioStreamPlayer = $"../RestartHover"
 @onready var ui_click: AudioStreamPlayer = $"../UiClick"
+@onready var ui_hover: AudioStreamPlayer = $"../UiHover"
 
 func _ready() -> void:
 	# Set the slider volumes to the autoload's
@@ -36,4 +37,4 @@ func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_exit_mouse_entered() -> void:
-	restart_hover.play()
+	ui_hover.play()

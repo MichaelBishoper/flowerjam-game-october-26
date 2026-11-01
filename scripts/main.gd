@@ -13,7 +13,7 @@ func _ready() -> void:
 	TransitionsAutoload.transition_finished.connect(_on_transition_finished)
 
 func _on_transition_started() -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(-5.00))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -2.00)
 	player.set_physics_process(false)
 	
 func _on_transition_finished() -> void:

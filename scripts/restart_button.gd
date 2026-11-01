@@ -10,6 +10,7 @@ func _ready() -> void:
 	disabled = false
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	pressed.connect(_on_button_pressed)
 	
 func _process(delta: float) -> void:
 	pass
@@ -59,3 +60,6 @@ func _on_mouse_exited() -> void:
 	tween = create_tween()
 	tween.tween_property(self, "rotation_degrees", 0.0, 0.38
 	).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+
+func _on_button_pressed() -> void:
+	restart_click.play()

@@ -32,6 +32,8 @@
 [ext_resource type="AudioStream" uid="uid://tkieuomcp7qr" path="res://assets/sfx/sfx_bump_heavy.mp3" id="27_31cv2"]
 [ext_resource type="AudioStream" uid="uid://utrfkqibyc6h" path="res://assets/sfx/sfx_settings_click.wav" id="27_bj30b"]
 [ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="27_cs1tg"]
+[ext_resource type="AudioStream" uid="uid://mqah45mtfu5n" path="res://assets/sfx/sfx_reverse_button_pressed.wav" id="27_fdfoy"]
+[ext_resource type="AudioStream" uid="uid://dbr1lf3c7ya7a" path="res://assets/sfx/sfx_reverse_button_hover.wav" id="27_giy8y"]
 [ext_resource type="AudioStream" uid="uid://bplmqlbb8vukk" path="res://assets/sfx/sfx_settings_hover.wav" id="27_j2b1d"]
 [ext_resource type="AudioStream" uid="uid://b0uq5soxrtssj" path="res://assets/sfx/sfx_hauntable_move.mp3" id="29_dt7fs"]
 [ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="30_giy8y"]
@@ -916,12 +918,15 @@ pitch_scale = 1.14
 bus = &"SFX Bus"
 
 [node name="RestartClick" type="AudioStreamPlayer" parent="." unique_id=1898814905]
+stream = ExtResource("27_fdfoy")
+volume_db = 4.0
+max_polyphony = 4
 bus = &"UI Bus"
 
 [node name="RestartHover" type="AudioStreamPlayer" parent="." unique_id=1984590294]
-stream = ExtResource("27_cs1tg")
+stream = ExtResource("27_giy8y")
 volume_db = 4.0
-pitch_scale = 2.3
+pitch_scale = 1.2
 bus = &"UI Bus"
 
 [node name="SettingsHover" type="AudioStreamPlayer" parent="." unique_id=706020393]
@@ -940,8 +945,17 @@ bus = &"UI Bus"
 
 [node name="UiClick" type="AudioStreamPlayer" parent="." unique_id=586277471]
 stream = ExtResource("30_giy8y")
-volume_db = 2.0
+volume_db = 3.0
 pitch_scale = 1.3
+max_polyphony = 4
+bus = &"UI Bus"
+
+[node name="UiHover" type="AudioStreamPlayer" parent="." unique_id=294078407]
+stream = ExtResource("27_cs1tg")
+volume_db = 4.0
+pitch_scale = 1.7
+max_polyphony = 4
+bus = &"UI Bus"
 
 [node name="CircleOverlay" type="CanvasLayer" parent="." unique_id=1767677307]
 layer = -1

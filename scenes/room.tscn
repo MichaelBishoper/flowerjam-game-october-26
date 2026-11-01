@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://assets/ObjectsTileset.png" id="3_85yof"]
 [ext_resource type="FontFile" uid="uid://tgtvfg0b2jhp" path="res://Pelicula.otf" id="11_eom3m"]
 [ext_resource type="Script" uid="uid://cb6co6bqbhyip" path="res://scripts/level_title.gd" id="12_tk5fv"]
+[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
+[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://assets/sfx/sfx_door_open_close_10fps.wav" id="15_3j2fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85yof"]
 texture = ExtResource("2_ffxv4")
@@ -64,11 +67,18 @@ sources/0 = SubResource("TileSetAtlasSource_14vil")
 [sub_resource type="TileSet" id="TileSet_85yof"]
 tile_size = Vector2i(640, 640)
 
-[node name="Node2D" type="Node2D" unique_id=841318414 node_paths=PackedStringArray("level_title", "entrance", "exit") groups=["room"]]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tk5fv"]
+random_pitch = 1.1040713
+streams_count = 2
+stream_0/stream = ExtResource("13_23wr2")
+stream_1/stream = ExtResource("14_3j2fx")
+
+[node name="Node2D" type="Node2D" unique_id=841318414 node_paths=PackedStringArray("level_title", "entrance", "exit", "door_swing_closed") groups=["room"]]
 script = ExtResource("1_36trf")
 level_title = NodePath("UI/LevelTitle")
 entrance = NodePath("Entrance")
 exit = NodePath("Exit")
+door_swing_closed = NodePath("DoorSwingClosed")
 
 [node name="Balloon" parent="." unique_id=257149692 instance=ExtResource("2_qtoah")]
 position = Vector2(-1201, -328)
@@ -120,7 +130,7 @@ follow_viewport_enabled = true
 [node name="UI" type="CanvasLayer" parent="." unique_id=1263133582]
 layer = 9999
 
-[node name="LevelTitle" type="Label" parent="UI" unique_id=153452599]
+[node name="LevelTitle" type="Label" parent="UI" unique_id=153452599 node_paths=PackedStringArray("typewriter")]
 offset_left = 17.0
 offset_top = 16.0
 offset_right = 394.0
@@ -128,6 +138,7 @@ offset_bottom = 41.0
 theme_override_fonts/font = ExtResource("11_eom3m")
 theme_override_font_sizes/font_size = 24
 script = ExtResource("12_tk5fv")
+typewriter = NodePath("../../Typewriter")
 
 [node name="Timer" type="Timer" parent="UI/LevelTitle" unique_id=529242837]
 wait_time = 3.0
@@ -140,6 +151,17 @@ tile_set = SubResource("TileSet_ffxv4")
 
 [node name="Backgrounds" type="TileMapLayer" parent="." unique_id=1196533618]
 tile_set = SubResource("TileSet_85yof")
+
+[node name="Typewriter" type="AudioStreamPlayer" parent="." unique_id=2025071519]
+stream = SubResource("AudioStreamRandomizer_tk5fv")
+volume_db = 3.0
+bus = &"UI Bus"
+
+[node name="DoorSwingClosed" type="AudioStreamPlayer2D" parent="." unique_id=1415697428]
+stream = ExtResource("15_3j2fx")
+volume_db = 12.0
+max_distance = 4096.0
+bus = &"SFX Bus"
 
 [connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
 [connection signal="area_entered" from="TileMapLayer/Area2D" to="." method="_on_area_2d_area_entered"]

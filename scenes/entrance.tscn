@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d38n6p3qfdp7"]
 
+[ext_resource type="Script" uid="uid://7d487dy4lhqy" path="res://scripts/entrance.gd" id="1_ba6v0"]
 [ext_resource type="Texture2D" uid="uid://hkh61q7hu2vh" path="res://assets/DoorAnim.png" id="1_kwwjj"]
+[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://assets/sfx/sfx_door_open_close_10fps.wav" id="3_j8c1m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uste"]
 atlas = ExtResource("1_kwwjj")
@@ -140,17 +142,26 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwwjj"]
 size = Vector2(454, 839)
 
-[node name="Area2D" type="Area2D" unique_id=1778236408]
+[node name="Area2D" type="Area2D" unique_id=1778236408 node_paths=PackedStringArray("door_swing_close")]
 z_index = -1
+script = ExtResource("1_ba6v0")
+door_swing_close = NodePath("DoorSwingClose")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1925505038]
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_ba6v0")
 animation = &"door_swing_close"
 autoplay = "door_idle_open"
-frame = 6
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1127897736]
 position = Vector2(261, 3.5)
 shape = SubResource("RectangleShape2D_kwwjj")
+
+[node name="DoorSwingClose" type="AudioStreamPlayer2D" parent="." unique_id=623408576]
+stream = ExtResource("3_j8c1m")
+volume_db = 13.6
+max_distance = 4096.0
+bus = &"SFX Bus"
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
