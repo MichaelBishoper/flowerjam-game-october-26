@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cc77y1qv6nfep"
-path="res://.godot/imported/Pelicula.otf-b0896a234d56beaca1774c5c8a10afb1.fontdata"
+path="res://.godot/imported/Pelicula.otf-6ac31c4d484d353bb115a5a2bc648839.fontdata"
 
 [deps]
 
-source_file="res://assets/UIS/Pelicula.otf"
-dest_files=["res://.godot/imported/Pelicula.otf-b0896a234d56beaca1774c5c8a10afb1.fontdata"]
+source_file="res://Assets/UIS/Pelicula.otf"
+dest_files=["res://.godot/imported/Pelicula.otf-6ac31c4d484d353bb115a5a2bc648839.fontdata"]
 
 [params]
 

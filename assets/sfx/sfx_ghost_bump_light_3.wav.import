@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dylxjhfx0o4et"
-path="res://.godot/imported/sfx_ghost_bump_light_3.wav-e47135663a99daed8742f5e2c13ab7e2.sample"
+path="res://.godot/imported/sfx_ghost_bump_light_3.wav-d5b66e084d2f8c3aa62037836595c71a.sample"
 
 [deps]
 
-source_file="res://assets/sfx/sfx_ghost_bump_light_3.wav"
-dest_files=["res://.godot/imported/sfx_ghost_bump_light_3.wav-e47135663a99daed8742f5e2c13ab7e2.sample"]
+source_file="res://Assets/sfx/sfx_ghost_bump_light_3.wav"
+dest_files=["res://.godot/imported/sfx_ghost_bump_light_3.wav-d5b66e084d2f8c3aa62037836595c71a.sample"]
 
 [params]
 
