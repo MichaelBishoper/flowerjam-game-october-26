@@ -138,7 +138,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0aq0"]
-size = Vector2(448.5, 833.5)
+size = Vector2(457, 692)
 
 [node name="Area2D" type="Area2D" unique_id=1149179101]
 z_index = -1
@@ -151,5 +151,5 @@ animation = &"door_idle_open"
 autoplay = "door_idle_open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1004069515]
-position = Vector2(264.75, 1.25)
+position = Vector2(260.5, 72)
 shape = SubResource("RectangleShape2D_l0aq0")

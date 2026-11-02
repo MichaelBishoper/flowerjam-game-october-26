@@ -53,27 +53,28 @@ func _on_flight_bar_updated(flight_left: float) -> void:
 	h_slider.value = flight_left
 
 func physics_update(_delta: float) -> void:
-	# For the downwards raycast to update the result to the current frame's
-	ray.force_raycast_update()
-	# Raycast/Hover Logic
-	if ray.is_colliding():
-		var ground_y := ray.get_collision_point().y
-		# NOTE: Godot uses negative y coordiantes to mean up, so the lower point has the greater y value!!!!
-		var target_y := ground_y - player.hover_height
-		var current_y := player.global_position.y
+	if not Input.is_action_pressed("move_down"):
+		# For the downwards raycast to update the result to the current frame's
+		ray.force_raycast_update()
+		# Raycast/Hover Logic
+		if ray.is_colliding():
+			var ground_y := ray.get_collision_point().y
+			# NOTE: Godot uses negative y coordiantes to mean up, so the lower point has the greater y value!!!!
+			var target_y := ground_y - player.hover_height
+			var current_y := player.global_position.y
+			
+			# Pull up the player if it is below the target_y
+			if current_y > target_y:
+				player.global_position.y = move_toward(current_y, target_y, player.hover_snap)
+				if player.velocity.y > 0.0:
+					player.velocity.y = 0.0
 		
-		# Pull up the player if it is below the target_y
-		if current_y > target_y:
-			player.global_position.y = move_toward(current_y, target_y, player.hover_snap)
-			if player.velocity.y > 0.0:
-				player.velocity.y = 0.0
-	
 	# Movement Logic
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var target := Vector2(input_dir.x * player.max_speed_x, input_dir.y * player.max_speed_y)
 	
-	## DEBUG PRINTS
-	#print("Player Velo: ", player.velocity.y)
+	# DEBUG PRINTS
+	print("Player Velo: ", player.velocity.y)
 	#print("Target Velo: ", target.y)
 	
 	# Horizontal Movement
@@ -94,43 +95,43 @@ func physics_update(_delta: float) -> void:
 		flight_bar -= _delta
 		player.velocity.y = move_toward(player.velocity.y, player.flight_acceleration, 2000.0 * _delta)
 	else:
-		# Audio logic
 		if moving.playing:
 			moving.stop()
-		# Horizontal Movement
 		# Falling input
 		if Input.is_action_just_pressed("move_down"):
 			player.velocity.y = move_toward(player.velocity.y, target.y, player.acceleration_y * _delta)
 		else:
-			# player.velocity.y = move_toward(player.velocity.y, 0.0, player.friction_y * _delta)
 			# Apply gravity
 			player.velocity.y += player.gravity * _delta
-			player.velocity.y = minf(player.velocity.y, player.max_fall_speed) # Clamp to max fall speed
+			player.velocity.y = minf(player.velocity.y, player.max_fall_speed) 
 		
 	# Collisions and their animations and audio
 	if collision:
 		if player.velocity.x * 1.3 > player.velocity.y:
+			# PLAYER BUMPS RIGHT
 			if player.velocity.x > 200.0:
-				# Play Audio Bump Heavy
 				if not bump_heavy.playing: 
 					bump_heavy.play()
 				animated_sprite_2d.play("bounce")
+			# PLAYER BUMPS LEFT
 			if player.velocity.x < -200.0:
-				# Play Audio Bump Heavy
 				if not bump_heavy.playing: 
 					bump_heavy.play()
 				animated_sprite_2d.play("bounce")
 		elif player.velocity.x < player.velocity.y:
+			# PLAYER BUMPS UP
 			if player.velocity.y > 550.0:
-				# Play Audio Bump Heavy
 				if not bump_heavy.playing: 
 					bump_heavy.play()
 				animated_sprite_2d.play("bounce_up")
-				#print(player.velocity.y)
-				#print("Bounce Up")
+			if player.velocity.y < -550.0:
+				if not bump_heavy.playing:
+					bump_heavy.play()
+				print("Bounce Down")
 	else:
+		# PLAYER LANDS HOVERING
 		if player.velocity.y < 550.0 and is_just_landed:
-			# Play Audio Bump Heavy
+			#TODO: Change this to a light hover sound
 			if not bump_heavy.playing: 
 				bump_heavy.play()
 			# DEBUG: For Velocity

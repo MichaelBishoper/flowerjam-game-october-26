@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b116r317rvve2" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ct1sle1rngi2o" path="res://scenes/debug_line.tscn" id="2_ur7pv"]
-[ext_resource type="Shader" uid="uid://c07wflnt7ille" path="res://scripts/player.gdshader" id="3_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://b4ysvtw1lq8gc" path="res://assets/BumpAnim.png" id="3_fulsm"]
+[ext_resource type="Texture2D" uid="uid://cbk0rox3wd0di" path="res://assets/Arrow.png" id="3_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://cbicdmy2t0l2i" path="res://assets/BobbingAnim.png" id="3_pf23h"]
 [ext_resource type="Script" uid="uid://cpge50vk0ftif" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cfxl0wn8nx81a" path="res://assets/Ghost1080.png" id="3_smehm"]
 [ext_resource type="Texture2D" uid="uid://3xdcqivymh2i" path="res://assets/GhostDisappear.png" id="3_ur7pv"]
 [ext_resource type="Script" uid="uid://w2op0g5f2b3d" path="res://scripts/idle_state.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://ch4qsis451iu7" path="res://scripts/arrow.gd" id="4_holxr"]
 [ext_resource type="Texture2D" uid="uid://cy2oqyhbi1ggr" path="res://assets/BumpUpAnim.png" id="5_487ah"]
 [ext_resource type="Script" uid="uid://bco1egyooxysj" path="res://scripts/moving_state.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://b4abfu4ubvqu0" path="res://scripts/haunt_detection.gd" id="7_fjrip"]
@@ -578,15 +579,8 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4r5pv"]
-shader = ExtResource("3_4r5pv")
-shader_parameter/shadow_skew = Vector2(2.1, -1)
-shader_parameter/shadow_scale_y = 0.9
-shader_parameter/shadow_color = Color(0, 0, 0, 0.4)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
-radius = 116.0
-height = 272.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5jhy"]
+size = Vector2(230, 266)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
 radius = 1019.7083
@@ -796,37 +790,35 @@ gravity = 1100.0
 max_fall_speed = 3000.0
 flight_acceleration = -1200.0
 flight_refill_time = 2.0
-hover_height = 176.0
+hover_height = 250.0
 hover_snap = 10.0
 arrow_scene = ExtResource("2_ur7pv")
 
 [node name="Ray" type="RayCast2D" parent="." unique_id=538880254]
 target_position = Vector2(0, 800)
 
+[node name="Arrow" type="Sprite2D" parent="." unique_id=674759685]
+z_index = 1
+position = Vector2(9.9476e-13, 280.00003)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_g5jhy")
+script = ExtResource("4_holxr")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91838598]
 z_index = 1
 material = SubResource("ShaderMaterial_fulsm")
 position = Vector2(3, -19)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_wgif1")
 animation = &"temporary_secretary"
 autoplay = "bob"
 script = ExtResource("7_wqfne")
 
-[node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=61936293]
-visible = false
-material = SubResource("ShaderMaterial_4r5pv")
-position = Vector2(3, -19)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_wgif1")
-animation = &"bounce"
-frame = 13
-frame_progress = 1.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537371190]
 z_index = 99
-position = Vector2(5, -6)
-shape = SubResource("CapsuleShape2D_sugp2")
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_g5jhy")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1354941162 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_qhqgy")
@@ -834,10 +826,13 @@ initial_state = NodePath("Moving")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=698504713]
 script = ExtResource("4_dqkch")
-bob_amplitude = 9.0
+bob_frequency = 0.2
+bob_amplitude = 40.0
 
 [node name="Moving" type="Node" parent="StateMachine" unique_id=645583584]
 script = ExtResource("5_qlg0r")
+bob_frequency = 5.0
+bob_amplitude = 15.0
 
 [node name="Selecting" type="Node" parent="StateMachine" unique_id=79143708 node_paths=PackedStringArray("settings")]
 script = ExtResource("7_smehm")
@@ -853,6 +848,7 @@ collision_mask = 4
 script = ExtResource("7_fjrip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HauntDetection" unique_id=2091547254]
+visible = false
 shape = SubResource("CircleShape2D_fjrip")
 
 [node name="PressRight" type="AudioStreamPlayer2D" parent="." unique_id=1975942559]
