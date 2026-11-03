@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dbr1lf3c7ya7a"
-path="res://.godot/imported/sfx_reverse_button_hover.wav-aacb2c8d31d3d33aa11ea3069ba95075.sample"
+path="res://.godot/imported/sfx_reverse_button_hover.wav-006a26c9d1948ae3592c63867ac5bb7e.sample"
 
 [deps]
 
-source_file="res://assets/sfx/sfx_reverse_button_hover.wav"
-dest_files=["res://.godot/imported/sfx_reverse_button_hover.wav-aacb2c8d31d3d33aa11ea3069ba95075.sample"]
+source_file="res://Assets/sfx/sfx_reverse_button_hover.wav"
+dest_files=["res://.godot/imported/sfx_reverse_button_hover.wav-006a26c9d1948ae3592c63867ac5bb7e.sample"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs8acfrgwpjs5"
-path="res://.godot/imported/Settings Wheel.png-23d1ef5e7fee3cf0d67c565b74b7c126.ctex"
+path="res://.godot/imported/Settings Wheel.png-cd4a45eff978490b58e2543163c27ebb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UIS/Settings Wheel.png"
-dest_files=["res://.godot/imported/Settings Wheel.png-23d1ef5e7fee3cf0d67c565b74b7c126.ctex"]
+source_file="res://Assets/UIS/Settings Wheel.png"
+dest_files=["res://.godot/imported/Settings Wheel.png-cd4a45eff978490b58e2543163c27ebb.ctex"]
 
 [params]
 
