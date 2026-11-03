@@ -3,46 +3,42 @@
 [ext_resource type="PackedScene" uid="uid://df1vw8nxrtidc" path="res://scenes/room.tscn" id="1_qpftx"]
 [ext_resource type="PackedScene" uid="uid://w1l35gvwqhsd" path="res://scenes/trapdoor.tscn" id="2_qv4bs"]
 [ext_resource type="PackedScene" uid="uid://cqqv14lquhlm3" path="res://scenes/button.tscn" id="3_0o14w"]
+[ext_resource type="PackedScene" uid="uid://dc1puru13x0aq" path="res://scenes/beach_ball.tscn" id="3_ios0g"]
+[ext_resource type="PackedScene" uid="uid://brpycd08mf3p1" path="res://scenes/apple.tscn" id="5_3doyr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
 size = Vector2(6327, 5141)
 
 [node name="Node2D" unique_id=841318414 instance=ExtResource("1_qpftx")]
 
-[node name="Trapdoor" parent="." index="0" unique_id=290507245 instance=ExtResource("2_qv4bs")]
-position = Vector2(2559, -7002)
-
-[node name="Balloon" parent="." index="1" unique_id=257149692]
-visible = false
-
-[node name="Feather" parent="." index="2" unique_id=1397094081]
-visible = false
-
-[node name="BeachBall" parent="." index="3" unique_id=169957972]
-position = Vector2(2914, -4818)
-
-[node name="Apple" parent="." index="4" unique_id=1868249461]
-position = Vector2(-2292, -6547)
-
-[node name="Button" parent="." index="5" unique_id=901847498 node_paths=PackedStringArray("trapdoor") instance=ExtResource("3_0o14w")]
+[node name="Button" parent="." index="0" unique_id=901847498 node_paths=PackedStringArray("trapdoor") instance=ExtResource("3_0o14w")]
 position = Vector2(2240, -3296)
 trapdoor = NodePath("../Trapdoor")
 
-[node name="Entrance" parent="." index="7" unique_id=1778236408]
+[node name="BeachBall" parent="." index="1" unique_id=257149692 instance=ExtResource("3_ios0g")]
+position = Vector2(2864, -4785)
+
+[node name="Trapdoor" parent="." index="2" unique_id=290507245 instance=ExtResource("2_qv4bs")]
+position = Vector2(2559, -7002)
+
+[node name="Apple" parent="." index="3" unique_id=1536450596 instance=ExtResource("5_3doyr")]
+position = Vector2(-2253, -6632)
+
+[node name="Entrance" parent="." index="5" unique_id=1778236408]
 position = Vector2(-1751, -4891)
 
-[node name="Exit" parent="." index="8" unique_id=551753817]
+[node name="Exit" parent="." index="6" unique_id=551753817]
 position = Vector2(2094, -6178)
 
-[node name="TileMapLayer" parent="." index="9" unique_id=990599543]
+[node name="TileMapLayer" parent="." index="7" unique_id=990599543]
 tile_map_data = PackedByteArray("AAADAPv/AAABAAAAAAD8//v/AAAAAAAAABADAPf/AAABAAAAAAD8//f/AAAAAAEAABD+//f/AAADAAIAAAD///f/AAADAAIAABABAPf/AAAAAAEAAAACAPf/AAACAAAAABAEAPv/AAAAAAAAABAEAPr/AAAAAAIAADAEAPn/AAAEAAEAABAEAPf/AAAEAAEAAAD8//b/AAABAAEAABABAPb/AAABAAEAAAACAPb/AAAAAAEAABD9//v/AAABAAAAAAACAPv/AAAAAAAAAAABAPv/AAABAAAAAAD///v/AAABAAAAAAAAAPv/AAABAAAAAAD8//n/AAAEAAAAABD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAACAPn/AAAEAAEAAAAFAPn/AAAEAAAAAAABAPn/AAABAAAAAAAAAPn/AAABAAAAAAACAPX/AAABAAEAABAEAPX/AAACAAEAAAAFAPX/AAABAAEAAAD8//X/AAAAAAEAABD8//T/AAAAAAEAABD8//P/AAABAAEAABD9//P/AAACAAEAAAD+//P/AAACAAEAAAD///P/AAACAAEAAAAAAPP/AAACAAEAAAABAPP/AAACAAEAAAACAPP/AAACAAEAAAADAPP/AAACAAEAAAAEAPP/AAACAAEAAAAFAPP/AAABAAEAAAAFAPT/AAAAAAEAAAAFAPb/AAAAAAEAAAAFAPf/AAABAAEAAAAFAPj/AAABAAEAAAABAPX/AAAAAAEAAAABAPj/AAABAAIAAAD8//j/AAAAAAEAABD8//r/AAAAAAEAABAFAPr/AAAAAAEAAAAFAPv/AAAAAAAAAAD+//v/AAABAAAAAAACAPr/AAAAAAIAACACAPj/AAADAAIAABAAAPj/AAADAAIAAAA=")
 
 [node name="CollisionShape2D" parent="TileMapLayer/Area2D" parent_id_path=PackedInt32Array(1942567451) index="0" unique_id=1718028998]
 position = Vector2(651.5, -5698.5)
 shape = SubResource("RectangleShape2D_choun")
 
-[node name="Decorations" parent="." index="10" unique_id=1459771147]
+[node name="Decorations" parent="." index="8" unique_id=1459771147]
 tile_map_data = PackedByteArray("AAD+//r/AAAAAAEAAAACAPf/AAAAAAAAAAD8//n/AAACAAEAAAAFAPn/AAACAAEAABD8//r/AAACAAAAAAD///r/AAABAAEAAAD///n/AAABAAEAAAD///j/AAABAAAAACD///f/AAABAAEAAAD///b/AAABAAEAAAD///X/AAABAAAAAAD///T/AAABAAEAAAD///P/AAABAAEAAAA=")
 
-[node name="Backgrounds" parent="." index="11" unique_id=1196533618]
+[node name="Backgrounds" parent="." index="9" unique_id=1196533618]
 tile_map_data = PackedByteArray("AAAFAPf/AAABAAIAAAAFAPb/AAABAAIAAAAFAPj/AAABAAIAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAADAPn/AAAAAAAAADD8//j/AAAAAAAAAAD9//j/AAAAAAAAAAD+//j/AAAAAAAAAAD///j/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAD8//r/AAAAAAAAAAD9//r/AAABAAIAAAD+//r/AAAAAAIAABD///r/AAAAAAAAAAAAAPr/AAABAAIAAAABAPr/AAAAAAEAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAIAAAD+//b/AAABAAAAABD///b/AAABAAAAAAD8//X/AAAAAAAAAAACAPT/AAAAAAAAAAADAPT/AAAAAAAAAAAEAPT/AAAAAAAAAAAFAPT/AAAAAAAAAAAAAPf/AAABAAAAABA=")

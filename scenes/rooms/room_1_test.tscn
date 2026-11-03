@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://dlmp55cqlh6ex"]
 
 [ext_resource type="PackedScene" uid="uid://df1vw8nxrtidc" path="res://scenes/room.tscn" id="1_tumgv"]
+[ext_resource type="PackedScene" uid="uid://ew56m4hbw7vn" path="res://scenes/feather.tscn" id="2_ugfkt"]
+[ext_resource type="PackedScene" uid="uid://brpycd08mf3p1" path="res://scenes/apple.tscn" id="3_0sm7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnbyo"]
 size = Vector2(7581.5, 3888.5)
@@ -8,33 +10,27 @@ size = Vector2(7581.5, 3888.5)
 [node name="Node2D" unique_id=841318414 instance=ExtResource("1_tumgv")]
 level_title_text = "Level One - Learning"
 
-[node name="Balloon" parent="." index="0" unique_id=257149692]
-visible = false
+[node name="Feather" parent="." index="0" unique_id=257149692 instance=ExtResource("2_ugfkt")]
+position = Vector2(1024, -5329)
 
-[node name="Feather" parent="." index="1" unique_id=1397094081]
-position = Vector2(903, -5341)
+[node name="Apple" parent="." index="1" unique_id=1444807279 instance=ExtResource("3_0sm7t")]
+position = Vector2(-350, -4649)
 
-[node name="BeachBall" parent="." index="2" unique_id=169957972]
-position = Vector2(3258, -5195)
-
-[node name="Apple" parent="." index="3" unique_id=1868249461]
-position = Vector2(-522, -4685)
-
-[node name="Entrance" parent="." index="5" unique_id=1778236408]
+[node name="Entrance" parent="." index="3" unique_id=1778236408]
 position = Vector2(-1543, -4907)
 
-[node name="Exit" parent="." index="6" unique_id=551753817]
+[node name="Exit" parent="." index="4" unique_id=551753817]
 position = Vector2(3731, -2986)
 
-[node name="TileMapLayer" parent="." index="7" unique_id=990599543]
+[node name="TileMapLayer" parent="." index="5" unique_id=990599543]
 tile_map_data = PackedByteArray("AAD8//f/AAAAAAEAABAAAPf/AAAAAAEAAAABAPf/AAACAAEAADAEAPz/AAAAAAAAAAAEAPn/AAADAAIAAAD8//b/AAABAAEAABD9//b/AAACAAEAAAD+//b/AAACAAEAAAD///b/AAACAAEAAAAAAPb/AAABAAEAAAABAPb/AAABAAEAABACAPb/AAACAAEAAAADAPb/AAACAAEAAAAEAPb/AAACAAEAAAABAPv/AAAAAAEAABAAAPv/AAAAAAEAAAD8//n/AAAAAAAAABD9//n/AAABAAAAAAD+//n/AAABAAAAAAD///n/AAABAAAAAAAAAPn/AAAEAAAAAAABAPn/AAAEAAAAABAAAPj/AAABAAIAAAABAPj/AAABAAIAABAFAPn/AAACAAEAAAAAAPr/AAAAAAEAAAAGAPn/AAACAAEAAAAHAPn/AAABAAEAAAAHAPr/AAAAAAEAAAAHAPv/AAAAAAEAAAAHAPz/AAAAAAAAAAABAPz/AAAAAAAAABAAAPz/AAAAAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAD8//j/AAAAAAEAABD///z/AAABAAAAAAAHAPj/AAAAAAEAAAAHAPf/AAAAAAEAAAAHAPb/AAABAAEAAAAGAPb/AAACAAEAAAD+//z/AAABAAAAAAD9//z/AAABAAAAAAD8//z/AAABAAAAAAACAPn/AAAEAAEAAAABAPr/AAAAAAEAABADAPn/AAACAAEAAAAFAPb/AAACAAEAAAA=")
 
 [node name="CollisionShape2D" parent="TileMapLayer/Area2D" parent_id_path=PackedInt32Array(1942567451) index="0" unique_id=1718028998]
 position = Vector2(1286.25, -4401.25)
 shape = SubResource("RectangleShape2D_hnbyo")
 
-[node name="Decorations" parent="." index="8" unique_id=1459771147]
+[node name="Decorations" parent="." index="6" unique_id=1459771147]
 tile_map_data = PackedByteArray("AAD+//r/AAABAAAAAFAHAPf/AAAAAAIAAGAHAPj/AAABAAAAADAGAPf/AAABAAIAAFAGAPb/AAABAAEAAAAHAPb/AAABAAEAAAAHAPr/AAABAAIAAFAHAPn/AAABAAEAAAAGAPj/AAABAAIAAGAGAPn/AAABAAEAAAAGAPr/AAABAAIAAAAFAPr/AAABAAEAAFAEAPr/AAABAAEAAFADAPr/AAABAAAAAFACAPr/AAAAAAIAADABAPr/AAABAAEAAFAAAPr/AAABAAEAAFAFAPj/AAABAAIAAFAFAPf/AAABAAEAAAAFAPb/AAABAAEAAAD///r/AAABAAEAAHD9//r/AAABAAAAAGD8//r/AAABAAEAAHD7//r/AAABAAEAAHACAPv/AAABAAEAAAAAAPn/AAACAAEAAFABAPb/AAACAAEAAAD8//b/AAAAAAAAAAA=")
 
-[node name="Backgrounds" parent="." index="9" unique_id=1196533618]
+[node name="Backgrounds" parent="." index="7" unique_id=1196533618]
 tile_map_data = PackedByteArray("AAAGAPj/AAABAAIAAAD8//j/AAAAAAAAAAD9//j/AAAAAAAAAAD+//j/AAAAAAAAAAD///j/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAD///v/AAABAAIAAAD+//v/AAAAAAAAAAD9//v/AAAAAAEAAAAAAPv/AAAAAAIAAAD8//v/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAADAPf/AAACAAAAAAA=")

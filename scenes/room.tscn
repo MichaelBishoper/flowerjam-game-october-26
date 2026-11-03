@@ -1,21 +1,17 @@
 [gd_scene format=4 uid="uid://df1vw8nxrtidc"]
 
 [ext_resource type="Script" uid="uid://omo6x6dkqr17" path="res://scripts/room.gd" id="1_36trf"]
-[ext_resource type="PackedScene" uid="uid://dc1puru13x0aq" path="res://scenes/beach_ball.tscn" id="2_7dqbv"]
 [ext_resource type="PackedScene" uid="uid://b37e4langim0i" path="res://scenes/exit.tscn" id="2_14vil"]
-[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
+[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://Assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
 [ext_resource type="Script" uid="uid://yp3t4qcqqgnr" path="res://scripts/room_transition.gd" id="2_jn645"]
 [ext_resource type="PackedScene" uid="uid://d38n6p3qfdp7" path="res://scenes/entrance.tscn" id="2_jxe34"]
-[ext_resource type="PackedScene" uid="uid://ivdboxirfpe2" path="res://scenes/balloon.tscn" id="2_qtoah"]
-[ext_resource type="PackedScene" uid="uid://brpycd08mf3p1" path="res://scenes/apple.tscn" id="2_qvc4m"]
-[ext_resource type="PackedScene" uid="uid://ew56m4hbw7vn" path="res://scenes/feather.tscn" id="2_ybpoa"]
-[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://assets/ObjectsTileset.png" id="3_85yof"]
+[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://Assets/ObjectsTileset.png" id="3_85yof"]
 [ext_resource type="FontFile" uid="uid://tgtvfg0b2jhp" path="res://Pelicula.otf" id="11_eom3m"]
 [ext_resource type="Script" uid="uid://cb6co6bqbhyip" path="res://scripts/level_title.gd" id="12_tk5fv"]
-[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
-[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://assets/BackgroungTileset.png" id="13_dynfe"]
-[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
-[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://assets/sfx/sfx_door_open_close_10fps.wav" id="15_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://Assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
+[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://Assets/BackgroungTileset.png" id="13_dynfe"]
+[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://Assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://Assets/sfx/sfx_door_open_close_10fps.wav" id="15_3j2fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85yof"]
 texture = ExtResource("2_ffxv4")
@@ -102,18 +98,6 @@ level_title = NodePath("UI/LevelTitle")
 entrance = NodePath("Entrance")
 exit = NodePath("Exit")
 door_swing_closed = NodePath("DoorSwingClosed")
-
-[node name="Balloon" parent="." unique_id=257149692 instance=ExtResource("2_qtoah")]
-position = Vector2(-1201, -328)
-
-[node name="Feather" parent="." unique_id=1397094081 instance=ExtResource("2_ybpoa")]
-position = Vector2(1252, -1457)
-
-[node name="BeachBall" parent="." unique_id=169957972 instance=ExtResource("2_7dqbv")]
-position = Vector2(-189, -3512)
-
-[node name="Apple" parent="." unique_id=1868249461 instance=ExtResource("2_qvc4m")]
-position = Vector2(-665, -1419)
 
 [node name="RoomTransition" type="CanvasLayer" parent="." unique_id=391334527]
 process_mode = 3
