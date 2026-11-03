@@ -44,8 +44,9 @@ func update(_delta: float) -> void:
 	
 func physics_update(_delta: float) -> void:
 	# Feed user input into the hauntable's movement function
-	var input_dir: float = Input.get_axis("move_left", "move_right")
-	hauntable.move(input_dir, _delta)
+	var input_dir_x: float = Input.get_axis("move_left", "move_right")
+	var input_dir_y: float = Input.get_axis("move_up", "move_down")
+	hauntable.move(input_dir_x, input_dir_y, _delta)
 
 func handle_input(_event: InputEvent) -> void:
 	# Effectively the same as exit()

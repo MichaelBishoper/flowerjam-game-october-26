@@ -67,10 +67,10 @@ func physics_update(_delta: float) -> void:
 	
 	# --- COLLISIONS --- #
 	const BOUNCE_FACTOR: float = 0.9
-	const FLOOR_BOUNCE_FACTOR: float = 0.8
-	const MAX_BOUNCE_SPEED: float = 4300.0
+	const FLOOR_BOUNCE_FACTOR: float = 1.2
+	const MAX_BOUNCE_SPEED: float = 2500.0
 	var holding_down := Input.is_action_pressed("move_down")
-	var pre_velocity := player.velocity
+	var pre_velocity := player.velocity.limit_length(MAX_BOUNCE_SPEED)
 
 	player.move_and_slide()
 
@@ -81,11 +81,12 @@ func physics_update(_delta: float) -> void:
 		var is_ceiling := n.y > 0.5
 		var is_wall := absf(n.x) > 0.5
 		var impact := absf(pre_velocity.dot(n))
+		var bounced := false
 		
 		if is_floor:
-			if holding_down:
-				player.velocity = pre_velocity.bounce(n) * FLOOR_BOUNCE_FACTOR
-				player.velocity = player.velocity.limit_length(MAX_BOUNCE_SPEED)
+			if holding_down and not bounced:
+				player.velocity = (pre_velocity.bounce(n) * FLOOR_BOUNCE_FACTOR).limit_length(MAX_BOUNCE_SPEED)
+				bounced = true
 				if impact > 550.0:
 					if not bump_heavy.playing:
 						bump_heavy.play()

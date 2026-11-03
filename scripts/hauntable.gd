@@ -1,6 +1,7 @@
 class_name Hauntable extends Node2D
 
 @export var speed := 400.0
+@export var faling_speed := 400.0
 
 @onready var haunt_button: Button = $HauntButton
 @onready var rigid_body_2d: RigidBody2D = $RigidBody2D
@@ -26,7 +27,8 @@ var is_in_range: bool = false
 
 # For the Public Methods
 @export var hauntable_acceleration := 1200.0
-@export var hauntable_max_speed := 400.0
+@export var hauntable_max_speed := 400.
+@export var hauntable_gravity := 990.0
 
 signal button_pressed
 
@@ -35,16 +37,23 @@ signal button_pressed
 @export_range(0.0, 1.0) var friction_factor = 0.5
 
 # -- PUBLIC METHODS -- #
-func move(axis: float, delta: float) -> void:
+func move(axis_x: float, axis_y: float, delta: float) -> void:
 	# Movement logic
-	var target_x  := axis * hauntable_max_speed
+	var target_x  := axis_x * hauntable_max_speed
+	var target_y := axis_y * hauntable_gravity
 	
-	if axis != 0.0:
+	if axis_x != 0.0:
 		rigid_body_2d.linear_velocity.x = move_toward(
 			rigid_body_2d.linear_velocity.x, target_x, hauntable_acceleration * delta 
 		)
-
-
+	
+	var allows_falling_input = rigid_body_2d.is_in_group("balloon") or rigid_body_2d.is_in_group("feather")
+	if allows_falling_input:
+		if axis_y != 0.0:
+			rigid_body_2d.linear_velocity.y = move_toward(
+				rigid_body_2d.linear_velocity.y, target_y, hauntable_acceleration * delta
+			)
+	
 # -- PRIVATE METHODS -- #
 func _ready() -> void:
 	# WHY DOES THIS FIX IT????

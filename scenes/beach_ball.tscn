@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://fa7bqsccpvcw" path="res://assets/Ball.png" id="2_l0jqp"]
 [ext_resource type="AudioStream" uid="uid://dpc7dlkmfxvy6" path="res://assets/sfx/sfx_object_collide_3.wav" id="5_822s7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gcwwn"]
-radius = 498.51166
+[sub_resource type="CircleShape2D" id="CircleShape2D_hupay"]
+radius = 490.6062
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gcwwn"]
 random_pitch = 1.0110936
@@ -27,9 +27,9 @@ scale = Vector2(1, 1.025)
 texture = ExtResource("2_l0jqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" index="1" unique_id=223901643]
-position = Vector2(0, 3)
+position = Vector2(0, 1)
 scale = Vector2(0.6, 0.6)
-shape = SubResource("CircleShape2D_gcwwn")
+shape = SubResource("CircleShape2D_hupay")
 
 [node name="ObjectCollision" parent="RigidBody2D" index="2" unique_id=2014118339]
 stream = SubResource("AudioStreamRandomizer_gcwwn")
