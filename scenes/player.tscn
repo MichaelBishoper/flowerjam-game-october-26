@@ -16,10 +16,6 @@
 [ext_resource type="Script" uid="uid://bj58gy1dcu5e1" path="res://scripts/selecting_state.gd" id="7_smehm"]
 [ext_resource type="Script" uid="uid://cn37strvxrfg2" path="res://scripts/sprite_bobber.gd" id="7_wqfne"]
 [ext_resource type="Script" uid="uid://dx1ae3vr7n7a0" path="res://scripts/haunting_state.gd" id="9_y4r1p"]
-[ext_resource type="AudioStream" uid="uid://bi8wk108nlxep" path="res://assets/sfx/sfx_press_right.wav" id="11_d2wvv"]
-[ext_resource type="AudioStream" uid="uid://c0fxksxhsyh54" path="res://assets/sfx/sfx_press_left.wav" id="12_f1ej7"]
-[ext_resource type="AudioStream" uid="uid://cmkp0jrx2l2nj" path="res://assets/sfx/sfx_press_down.wav" id="13_oprun"]
-[ext_resource type="AudioStream" uid="uid://kerya35l13gq" path="res://assets/sfx/sfx_press_up.wav" id="14_a8ls1"]
 [ext_resource type="AudioStream" uid="uid://lccxxmd3uxvp" path="res://assets/sfx/sfx_ghost_haunting.wav" id="15_oprun"]
 [ext_resource type="Shader" uid="uid://kt6jtpjwgc33" path="res://scripts/dim_overlay.gdshader" id="16_a8ls1"]
 [ext_resource type="Script" uid="uid://cj1xkshabgb36" path="res://scripts/circle_overlay_controller.gd" id="16_qfm1y"]
@@ -579,8 +575,9 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5jhy"]
-size = Vector2(230, 266)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_holxr"]
+radius = 133.0
+height = 426.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
 radius = 1019.7083
@@ -784,18 +781,15 @@ collision_layer = 2
 script = ExtResource("1_g2els")
 max_speed_y = 3000.0
 acceleration_x = 1200.0
-acceleration_y = 10000.0
+acceleration_y = 5000.0
 friction_x = 500.0
-gravity = 1100.0
+gravity = 1700.0
 max_fall_speed = 3000.0
 flight_acceleration = -1200.0
 flight_refill_time = 2.0
 hover_height = 250.0
 hover_snap = 10.0
 arrow_scene = ExtResource("2_ur7pv")
-
-[node name="Ray" type="RayCast2D" parent="." unique_id=538880254]
-target_position = Vector2(0, 800)
 
 [node name="Arrow" type="Sprite2D" parent="." unique_id=674759685]
 z_index = 1
@@ -809,7 +803,7 @@ script = ExtResource("4_holxr")
 z_index = 1
 material = SubResource("ShaderMaterial_fulsm")
 position = Vector2(3, -19)
-scale = Vector2(0.55, 0.55)
+scale = Vector2(0.61, 0.61)
 sprite_frames = SubResource("SpriteFrames_wgif1")
 animation = &"temporary_secretary"
 autoplay = "bob"
@@ -817,8 +811,8 @@ script = ExtResource("7_wqfne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537371190]
 z_index = 99
-position = Vector2(5, 0)
-shape = SubResource("RectangleShape2D_g5jhy")
+position = Vector2(5, -20)
+shape = SubResource("CapsuleShape2D_holxr")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1354941162 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_qhqgy")
@@ -826,13 +820,9 @@ initial_state = NodePath("Moving")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=698504713]
 script = ExtResource("4_dqkch")
-bob_frequency = 0.2
-bob_amplitude = 40.0
 
 [node name="Moving" type="Node" parent="StateMachine" unique_id=645583584]
 script = ExtResource("5_qlg0r")
-bob_frequency = 5.0
-bob_amplitude = 15.0
 
 [node name="Selecting" type="Node" parent="StateMachine" unique_id=79143708 node_paths=PackedStringArray("settings")]
 script = ExtResource("7_smehm")
@@ -850,26 +840,6 @@ script = ExtResource("7_fjrip")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HauntDetection" unique_id=2091547254]
 visible = false
 shape = SubResource("CircleShape2D_fjrip")
-
-[node name="PressRight" type="AudioStreamPlayer2D" parent="." unique_id=1975942559]
-stream = ExtResource("11_d2wvv")
-volume_db = -80.0
-bus = &"SFX Bus"
-
-[node name="PressLeft" type="AudioStreamPlayer2D" parent="." unique_id=217301841]
-stream = ExtResource("12_f1ej7")
-volume_db = -80.0
-bus = &"SFX Bus"
-
-[node name="PressDown" type="AudioStreamPlayer2D" parent="." unique_id=2899787]
-stream = ExtResource("13_oprun")
-volume_db = -80.0
-bus = &"SFX Bus"
-
-[node name="PressUp" type="AudioStreamPlayer2D" parent="." unique_id=1778199253]
-stream = ExtResource("14_a8ls1")
-volume_db = -80.0
-bus = &"SFX Bus"
 
 [node name="Haunt" type="AudioStreamPlayer2D" parent="." unique_id=450890663]
 stream = ExtResource("15_oprun")

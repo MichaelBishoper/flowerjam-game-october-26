@@ -16,7 +16,7 @@ script = ExtResource("1_tbgi4")
 
 [node name="Player" parent="." unique_id=1577183643 instance=ExtResource("1_o5qli")]
 process_mode = 0
-position = Vector2(6819, 5542)
+position = Vector2(8001, 5410)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1753659158 node_paths=PackedStringArray("target")]
 process_mode = 3
