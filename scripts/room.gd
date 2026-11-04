@@ -9,6 +9,7 @@ class_name Room extends Node2D
 @export var target_room: Room
 @export var entrance: Area2D
 @export var exit: Area2D
+@export var tutorial: Tutorial
 
 ## entrance's child
 var anim: AnimatedSprite2D
@@ -134,6 +135,15 @@ func _get_room_limits() -> Rect2:
 	var tile_size := tile_map_layer.tile_set.tile_size
 	return Rect2(used_rect.position * tile_size, used_rect.size * tile_size)
 
+
+func _wait_then_advance(t: Tutorial) -> bool:
+	await get_tree().create_timer(4.6).timeout
+	if not t.advance():
+		return false
+	await t.show_current_step()
+	return true
+
+
 # Called when area2d detects player
 # Chain: Area2D -> room.gd
 func _on_body_entered(body: Node2D) -> void:
@@ -151,10 +161,13 @@ func _on_body_entered(body: Node2D) -> void:
 		push_warning("No active Camera2D found.")
 		return
 	camera.set_room_limits(_limits)
+	if not SettingsAutoload.tutorial_done:
+		await tutorial.show_current_step()
+		while await _wait_then_advance(tutorial):
+			pass
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		
 		_player_inside = false
 		restart.pressed.disconnect(_restore_initial_position)
 

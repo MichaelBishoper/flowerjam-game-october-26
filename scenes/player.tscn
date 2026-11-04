@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://dqfhsyrxfdfej" path="res://assets/sfx/sfx_reverse_button_disabled_hover.wav" id="29_g5jhy"]
 [ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="30_giy8y"]
 [ext_resource type="Texture2D" uid="uid://c5yh026qkf8mv" path="res://assets/RestartIcon.png" id="30_wnwbv"]
+[ext_resource type="AudioStream" uid="uid://dpc7dlkmfxvy6" path="res://assets/sfx/sfx_object_collide_3.wav" id="31_fdfoy"]
 [ext_resource type="Script" uid="uid://cw425v4v5ffm7" path="res://scripts/restart_button.gd" id="31_gl8cc"]
 [ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="34_md1ol"]
 [ext_resource type="Script" uid="uid://3osdooolgybq" path="res://scripts/game_settings.gd" id="36_jc3p3"]
@@ -932,6 +933,12 @@ pitch_scale = 1.7
 max_polyphony = 4
 bus = &"UI Bus"
 
+[node name="FlightBarFull" type="AudioStreamPlayer" parent="." unique_id=822532121]
+stream = ExtResource("31_fdfoy")
+volume_db = 12.0
+pitch_scale = 3.75
+bus = &"UI Bus"
+
 [node name="CircleOverlay" type="CanvasLayer" parent="." unique_id=1767677307]
 layer = -1
 script = ExtResource("16_qfm1y")
@@ -946,7 +953,7 @@ grow_vertical = 2
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=728046732]
 
-[node name="HSlider" type="HSlider" parent="UI" unique_id=1010505302]
+[node name="HSlider" type="HSlider" parent="UI" unique_id=1010505302 node_paths=PackedStringArray("flight_bar_full")]
 texture_filter = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -965,6 +972,7 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_ujl30")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_31cv2")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_pf23h")
 script = ExtResource("25_ke2ow")
+flight_bar_full = NodePath("../../FlightBarFull")
 
 [node name="Restart" type="Button" parent="UI" unique_id=1869903268]
 process_mode = 3

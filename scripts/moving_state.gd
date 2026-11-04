@@ -113,7 +113,9 @@ func physics_update(_delta: float) -> void:
 	
 	# --- REFILL --- #
 	if player.is_on_floor() and not Input.is_action_pressed("move_down"):
-		flight_bar = minf(flight_bar + player.flight_refill_time * _delta, player.flight_max_time)
+		var missing := player.flight_max_time - flight_bar
+		var gain := player.flight_refill_time * _delta * (missing/player.flight_max_time)
+		flight_bar = minf(flight_bar + gain, player.flight_max_time)
 		
 	# Update flight bar
 	flight_bar_updated.emit(flight_bar)
