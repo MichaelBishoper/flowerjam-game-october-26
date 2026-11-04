@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b36stxww7ws50" path="res://scripts/main_menu.gd" id="1_wu84c"]
 [ext_resource type="Texture2D" uid="uid://bvm5krt18ydl8" path="res://assets/UIS/PlayIcon.png" id="2_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="3_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cdswld3odchtc" path="res://assets/Title1.png" id="3_lgwnu"]
 [ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="5_5dd4i"]
 [ext_resource type="AudioStream" uid="uid://1dn63523vrpe" path="res://assets/music/to_haunt_or_not_to_haunt.ogg" id="5_8ln24"]
 [ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="5_rtw2f"]
@@ -250,6 +251,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Title" type="TextureRect" parent="Menu" unique_id=456542757]
+layout_mode = 0
+offset_left = 245.99998
+offset_top = -65.0
+offset_right = 2166.0
+offset_bottom = 1015.0
+rotation = 0.06981317
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_lgwnu")
+
 [node name="Play" type="Button" parent="Menu" unique_id=2052942279]
 layout_mode = 1
 anchors_preset = 8
@@ -258,9 +269,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -122.0
-offset_top = -36.5
+offset_top = 22.5
 offset_right = 122.0
-offset_bottom = 36.5
+offset_bottom = 95.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 2
@@ -288,9 +299,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -99.5
-offset_top = 57.0
+offset_top = 120.0
 offset_right = 99.5
-offset_bottom = 179.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -33,7 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "rotation_degrees", 0.0, 0.2
 		).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-		restart_hover.play()
+		restart_click.play()
 
 func _on_mouse_entered() -> void:
 	if state_machine.state.name == "Haunting" or state_machine.state.name == "Selecting" or state_machine.state.name == "Idle" or get_tree().paused:

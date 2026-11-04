@@ -9,7 +9,6 @@ class_name Room extends Node2D
 @export var target_room: Room
 @export var entrance: Area2D
 @export var exit: Area2D
-@export var door_swing_closed: AudioStreamPlayer2D
 
 ## entrance's child
 var anim: AnimatedSprite2D
@@ -112,7 +111,12 @@ func _restore_initial_position() -> void:
 		body.freeze = true
 		body.linear_velocity = Vector2.ZERO
 		body.angular_velocity = 0.0
-		body.global_position = init_pos
+		var t := Transform2D(0.0, init_pos)
+		PhysicsServer2D.body_set_state(
+			body.get_rid(),
+			PhysicsServer2D.BODY_STATE_TRANSFORM,
+			t
+		)
 		body.freeze = false
 		
 # NOTE: Don't add wonky or janky rooms that can't neatly fit in a box please
@@ -165,8 +169,6 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		# Get the animatedsprite2d reference
 		var anim = exit.get_node("AnimatedSprite2D") as AnimatedSprite2D
 		anim.play("door_swing_close")
-		# Play audio
-		door_swing_closed.play()
 		await anim.animation_finished
 		anim.play("door_idle_close")
 		# Play room transition animation

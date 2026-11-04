@@ -2,16 +2,15 @@
 
 [ext_resource type="Script" uid="uid://omo6x6dkqr17" path="res://scripts/room.gd" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://b37e4langim0i" path="res://scenes/exit.tscn" id="2_14vil"]
-[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://Assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
+[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
 [ext_resource type="Script" uid="uid://yp3t4qcqqgnr" path="res://scripts/room_transition.gd" id="2_jn645"]
 [ext_resource type="PackedScene" uid="uid://d38n6p3qfdp7" path="res://scenes/entrance.tscn" id="2_jxe34"]
-[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://Assets/ObjectsTileset.png" id="3_85yof"]
+[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://assets/ObjectsTileset.png" id="3_85yof"]
 [ext_resource type="FontFile" uid="uid://tgtvfg0b2jhp" path="res://Pelicula.otf" id="11_eom3m"]
 [ext_resource type="Script" uid="uid://cb6co6bqbhyip" path="res://scripts/level_title.gd" id="12_tk5fv"]
-[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://Assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
-[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://Assets/BackgroungTileset.png" id="13_dynfe"]
-[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://Assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
-[ext_resource type="AudioStream" uid="uid://cqk2w2x5472kj" path="res://Assets/sfx/sfx_door_open_close_10fps.wav" id="15_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
+[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://assets/BackgroungTileset.png" id="13_dynfe"]
+[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85yof"]
 texture = ExtResource("2_ffxv4")
@@ -92,12 +91,11 @@ streams_count = 2
 stream_0/stream = ExtResource("13_23wr2")
 stream_1/stream = ExtResource("14_3j2fx")
 
-[node name="Node2D" type="Node2D" unique_id=841318414 node_paths=PackedStringArray("level_title", "entrance", "exit", "door_swing_closed") groups=["room"]]
+[node name="Node2D" type="Node2D" unique_id=841318414 node_paths=PackedStringArray("level_title", "entrance", "exit") groups=["room"]]
 script = ExtResource("1_36trf")
 level_title = NodePath("UI/LevelTitle")
 entrance = NodePath("Entrance")
 exit = NodePath("Exit")
-door_swing_closed = NodePath("DoorSwingClosed")
 
 [node name="RoomTransition" type="CanvasLayer" parent="." unique_id=391334527]
 process_mode = 3
@@ -160,12 +158,6 @@ one_shot = true
 stream = SubResource("AudioStreamRandomizer_tk5fv")
 volume_db = 3.0
 bus = &"UI Bus"
-
-[node name="DoorSwingClosed" type="AudioStreamPlayer2D" parent="." unique_id=1415697428]
-stream = ExtResource("15_3j2fx")
-volume_db = 12.0
-max_distance = 4096.0
-bus = &"SFX Bus"
 
 [connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
 [connection signal="area_entered" from="TileMapLayer/Area2D" to="." method="_on_area_2d_area_entered"]
