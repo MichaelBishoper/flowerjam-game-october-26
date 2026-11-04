@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b0uq5soxrtssj"
-path="res://.godot/imported/sfx_hauntable_move.mp3-3aa23c0362783e992e55d239ac4ea6b5.mp3str"
+path="res://.godot/imported/sfx_hauntable_move.mp3-cbef3307e9411a8d1d1aca653fe46bbd.mp3str"
 
 [deps]
 
-source_file="res://assets/sfx/sfx_hauntable_move.mp3"
-dest_files=["res://.godot/imported/sfx_hauntable_move.mp3-3aa23c0362783e992e55d239ac4ea6b5.mp3str"]
+source_file="res://Assets/sfx/sfx_hauntable_move.mp3"
+dest_files=["res://.godot/imported/sfx_hauntable_move.mp3-cbef3307e9411a8d1d1aca653fe46bbd.mp3str"]
 
 [params]
 

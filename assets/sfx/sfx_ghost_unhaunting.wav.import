@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://7bhj1c51pl37"
-path="res://.godot/imported/sfx_ghost_unhaunting.wav-7f8e8adf6e703e51a4a2b59cd86bec1d.sample"
+path="res://.godot/imported/sfx_ghost_unhaunting.wav-783a24de08b9dc64734ed67a8f3941dd.sample"
 
 [deps]
 
-source_file="res://assets/sfx/sfx_ghost_unhaunting.wav"
-dest_files=["res://.godot/imported/sfx_ghost_unhaunting.wav-7f8e8adf6e703e51a4a2b59cd86bec1d.sample"]
+source_file="res://Assets/sfx/sfx_ghost_unhaunting.wav"
+dest_files=["res://.godot/imported/sfx_ghost_unhaunting.wav-783a24de08b9dc64734ed67a8f3941dd.sample"]
 
 [params]
 
