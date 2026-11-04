@@ -2,15 +2,16 @@
 
 [ext_resource type="Script" uid="uid://omo6x6dkqr17" path="res://scripts/room.gd" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://b37e4langim0i" path="res://scenes/exit.tscn" id="2_14vil"]
-[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
+[ext_resource type="Texture2D" uid="uid://x3iqo23rmjlo" path="res://Assets/Tileset1920p-640p-per-tile.png" id="2_ffxv4"]
 [ext_resource type="Script" uid="uid://yp3t4qcqqgnr" path="res://scripts/room_transition.gd" id="2_jn645"]
 [ext_resource type="PackedScene" uid="uid://d38n6p3qfdp7" path="res://scenes/entrance.tscn" id="2_jxe34"]
-[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://assets/ObjectsTileset.png" id="3_85yof"]
+[ext_resource type="Texture2D" uid="uid://cul07tlohsuhl" path="res://Assets/ObjectsTileset.png" id="3_85yof"]
+[ext_resource type="Texture2D" uid="uid://dr5x4f14d0m3o" path="res://Assets/BackWallTileset.png" id="8_tk5fv"]
 [ext_resource type="FontFile" uid="uid://tgtvfg0b2jhp" path="res://Pelicula.otf" id="11_eom3m"]
 [ext_resource type="Script" uid="uid://cb6co6bqbhyip" path="res://scripts/level_title.gd" id="12_tk5fv"]
-[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
-[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://assets/BackgroungTileset.png" id="13_dynfe"]
-[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
+[ext_resource type="AudioStream" uid="uid://clpjqtrd5kada" path="res://Assets/sfx/sfx_typewriter_1.wav" id="13_23wr2"]
+[ext_resource type="Texture2D" uid="uid://foovccqimlv3" path="res://Assets/BackgroungTileset.png" id="13_dynfe"]
+[ext_resource type="AudioStream" uid="uid://c74rsm32li3la" path="res://Assets/sfx/sfx_typewriter_2.wav" id="14_3j2fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85yof"]
 texture = ExtResource("2_ffxv4")
@@ -85,6 +86,20 @@ tile_size = Vector2i(640, 640)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vfrn5")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w68ji"]
+texture = ExtResource("8_tk5fv")
+texture_region_size = Vector2i(640, 640)
+1:0/0 = 0
+0:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g4v7s"]
+tile_size = Vector2i(640, 640)
+sources/0 = SubResource("TileSetAtlasSource_w68ji")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tk5fv"]
 random_pitch = 1.1040713
 streams_count = 2
@@ -136,6 +151,10 @@ tile_set = SubResource("TileSet_ffxv4")
 [node name="Backgrounds" type="TileMapLayer" parent="." unique_id=1196533618]
 z_index = -4
 tile_set = SubResource("TileSet_85yof")
+
+[node name="BackWall" type="TileMapLayer" parent="." unique_id=1888768531]
+z_index = -5
+tile_set = SubResource("TileSet_g4v7s")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1263133582]
 layer = 9999
