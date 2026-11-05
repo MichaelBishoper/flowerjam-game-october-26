@@ -83,6 +83,7 @@ func _on_play_pressed() -> void:
 	if not menu.visible:
 		return
 	play_click.play()
+	SettingsAutoload.droolers_collected = 0
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 # Settings

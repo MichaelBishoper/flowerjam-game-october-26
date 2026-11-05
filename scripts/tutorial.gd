@@ -18,7 +18,6 @@ func _ready() -> void:
 	text.modulate.a = 0.0
 
 func _process(delta: float) -> void:
-	print("Is paused: ", get_tree().paused)
 	if SettingsAutoload.tutorial_done or get_tree().paused:
 		visible = false
 	else: 

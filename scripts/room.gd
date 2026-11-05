@@ -10,6 +10,7 @@ class_name Room extends Node2D
 @export var entrance: Area2D
 @export var exit: Area2D
 @export var tutorial: Tutorial
+@export var drooler: Node2D
 
 ## entrance's child
 var anim: AnimatedSprite2D
@@ -33,6 +34,7 @@ var _player_inside := false
 var _player_just_entered := false
 ## Stores the initial positions of the hauntables
 var _initial_positions: Dictionary = {}
+var _drooler_initial_position: Vector2
 ## The title of the level. Ex: Level 1 - Learning the Ropes
 @export var level_title_text: String = ""
 ## Getter for room limits
@@ -98,12 +100,24 @@ func _store_initial_positions() -> void:
 	_initial_positions.clear()
 	for h in find_children("*", "Hauntable", true, false):
 		_initial_positions[h] = h.global_position
+	_drooler_initial_position = drooler.global_position
 
 ## Restores the initial position of the hauntable and teleports the player to the entrance
 func _restore_initial_position() -> void:
+	if is_instance_valid(drooler):	
+		if not drooler._can_collect:
+			SettingsAutoload.remove_drooler(1)
+			drooler._can_collect = true
+		drooler.area_2d.set_collision_mask_value(2, false) 
+		drooler.area_2d.set_deferred("monitoring", false)
+		drooler.global_position = _drooler_initial_position
+		drooler.show()
+		drooler.set_process(true)
+		
 	if not _player_inside: 
 		return
 	player.global_position = entrance.global_position
+	
 	for node: Hauntable in _initial_positions:
 		if node is not Hauntable:
 			return
@@ -119,6 +133,11 @@ func _restore_initial_position() -> void:
 			t
 		)
 		body.freeze = false
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	drooler.area_2d.set_collision_mask_value(2, true) 
+	drooler.area_2d.set_deferred("monitoring", true)
 		
 # NOTE: Don't add wonky or janky rooms that can't neatly fit in a box please
 ## Get a rect2 of the tilemaplayer tileset, defined by the Area2D's CollisionShape2D under it

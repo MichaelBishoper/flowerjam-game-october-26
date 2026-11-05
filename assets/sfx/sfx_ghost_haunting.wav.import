@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://lccxxmd3uxvp"
-path="res://.godot/imported/sfx_ghost_haunting.wav-39d8f04d85e0da3a510a7a9916e717e7.sample"
+path="res://.godot/imported/sfx_ghost_haunting.wav-348327e8097ee06f936cf74d667c5f2b.sample"
 
 [deps]
 
-source_file="res://Assets/sfx/sfx_ghost_haunting.wav"
-dest_files=["res://.godot/imported/sfx_ghost_haunting.wav-39d8f04d85e0da3a510a7a9916e717e7.sample"]
+source_file="res://assets/sfx/sfx_ghost_haunting.wav"
+dest_files=["res://.godot/imported/sfx_ghost_haunting.wav-348327e8097ee06f936cf74d667c5f2b.sample"]
 
 [params]
 

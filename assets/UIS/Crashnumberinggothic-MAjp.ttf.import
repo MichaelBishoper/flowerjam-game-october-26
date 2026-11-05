@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bvujv5436hdme"
-path="res://.godot/imported/Crashnumberinggothic-MAjp.ttf-c9339f4d3c7568c6b22070ea01662663.fontdata"
+path="res://.godot/imported/Crashnumberinggothic-MAjp.ttf-a63531fe245147d3088f1351eee65929.fontdata"
 
 [deps]
 
-source_file="res://Assets/UIS/Crashnumberinggothic-MAjp.ttf"
-dest_files=["res://.godot/imported/Crashnumberinggothic-MAjp.ttf-c9339f4d3c7568c6b22070ea01662663.fontdata"]
+source_file="res://assets/UIS/Crashnumberinggothic-MAjp.ttf"
+dest_files=["res://.godot/imported/Crashnumberinggothic-MAjp.ttf-a63531fe245147d3088f1351eee65929.fontdata"]
 
 [params]
 
