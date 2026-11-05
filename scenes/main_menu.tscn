@@ -7,11 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bs8acfrgwpjs5" path="res://assets/UIS/Settings Wheel.png" id="3_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://cdswld3odchtc" path="res://assets/Title1.png" id="3_lgwnu"]
 [ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="5_5dd4i"]
-[ext_resource type="AudioStream" uid="uid://1dn63523vrpe" path="res://assets/music/to_haunt_or_not_to_haunt.ogg" id="5_8ln24"]
 [ext_resource type="AudioStream" uid="uid://dyat86iw5q60s" path="res://assets/sfx/ui_button_hover.wav" id="5_rtw2f"]
 [ext_resource type="AudioStream" uid="uid://bwqjk4sbmfe4a" path="res://assets/sfx/ui_button_click.wav" id="6_oa1go"]
 [ext_resource type="AudioStream" uid="uid://bplmqlbb8vukk" path="res://assets/sfx/sfx_settings_hover.wav" id="8_tbmy8"]
 [ext_resource type="AudioStream" uid="uid://utrfkqibyc6h" path="res://assets/sfx/sfx_settings_click.wav" id="9_jk1qb"]
+[ext_resource type="AudioStream" uid="uid://bgnbkwco0l6eq" path="res://assets/music/hausgeist.ogg" id="10_flqon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wu84c"]
 texture = ExtResource("3_bqqt6")
@@ -444,7 +444,7 @@ theme_override_fonts/normal_font = ExtResource("1_ekxnf")
 theme_override_font_sizes/normal_font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_jk1qb")
 bbcode_enabled = true
-text = "© tonim  &  mecil productions"
+text = "tonim  and  mecil productions"
 fit_content = true
 
 [node name="Settings" type="Control" parent="." unique_id=1295015287]
@@ -666,7 +666,7 @@ max_polyphony = 4
 bus = &"UI Bus"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=626469159]
-stream = ExtResource("5_8ln24")
+stream = ExtResource("10_flqon")
 bus = &"Music Bus"
 
 [node name="SettingsHover" type="AudioStreamPlayer" parent="." unique_id=561150244]

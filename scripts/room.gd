@@ -213,7 +213,10 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		await room_transition.transition_exit()
 		# Conclude the signal
 	else:
-		print("Game Complete")
+		if SettingsAutoload.droolers_collected < 8:
+			get_tree().change_scene_to_file("res://scenes/cutscenes.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/cutscene_drool.tscn")
 		return
 
 func _on_exit_body_exited(body: Node2D) -> void:

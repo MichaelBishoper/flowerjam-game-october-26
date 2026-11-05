@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://loi1n43cyuej"]
+
+[ext_resource type="VideoStream" uid="uid://ndnxtmxmblge" path="res://assets/cutscenes/0001-0208.ogv" id="1_5khjm"]
+[ext_resource type="Script" uid="uid://df87dgv8d6a2" path="res://scripts/cutscene_normal.gd" id="1_465o6"]
+[ext_resource type="AudioStream" uid="uid://dyxwlqxvxeso4" path="res://assets/music/ghostys_lullabye.ogg" id="2_2o8o2"]
+
+[node name="AspectRatioContainer" type="CanvasLayer" unique_id=2010342704 node_paths=PackedStringArray("lullabye")]
+script = ExtResource("1_465o6")
+lullabye = NodePath("Lullabye")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1737779289]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = -1
+anchor_left = -0.33333334
+anchor_top = -0.33333334
+anchor_right = 1.3333334
+anchor_bottom = 1.3333334
+offset_left = 384.0
+offset_top = 216.0
+offset_right = -384.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_5khjm")
+speed_scale = 2.0
+autoplay = true
+bus = &"SFX Bus"
+metadata/_edit_use_anchors_ = true
+
+[node name="Lullabye" type="AudioStreamPlayer" parent="." unique_id=1340555418]
+stream = ExtResource("2_2o8o2")

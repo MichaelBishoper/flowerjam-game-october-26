@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b0d4734gck0kf"]
+
+[ext_resource type="Script" uid="uid://y025nhckmv57" path="res://scripts/cutscene_drool.gd" id="1_if8x3"]
+[ext_resource type="VideoStream" uid="uid://da6v5dk42df7q" path="res://assets/cutscenes/0001-0256.ogv" id="1_vu5gq"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=436609003 node_paths=PackedStringArray("lullabye", "video_stream_player")]
+script = ExtResource("1_if8x3")
+lullabye = NodePath("Lullabye")
+video_stream_player = NodePath("VideoStreamPlayer")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1226938983]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_vu5gq")
+speed_scale = 2.0
+autoplay = true
+
+[node name="Lullabye" type="AudioStreamPlayer" parent="." unique_id=826062881]
