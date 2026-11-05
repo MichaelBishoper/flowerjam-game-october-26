@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b6ohfl7fyv6dg"]
+
+[ext_resource type="PackedScene" uid="uid://df1vw8nxrtidc" path="res://scenes/room.tscn" id="1_qliwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qliwx"]
+size = Vector2(5255, 5916)
+
+[node name="Node2D" unique_id=841318414 instance=ExtResource("1_qliwx")]
+level_title_text = "Level Six - Test"
+
+[node name="CollisionShape2D" parent="TileMapLayer/Area2D" parent_id_path=PackedInt32Array(1942567451) index="0" unique_id=1718028998]
+position = Vector2(-10.5, -2889)
+shape = SubResource("RectangleShape2D_qliwx")

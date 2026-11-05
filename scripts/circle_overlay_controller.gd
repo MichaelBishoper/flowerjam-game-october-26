@@ -16,7 +16,7 @@ func show_circle(duration: float = 0.3) -> void:
 	tween.tween_method(
 		func(v: float): shader_material.set_shader_parameter("visibility", v),
 		float(shader_material.get_shader_parameter("visibility")),
-		1.0,
+		0.4,
 		duration
 	)
 	

@@ -43,6 +43,8 @@
 [ext_resource type="StyleBox" uid="uid://y1sf8lk528qk" path="res://assets/UIS/ContainerPurple.tres" id="37_t4otl"]
 [ext_resource type="FontFile" uid="uid://cc77y1qv6nfep" path="res://assets/UIS/Pelicula.otf" id="38_j2b1d"]
 [ext_resource type="Script" uid="uid://dumdo521bk0st" path="res://scripts/in_game_menu.gd" id="39_2dvfe"]
+[ext_resource type="Texture2D" uid="uid://du6cfl3gu43ik" path="res://assets/temp/flower_drool.png" id="41_hhpqf"]
+[ext_resource type="FontFile" uid="uid://dnvaksmla7hi3" path="res://assets/UIS/Crashnumberingserif-KVjW.ttf" id="42_g5jhy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fulsm"]
 
@@ -839,7 +841,6 @@ collision_mask = 4
 script = ExtResource("7_fjrip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HauntDetection" unique_id=2091547254]
-visible = false
 shape = SubResource("CircleShape2D_fjrip")
 
 [node name="Haunt" type="AudioStreamPlayer2D" parent="." unique_id=450890663]
@@ -940,7 +941,7 @@ pitch_scale = 3.75
 bus = &"UI Bus"
 
 [node name="CircleOverlay" type="CanvasLayer" parent="." unique_id=1767677307]
-layer = -1
+layer = 0
 script = ExtResource("16_qfm1y")
 
 [node name="ColorRect" type="ColorRect" parent="CircleOverlay" unique_id=1170834128]
@@ -1011,6 +1012,28 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_jc3p3")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_t4otl")
 script = ExtResource("36_jc3p3")
 settings_click = NodePath("../../SettingsClick")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=509409565]
+custom_maximum_size = Vector2(50, 50)
+offset_left = 1028.0
+offset_top = 78.0
+offset_right = 1078.0
+offset_bottom = 128.0
+theme_override_constants/separation = -160
+
+[node name="Drooler" type="TextureRect" parent="UI/HBoxContainer" unique_id=252664212]
+layout_mode = 2
+texture = ExtResource("41_hhpqf")
+
+[node name="DroolerCount" type="Label" parent="UI/HBoxContainer" unique_id=1354255853]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("42_g5jhy")
+theme_override_font_sizes/font_size = 38
+text = "9
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InGameMenu" type="CanvasLayer" parent="." unique_id=1834337478 node_paths=PackedStringArray("exit", "music_slider", "sfx_slider", "ui_slider")]
 process_mode = 2
