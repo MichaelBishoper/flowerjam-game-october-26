@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dnvaksmla7hi3"
-path="res://.godot/imported/Crashnumberingserif-KVjW.ttf-3a36a706a5513777091f27b6de596263.fontdata"
+path="res://.godot/imported/Crashnumberingserif-KVjW.ttf-33517056933aad0db25f4cb38f7cebe0.fontdata"
 
 [deps]
 
-source_file="res://assets/UIS/Crashnumberingserif-KVjW.ttf"
-dest_files=["res://.godot/imported/Crashnumberingserif-KVjW.ttf-3a36a706a5513777091f27b6de596263.fontdata"]
+source_file="res://Assets/UIS/Crashnumberingserif-KVjW.ttf"
+dest_files=["res://.godot/imported/Crashnumberingserif-KVjW.ttf-33517056933aad0db25f4cb38f7cebe0.fontdata"]
 
 [params]
 

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ba4yegkmn02tn" path="res://scenes/rooms/Room_5.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://b6ohfl7fyv6dg" path="res://scenes/rooms/room_6.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://geoyw7e3vytc" path="res://scenes/rooms/room_7.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://dy7w2m71hu8kh" path="res://scenes/rooms/room_8.tscn" id="13_trceg"]
 
 [node name="Node2D" type="Node2D" unique_id=223524730]
 script = ExtResource("1_tbgi4")
@@ -56,9 +57,14 @@ position = Vector2(7790, 29881)
 target_room = NodePath("../Room6")
 level_title_text = "Level Five - A Small Push"
 
-[node name="Room6" parent="Rooms" unique_id=1465060434 instance=ExtResource("11_ya4ey")]
+[node name="Room6" parent="Rooms" unique_id=1465060434 node_paths=PackedStringArray("target_room") instance=ExtResource("11_ya4ey")]
 position = Vector2(6943, 38054)
+target_room = NodePath("../Room7")
 level_title_text = "Level Six - Over the Ledge"
 
-[node name="Room7" parent="Rooms" unique_id=1152723637 instance=ExtResource("12_eb6dy")]
+[node name="Room7" parent="Rooms" unique_id=1152723637 node_paths=PackedStringArray("target_room") instance=ExtResource("12_eb6dy")]
 position = Vector2(7802, 45886)
+target_room = NodePath("../Room8")
+
+[node name="Room8" parent="Rooms" unique_id=751324739 instance=ExtResource("13_trceg")]
+position = Vector2(8603, 55489)

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://w1l35gvwqhsd"]
 
 [ext_resource type="Script" uid="uid://0o46ifxpseor" path="res://scripts/trapdoor.gd" id="1_3p675"]
-[ext_resource type="Texture2D" uid="uid://c1b0ab2y755qa" path="res://assets/Hinge.png" id="2_3p675"]
-[ext_resource type="Texture2D" uid="uid://dr052hbgesmhc" path="res://assets/Trapddor1920.png" id="3_kv7b1"]
+[ext_resource type="Texture2D" uid="uid://c1b0ab2y755qa" path="res://Assets/Hinge.png" id="2_3p675"]
+[ext_resource type="Texture2D" uid="uid://dr052hbgesmhc" path="res://Assets/Trapddor1920.png" id="3_kv7b1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3p675"]
 size = Vector2(32, 33.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kv7b1"]
-size = Vector2(442, 78)
+size = Vector2(580, 78)
 
 [node name="Node2D" type="Node2D" unique_id=290507245]
 z_index = 2
@@ -40,7 +40,7 @@ scale = Vector2(0.333, 0.333)
 texture = ExtResource("3_kv7b1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trapdoor" unique_id=1284576910]
-position = Vector2(-406, 3)
+position = Vector2(-337, 3)
 shape = SubResource("RectangleShape2D_kv7b1")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1688883660]

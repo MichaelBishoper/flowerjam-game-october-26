@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://tkieuomcp7qr"
-path="res://.godot/imported/sfx_bump_heavy.mp3-f99ac875c52fbc02515783efbd852b0c.mp3str"
+path="res://.godot/imported/sfx_bump_heavy.mp3-210197da8eacc774faaca83ea3f6b292.mp3str"
 
 [deps]
 
-source_file="res://assets/sfx/sfx_bump_heavy.mp3"
-dest_files=["res://.godot/imported/sfx_bump_heavy.mp3-f99ac875c52fbc02515783efbd852b0c.mp3str"]
+source_file="res://Assets/sfx/sfx_bump_heavy.mp3"
+dest_files=["res://.godot/imported/sfx_bump_heavy.mp3-210197da8eacc774faaca83ea3f6b292.mp3str"]
 
 [params]
 
