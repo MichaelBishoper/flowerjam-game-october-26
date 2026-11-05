@@ -2,6 +2,7 @@ extends Node2D
 
 @export var area_2d: Area2D
 @export var animation_player: AnimationPlayer
+@export var drooler_pickup: AudioStreamPlayer2D
 
 var _can_collect := true
 
@@ -12,6 +13,8 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if not _can_collect:
 		return
+	if not drooler_pickup.playing:
+		drooler_pickup.play()
 	if body.is_in_group("player"):
 		SettingsAutoload.add_drooler(1)  
 		hide()

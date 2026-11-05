@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rdofqgbrcdjo" path="res://scripts/drooler.gd" id="1_2e7lb"]
 [ext_resource type="Texture2D" uid="uid://du6cfl3gu43ik" path="res://assets/temp/flower_drool.png" id="1_a0v1d"]
+[ext_resource type="AudioStream" uid="uid://ddy4vhydljyqx" path="res://assets/sfx/sfx_drooler_collect.wav" id="3_s00m0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e7lb"]
 radius = 138.03261
@@ -157,10 +158,11 @@ _data = {
 &"hover": SubResource("Animation_s00m0")
 }
 
-[node name="Node2D" type="Node2D" unique_id=413814304 node_paths=PackedStringArray("area_2d", "animation_player")]
+[node name="Node2D" type="Node2D" unique_id=413814304 node_paths=PackedStringArray("area_2d", "animation_player", "drooler_pickup")]
 script = ExtResource("1_2e7lb")
 area_2d = NodePath("Area2D")
 animation_player = NodePath("Area2D/AnimationPlayer")
+drooler_pickup = NodePath("DroolerPickup")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1692087717]
 collision_mask = 2
@@ -174,3 +176,10 @@ shape = SubResource("CircleShape2D_2e7lb")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D" unique_id=1419980488]
 libraries/ = SubResource("AnimationLibrary_fhiju")
 speed_scale = 4.0
+
+[node name="DroolerPickup" type="AudioStreamPlayer2D" parent="." unique_id=568344175]
+stream = ExtResource("3_s00m0")
+volume_db = 13.0
+pitch_scale = 1.4
+max_distance = 4096.0
+bus = &"SFX Bus"

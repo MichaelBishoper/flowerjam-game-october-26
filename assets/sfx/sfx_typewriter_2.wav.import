@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c74rsm32li3la"
-path="res://.godot/imported/sfx_typewriter_2.wav-c16cab28c7e47e5b626d6cf27878a04b.sample"
+path="res://.godot/imported/sfx_typewriter_2.wav-892ecff66a0c0f8b73f91e754a3069c4.sample"
 
 [deps]
 
-source_file="res://Assets/sfx/sfx_typewriter_2.wav"
-dest_files=["res://.godot/imported/sfx_typewriter_2.wav-c16cab28c7e47e5b626d6cf27878a04b.sample"]
+source_file="res://assets/sfx/sfx_typewriter_2.wav"
+dest_files=["res://.godot/imported/sfx_typewriter_2.wav-892ecff66a0c0f8b73f91e754a3069c4.sample"]
 
 [params]
 

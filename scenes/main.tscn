@@ -13,9 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://b6ohfl7fyv6dg" path="res://scenes/rooms/room_6.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://geoyw7e3vytc" path="res://scenes/rooms/room_7.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://dy7w2m71hu8kh" path="res://scenes/rooms/room_8.tscn" id="13_trceg"]
+[ext_resource type="AudioStream" uid="uid://c7181d1u1p6rv" path="res://assets/music/haunting_of_maroon_manor.ogg" id="14_a8y0u"]
 
-[node name="Node2D" type="Node2D" unique_id=223524730]
+[node name="Node2D" type="Node2D" unique_id=223524730 node_paths=PackedStringArray("game_theme")]
 script = ExtResource("1_tbgi4")
+game_theme = NodePath("GameTheme")
 
 [node name="DimOverlay" parent="." unique_id=1249409771 instance=ExtResource("1_jyhfs")]
 
@@ -68,3 +70,9 @@ target_room = NodePath("../Room8")
 
 [node name="Room8" parent="Rooms" unique_id=751324739 instance=ExtResource("13_trceg")]
 position = Vector2(8603, 55489)
+
+[node name="GameTheme" type="AudioStreamPlayer" parent="." unique_id=2029859196]
+stream = ExtResource("14_a8y0u")
+volume_db = -0.5
+pitch_scale = 1.09
+bus = &"Music Bus"

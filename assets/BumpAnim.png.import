@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4ysvtw1lq8gc"
-path="res://.godot/imported/BumpAnim.png-4d14dcf88d05acbc75cf0e3fa8ed0676.ctex"
+path="res://.godot/imported/BumpAnim.png-a6e872da8334153bc2741febddb4e8e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BumpAnim.png"
-dest_files=["res://.godot/imported/BumpAnim.png-4d14dcf88d05acbc75cf0e3fa8ed0676.ctex"]
+source_file="res://assets/BumpAnim.png"
+dest_files=["res://.godot/imported/BumpAnim.png-a6e872da8334153bc2741febddb4e8e4.ctex"]
 
 [params]
 

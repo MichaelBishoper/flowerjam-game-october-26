@@ -8,11 +8,13 @@ extends CanvasLayer
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
 @export var ui_slider: HSlider
+@export var credits_back: Button
 
 # Control Nodes
 @export var settings_wheel: Control
 @export var menu: Control
 @export var settings_menu: Control
+@export var credits_node: Control
 
 # SFX
 @onready var button_hover: AudioStreamPlayer = $ButtonHover
@@ -35,6 +37,7 @@ func _ready() -> void:
 	settings_wheel.visible = true
 	menu.visible = true
 	settings_menu.visible = false
+	credits_node.visible = false
 	# Set pivot offsets of all buttons to center
 	var buttons: Array[Button] = [play, credits, exit, settings]
 	for button in buttons:
@@ -48,10 +51,21 @@ func _on_credits_mouse_entered() -> void:
 	button_hover.play()
 
 func _on_credits_pressed() -> void:
-	if not menu.visible:
-		return
 	button_click.play()
+	credits_node.visible = true
+	menu.visible = false
+	
+func _on_credits_back_mouse_entered() -> void:
+	button_hover.play()
 
+func _on_credits_back_mouse_exited() -> void:
+	pass
+
+func _on_credits_back_pressed() -> void:
+	button_click.play()
+	credits_node.visible = false
+	menu.visible = true
+	
 # Exit
 func _on_exit_mouse_entered() -> void:
 	if not menu.visible:
@@ -104,6 +118,9 @@ func _on_settings_pressed() -> void:
 	if menu.visible == true:
 		menu.visible = false
 		settings_menu.visible = true
+	elif credits_node.visible == true:
+		credits_node.visible = false
+		menu.visible = false
 	else:
 		menu.visible = true
 		settings_menu.visible = false
