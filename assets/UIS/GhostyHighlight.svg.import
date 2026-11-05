@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmmfs473y07po"
-path="res://.godot/imported/GhostyHighlight.svg-9bad8195bbd46e7c479617f5375c0d58.ctex"
+path="res://.godot/imported/GhostyHighlight.svg-eb80fbfa8f1a04e0f2c34dc5eb94e250.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UIS/GhostyHighlight.svg"
-dest_files=["res://.godot/imported/GhostyHighlight.svg-9bad8195bbd46e7c479617f5375c0d58.ctex"]
+source_file="res://Assets/UIS/GhostyHighlight.svg"
+dest_files=["res://.godot/imported/GhostyHighlight.svg-eb80fbfa8f1a04e0f2c34dc5eb94e250.ctex"]
 
 [params]
 

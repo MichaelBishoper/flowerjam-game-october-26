@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy2oqyhbi1ggr"
-path="res://.godot/imported/BumpUpAnim.png-a6af925ce7db819c57f675ffaa332472.ctex"
+path="res://.godot/imported/BumpUpAnim.png-089bcb3b6042a643e40cba134eacd6a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BumpUpAnim.png"
-dest_files=["res://.godot/imported/BumpUpAnim.png-a6af925ce7db819c57f675ffaa332472.ctex"]
+source_file="res://Assets/BumpUpAnim.png"
+dest_files=["res://.godot/imported/BumpUpAnim.png-089bcb3b6042a643e40cba134eacd6a7.ctex"]
 
 [params]
 
